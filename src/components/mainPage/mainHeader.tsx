@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './mainFooter.css';
 
 function Header() {
   return (

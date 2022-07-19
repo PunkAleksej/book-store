@@ -1,0 +1,40 @@
+.footer {
+    width: 100%;
+    background-color: black;
+    padding: 100px;
+}
+
+.footer_block {
+    text-align: start;
+}
+
+.footer_block_title {
+    color: white;
+}
+.footer_block_text {
+    color: white;
+}
+button {
+    background: #344966;
+    border-radius: 16px;
+    color: #F0F4EF;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.75px;
+    padding: 10px 50px;
+}
+
+.catalog {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.book {
+    width: 150px;
+    height: 200px;
+    background-color: aqua;
+    text-align: center;
+    margin: 20px;
+}
