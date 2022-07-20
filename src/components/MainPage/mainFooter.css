@@ -1,4 +1,4 @@
-.footer {
+/* .footer {
     width: 100%;
     background-color: black;
     padding: 100px;
@@ -13,16 +13,12 @@
 }
 .footer_block_text {
     color: white;
-}
-button {
-    background: #344966;
-    border-radius: 16px;
-    color: #F0F4EF;
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.75px;
-    padding: 10px 50px;
-}
+} */
+
+.main_container {
+    width: 100%;
+    min-height: 100vh;
+  }
 
 .catalog {
     width: 100%;
@@ -38,3 +34,12 @@ button {
     text-align: center;
     margin: 20px;
 }
+
+.main_menu {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 0px auto;
+    align-items: center;
+    justify-content: center;
+  }

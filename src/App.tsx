@@ -1,18 +1,20 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import './App.css';
-import Header from './components/mainPage/mainHeader';
-import Footer from './components/mainPage/mainFooter';
-import Catalog from './components/mainPage/mainCatalog';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import Login from './components/AuthPage/AuthPage';
+import Main from './components/MainPage/MainPage';
+import Profile from './components/profilePage.tsx/Profile';
+import Header from './components/Header/Header';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <Header></Header>
-        <Catalog></Catalog>
-        <Footer></Footer>
-      </div>
+      <Header></Header>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/auth" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
     </BrowserRouter>
   );
 }

@@ -1,9 +1,12 @@
 import React from 'react';
 import './mainFooter.css';
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div>
+    <div className='main_menu'>
+      <Link to="/profile">Profile Page</Link>
+      <Link to="/auth">Auth Page</Link>
       <button>SignIn</button>
       <button>signUp</button>
     </div>
