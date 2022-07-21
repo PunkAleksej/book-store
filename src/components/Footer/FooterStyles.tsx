@@ -1,32 +1,35 @@
-.container {
+import styled from 'styled-components';
+import mapImg from '../../images/map.png';
+import footerLogo from '../../images/logo_footer.svg';
+
+export const FooterContainer = styled.div`
   width: 100%;
   background-color: #0D1821;
   margin: 0px auto;
-}
+`
 
-.footer {
+export const Footerf = styled.div`
   margin: 0px auto;
   width: 100%;
   max-width: 1280px;
   padding: 73px 80px;
   display: flex;
   justify-content: space-between;
-}
+`
 
-.footer_info_logo {
-  background-image: url('../../images/logo_footer\ .svg');
+export const FooterInfoLogo = styled.div`
+  background-image: url(${footerLogo});
   background-repeat: no-repeat;
   width: 88px;
   height: 46px;
   padding: 0px 0px 40px 0px;
-}
+`
 
-
-.footer_menu {
+export const FooterMenu = styled.div`
   padding: 0px 315px 0px 166px;
-}
+`
 
-.footer_text {
+export const FooterText = styled.p`
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
@@ -34,11 +37,11 @@
   padding: 0px 0px 5px 0px;
   margin-block-start: 0em;
   margin-block-end: 0em;
-}
+`
   
-.footer_map_img {
-  background-image: url('../../images/map.png');
+export const FooterMapImg = styled.div`
+  background-image: url(${mapImg});
   background-repeat: no-repeat;
   width: 413px;
   height: 160px;
-}
+`

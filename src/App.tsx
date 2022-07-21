@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Login from './components/AuthPage/AuthPage';
 import Main from './components/MainPage/MainPage';
-import Profile from './components/profilePage.tsx/Profile';
+import ProfilePage from './components/profilePage/ProfilePage';
 import Header from './components/Header/Header';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/auth" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,28 +1,35 @@
 import React from 'react';
-import './Footer.css';
+import {
+  FooterContainer,
+  Footerf,
+  FooterInfoLogo,
+  FooterText,
+  FooterMenu,
+  FooterMapImg
+} from './FooterStyles';
 
 
 function Footer() {
   return (
-    <div className='container'>
-      <div className='footer'>
-        <div className='footer_info'>
-          <div className='footer_info_logo'></div>
-          <p className='footer_text'>tranthuy.nute@gmail.com</p>
-          <p className='footer_text'>(480) 555-0103</p>
+    <FooterContainer>
+      <Footerf>
+        <div>
+          <FooterInfoLogo></FooterInfoLogo>
+          <FooterText>tranthuy.nute@gmail.com</FooterText>
+          <FooterText>(480) 555-0103</FooterText>
         </div>
-        <div className='footer_menu'>
-          <p className='footer_text'>Catalog</p>
-          <p className='footer_text'>My Account</p>
-          <p className='footer_text'>Cart</p>
-          <p className='footer_text'>Home Page</p>
-        </div>
-        <div className='footer_map'>
-          <p className='footer_text'>6391 Elgin St. Celina, Delaware 10299</p>
-          <div className='footer_map_img'></div>
-        </div>
-      </div>
-    </div>
+        <FooterMenu>
+          <FooterText>Catalog</FooterText>
+          <FooterText>My Account</FooterText>
+          <FooterText>Cart</FooterText>
+          <FooterText>Home Page</FooterText>
+        </FooterMenu>
+        <FooterMapImg>
+          <FooterText>6391 Elgin St. Celina, Delaware 10299</FooterText>
+          <FooterMapImg></FooterMapImg>
+        </FooterMapImg>
+      </Footerf>
+    </FooterContainer>
   );
 }
 

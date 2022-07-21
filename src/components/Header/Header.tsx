@@ -1,17 +1,22 @@
 import React from 'react';
-import './Header.css';
+import {  
+  HeaderButton, 
+  HeaderContainer, 
+  HeaderInput, 
+  HeaderLogo, 
+  HeaderText 
+} from './HeaderStyles';
+
 
 
 function Header() {
   return (
-    <div className='header_container'>
-      <div className='header'>
-        <div className='header_logo'></div>
-        <p className='header_text'>Catalog</p>
-        <input placeholder='Search' className='header_input'></input>
-        <button className='header_button'>Log In/ Sing Up</button>
-      </div>
-    </div>
+    <HeaderContainer>
+        <HeaderLogo></HeaderLogo>
+        <HeaderText>Catalog</HeaderText>
+        <HeaderInput placeholder='Search'></HeaderInput>
+        <HeaderButton>Log In/ Sing Up</HeaderButton>
+    </HeaderContainer>
 
   );
 }
