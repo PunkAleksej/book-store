@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import manImg from '../../images/man.png';
+import mail from '../../images/Mail.png';
 
 export const AuthContainer = styled.div`
   width: 100%;
@@ -24,6 +25,17 @@ export const AuthMenu = styled.div`
   justify-content: center;
   justify-content: start;
   align-items: flex-start;
+
+  .test {
+    &__div {
+      background-color: red;
+    }
+
+    &__text {
+      color: red;
+    }
+  }
+
 `
 export const AuthMenuText = styled.div`
   font-weight: 500;
@@ -38,7 +50,10 @@ export const AuthMenuInput = styled.input`
   border-radius: 16px;
   border: 0px;
   width: 413px;
-  padding: 18px 0px;
+  padding: 18px 0px 18px 64px;
+  letter-spacing: 0.75px;
+  font-size: 16px;
+  line-height: 28px;
 `
 
 export const AuthMenuButton = styled.div`
@@ -61,4 +76,14 @@ export const AuthImg = styled.div`
   background-repeat: no-repeat;
   width: 612px;
   height: 522px;
+`
+export const InputIconStyle = styled.img`
+  width: 24px;
+  height: 18px;
+  background-image: url(${mail});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  margin: 22px 16px 24px 24px;
 `

@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Login from './components/AuthPage/AuthPage';
+import SignIn from './components/AuthPage/SignInPage';
 import Main from './components/MainPage/MainPage';
 import ProfilePage from './components/profilePage/ProfilePage';
 import Header from './components/Header/Header';
+import SignUp from './components/AuthPage/SignUpPage';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/auth" element={<Login />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>

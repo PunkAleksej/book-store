@@ -17,7 +17,7 @@ function ProfilePage() {
           <ProfileMenuInput placeholder='Your email'></ProfileMenuInput>
           <h2>Password</h2>
           <div>
-            <img className='testIcon'/>
+            <img className='testIcon' alt=''/>
             <div className='testColumn'>Password</div>
             <input placeholder='Password' className='testInput'></input>
           </div>

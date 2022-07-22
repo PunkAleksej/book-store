@@ -7,22 +7,31 @@ import {
   AuthMenuInput,
   AuthMenuButton,
   AuthImg,
-} from './AuthModule';
+  InputIconStyle
+} from './SignInModule';
 
 
 import { Link } from "react-router-dom";
 import Footer from '../Footer/Footer';
 
-function Login() {
+function SignIn() {
   return (
     <div>
       <AuthContainer>
         <AuthMenu>
-          <AuthMenuTitle>Log In</AuthMenuTitle>
-          <AuthMenuInput type="text" placeholder='Email'/>
+          <AuthMenuTitle className="test__text">Log In</AuthMenuTitle>
+          <div className="test__div">
+            <InputIconStyle></InputIconStyle>
+            <AuthMenuInput type="text" placeholder='Email'/>
+          </div>
+          
           <AuthMenuText>Enter your email</AuthMenuText>
-          <AuthMenuInput type="text" placeholder='Password'/>
+          <div>
+            <InputIconStyle></InputIconStyle>
+            <AuthMenuInput type="text" placeholder='Password'/>
+          </div>
           <AuthMenuText>Enter your password</AuthMenuText>
+          <Link to="/sign-up">reg now</Link>
           <AuthMenuButton>Log In</AuthMenuButton>
           <Link to="/">Main Page</Link>
           <Link to="/profile">Profile Page</Link>
@@ -34,4 +43,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignIn;

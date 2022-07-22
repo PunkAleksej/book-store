@@ -57,4 +57,5 @@ export const HeaderButton = styled.button`
   margin: auto 0px;
   font-size: 16px;
   line-height: 24px;
+  
 `
