@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import profilePhoto from '../../images/profilePhoto.png';
+import profilePhoto from '../../assets/images/profilePhoto.png';
 
 export const ProfileContainer = styled.div`
   width: 100%;

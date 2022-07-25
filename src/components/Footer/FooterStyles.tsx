@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import mapImg from '../../images/map.png';
-import footerLogo from '../../images/logo_footer.svg';
+import mapImg from '../../assets/images/map.png';
+import footerLogo from '../../assets/images/logo_footer.svg';
 
 export const FooterContainer = styled.div`
   width: 100%;
@@ -37,6 +37,8 @@ export const FooterText = styled.p`
   padding: 0px 0px 5px 0px;
   margin-block-start: 0em;
   margin-block-end: 0em;
+  font-family: 'Poppins';
+  font-style: normal;
 `
   
 export const FooterMapImg = styled.div`

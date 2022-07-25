@@ -18,7 +18,7 @@
 .banner_img {
     width: 406px;
     height: 400px;
-    background-image: url('../../images/banner1.png');
+    background-image: url('../../assets/images/banner1.png');
     padding-right: 96px;
     background-repeat: no-repeat;
 }

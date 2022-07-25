@@ -1,6 +1,6 @@
 import React from 'react';
 import BookCard from './elements/BookCard';
-import './mainBannerStyle.css';
+import './MainBannerStyle.css';
 
 function Catalog() {
   return (

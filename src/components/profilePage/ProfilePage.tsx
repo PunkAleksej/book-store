@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Footer from '../Footer/Footer';
 import './test.css';
 import { ProfileContainer, ProfileImg, ProfileMenuInput } from './ProfilePageStyles';
-import Input from '../AuthPage/elements/Input';
+import Input from './elements/Input';
 
 function ProfilePage() {
   return (

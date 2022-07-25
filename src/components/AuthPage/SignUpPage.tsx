@@ -2,49 +2,44 @@ import React from 'react';
 import {
   AuthContainer,
   AuthMenu,
-  AuthMenuTitle,
-  AuthMenuText,
-  AuthMenuInput,
-  AuthMenuButton,
   AuthImg,
-  InputIconStyle
-} from './SignInModule';
+  HeightContainer
+} from './SignStyle';
 
 
 import { Link } from "react-router-dom";
 import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
+import Input from './elements/Input';
 
 function SignUp() {
   return (
-    <div>
+    <HeightContainer>
+      <Header></Header>
       <AuthContainer>
         <AuthMenu>
-          <AuthMenuTitle>Log In</AuthMenuTitle>
-          <div>
-            <InputIconStyle></InputIconStyle>
-            <AuthMenuInput type="text" placeholder='Email'/>
-          </div>
+          <h1 className="auth-menu_title">Sign Up</ h1>
+
+          <Input></Input>
           
-          <AuthMenuText>Enter your email</AuthMenuText>
-          <div>
-            <InputIconStyle></InputIconStyle>
-            <AuthMenuInput type="text" placeholder='Password'/>
-          </div>
-          <AuthMenuText>Enter your password</AuthMenuText>
-          <div>
-            <InputIconStyle></InputIconStyle>
-            <AuthMenuInput type="text" placeholder='Password replay'/>
-          </div>
-          <AuthMenuText>Repeat your password without errors</AuthMenuText>
+          <p className="auth-menu_text">Enter your email</p>
+
+          <Input></Input>
+
+          <p className="auth-menu_text">Enter your password</p>
+
+          <Input></Input>
+
+          <p className="auth-menu_text">Repeat your password without errors</p>
           <Link to="/login">sign in</Link>   
-          <AuthMenuButton>Log In</AuthMenuButton>
+          <button className='auth-menu_button'>Log In</button>
           <Link to="/">Main Page</Link>
           <Link to="/profile">Profile Page</Link>
         </AuthMenu>
         <AuthImg></AuthImg>
       </AuthContainer>
       <Footer></Footer>
-    </div>
+    </HeightContainer>
   );
 }
 

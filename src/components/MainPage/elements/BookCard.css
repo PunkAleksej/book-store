@@ -5,7 +5,7 @@
   width: 100%;
   height: 100%;
   border-radius: 16px;
-  background-image: url('../../../images/book.png');
+  background-image: url('../../../assets/images/book.png');
 }
 .card_img_save {
   background-color: #344966;
@@ -15,7 +15,7 @@
   left: 20px;
   top: 20px;
   border-radius: 50%;
-  background-image: url('../../../images/Heart.svg');
+  background-image: url('../../../assets/images/Heart.svg');
   background-repeat: no-repeat;
   background-position: center;
 }

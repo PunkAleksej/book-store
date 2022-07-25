@@ -24,10 +24,10 @@ function Footer() {
           <FooterText>Cart</FooterText>
           <FooterText>Home Page</FooterText>
         </FooterMenu>
-        <FooterMapImg>
+        <div>
           <FooterText>6391 Elgin St. Celina, Delaware 10299</FooterText>
           <FooterMapImg></FooterMapImg>
-        </FooterMapImg>
+        </div>
       </Footerf>
     </FooterContainer>
   );

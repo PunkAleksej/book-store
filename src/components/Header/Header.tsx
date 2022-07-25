@@ -1,10 +1,8 @@
 import React from 'react';
 import {  
-  HeaderButton, 
   HeaderContainer, 
   HeaderInput, 
-  HeaderLogo, 
-  HeaderText 
+  InputIconStyle
 } from './HeaderStyles';
 
 
@@ -12,10 +10,13 @@ import {
 function Header() {
   return (
     <HeaderContainer>
-        <HeaderLogo></HeaderLogo>
-        <HeaderText>Catalog</HeaderText>
-        <HeaderInput placeholder='Search'></HeaderInput>
-        <HeaderButton>Log In/ Sing Up</HeaderButton>
+        <div className='header_logo'></div>
+        <p className='header_text'>Catalog</p>
+        <div>
+          <InputIconStyle></InputIconStyle>          
+          <HeaderInput placeholder='Search'></HeaderInput>
+        </div>
+        <button className='header_button'>Log In/ Sing Up</button>
     </HeaderContainer>
 
   );

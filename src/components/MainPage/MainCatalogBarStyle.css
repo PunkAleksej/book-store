@@ -1,3 +1,19 @@
+html {
+  min-height: 100%;
+}
+
+body {
+  margin: 0px;
+  min-height: 100vh
+}
+
+
+.main_container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
 .catalog-bar_title {
   font-weight: 700;
   font-size: 40px;
@@ -6,6 +22,7 @@
   margin-block-start: 0em;
   margin-block-end: 0em;
 }
+
 
 .catalog-bar_selectors_button {
   background: #F0F4EF;

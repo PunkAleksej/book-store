@@ -2,44 +2,43 @@ import React from 'react';
 import {
   AuthContainer,
   AuthMenu,
-  AuthMenuTitle,
-  AuthMenuText,
-  AuthMenuInput,
-  AuthMenuButton,
   AuthImg,
-  InputIconStyle
-} from './SignInModule';
+  HeightContainer
+} from './SignStyle';
 
 
 import { Link } from "react-router-dom";
 import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
+import Input from './elements/Input';
 
 function SignIn() {
   return (
-    <div>
+    <HeightContainer>
+
+      <Header></Header>
+
       <AuthContainer>
         <AuthMenu>
-          <AuthMenuTitle className="test__text">Log In</AuthMenuTitle>
-          <div className="test__div">
-            <InputIconStyle></InputIconStyle>
-            <AuthMenuInput type="text" placeholder='Email'/>
-          </div>
+          <h1 className="auth-menu_title">Log In</ h1>
+
+          <Input></Input>
           
-          <AuthMenuText>Enter your email</AuthMenuText>
-          <div>
-            <InputIconStyle></InputIconStyle>
-            <AuthMenuInput type="text" placeholder='Password'/>
-          </div>
-          <AuthMenuText>Enter your password</AuthMenuText>
+          <p className="auth-menu_text">Enter your email</p>
+
+          <Input></Input>
+          <p className="auth-menu_text">Enter your password</p>
+
           <Link to="/sign-up">reg now</Link>
-          <AuthMenuButton>Log In</AuthMenuButton>
-          <Link to="/">Main Page</Link>
-          <Link to="/profile">Profile Page</Link>
+          <button className='auth-menu_button'>Log In</button>
+
         </AuthMenu>
         <AuthImg></AuthImg>
       </AuthContainer>
+
       <Footer></Footer>
-    </div>
+
+    </HeightContainer>
   );
 }
 

@@ -1,4 +1,7 @@
-.testInput {
+import styled from 'styled-components';
+import InputIcon from '../../../assets/images/Star.svg';
+
+export const InputStyle = styled.input`
   width: 500px;
   align-items: center;
   letter-spacing: 0.75px;
@@ -8,19 +11,19 @@
   border: 0px;
   background-color: #F0F4EF;
   padding: 30px 0px 6px 64px;
-}
+`
 
-.testIcon {
+export const InputIconStyle = styled.img`
   width: 24px;
   height: 24px;
-  background-image: url('../../assets/images/Star.svg');
+  background-image: url(${InputIcon});
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
   margin: 20px 16px 20px 24px;
-}
+`
 
-.testColumn {
+export const InputTitleStyle = styled.div`
   position: absolute;
   margin: 6px 0px 0px 64px;
   font-style: normal;
@@ -30,5 +33,4 @@
   color: #344966;
   align-items: center;
   letter-spacing: 0.75px;
-  ;
-}
+`

@@ -1,13 +1,16 @@
 import React from 'react';
-import { InputIconStyle, InputTitleStyle, InputStyle } from './InputStyle';
+import {
+  AuthMenuInput,
+  InputIconStyle,
+} from './InputStyle';
 
 function Input() {
   return (
     <div>
       <InputIconStyle></InputIconStyle>
-      <InputTitleStyle>Password</InputTitleStyle>
-      <InputStyle placeholder='Password'></InputStyle>
+      <AuthMenuInput type="text" placeholder='Password replay'/>
     </div>
+
   );
 }
 
