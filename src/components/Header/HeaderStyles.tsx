@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import logo from '../../assets/images/logo.svg';
-import search from '../../assets/images/Search.svg'
+import search from '../../assets/images/Search.svg';
 
 export const HeaderContainer = styled.div`
   width: 100%;
@@ -31,9 +31,7 @@ export const HeaderContainer = styled.div`
   .header_button {
     margin: auto 0px auto 98px;
   }
-`
-
-
+`;
 
 export const HeaderInput = styled.input`
   background: #F0F4EF;
@@ -46,7 +44,7 @@ export const HeaderInput = styled.input`
   line-height: 28px;
   font-family: 'Poppins';
   font-style: normal;
-`
+`;
 export const InputIconStyle = styled.img`
   width: 24px;
   height:24px;
@@ -56,4 +54,4 @@ export const InputIconStyle = styled.img`
   background-size: cover;
   position: absolute;
   margin: 20px 16px 20px 24px;
-`
+`;

@@ -7,15 +7,14 @@ import CatalogBar from './MainCatalogBar';
 import Footer from '../Footer/Footer';
 import './MainCatalogBarStyle.css';
 
-
 function Main() {
   return (
-    <div className='main_container'>
-      <Header></Header>
-      <Banner></Banner>
-      <CatalogBar></CatalogBar>
-      <Catalog></Catalog>
-      <Footer></Footer>
+    <div className="main_container">
+      <Header />
+      <Banner />
+      <CatalogBar />
+      <Catalog />
+      <Footer />
     </div>
   );
 }

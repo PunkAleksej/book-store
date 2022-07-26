@@ -8,14 +8,14 @@ export const ProfileContainer = styled.div`
   display: flex;
   margin: 0px auto;
   justify-content: start;
-`
+`;
 
 export const AuthMenuTitle = styled.div`
   font-weight: 700;
   font-size: 40px;
   line-height: 60px;
   color: #0D1821;
-`
+`;
 export const AuthMenu = styled.div`
   display: flex;
   flex-direction: column;
@@ -24,14 +24,14 @@ export const AuthMenu = styled.div`
   justify-content: center;
   justify-content: start;
   align-items: flex-start;
-`
+`;
 export const AuthMenuText = styled.div`
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
   color: #344966;
   padding: 9px 0px 30px 0px;
-`
+`;
 
 export const ProfileMenuInput = styled.input`
   background: #F0F4EF;
@@ -39,7 +39,7 @@ export const ProfileMenuInput = styled.input`
   border: 0px;
   width: 413px;
   padding: 18px 0px;
-`
+`;
 
 export const AuthMenuButton = styled.div`
   background: #344966;
@@ -53,7 +53,7 @@ export const AuthMenuButton = styled.div`
   font-size: 16px;
   line-height: 24px;
   margin-top: 30px;
-`
+`;
 
 export const ProfileImg = styled.div`
   background-image: url(${profilePhoto});
@@ -62,4 +62,4 @@ export const ProfileImg = styled.div`
   width: 305px;
   height: 305px;
   margin: 0px 128px 0px 0px;
-`
+`;

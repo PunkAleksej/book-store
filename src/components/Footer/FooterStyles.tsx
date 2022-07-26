@@ -6,7 +6,7 @@ export const FooterContainer = styled.div`
   width: 100%;
   background-color: #0D1821;
   margin: 0px auto;
-`
+`;
 
 export const Footerf = styled.div`
   margin: 0px auto;
@@ -15,7 +15,7 @@ export const Footerf = styled.div`
   padding: 73px 80px;
   display: flex;
   justify-content: space-between;
-`
+`;
 
 export const FooterInfoLogo = styled.div`
   background-image: url(${footerLogo});
@@ -23,11 +23,11 @@ export const FooterInfoLogo = styled.div`
   width: 88px;
   height: 46px;
   padding: 0px 0px 40px 0px;
-`
+`;
 
 export const FooterMenu = styled.div`
   padding: 0px 315px 0px 166px;
-`
+`;
 
 export const FooterText = styled.p`
   font-weight: 500;
@@ -39,11 +39,11 @@ export const FooterText = styled.p`
   margin-block-end: 0em;
   font-family: 'Poppins';
   font-style: normal;
-`
-  
+`;
+
 export const FooterMapImg = styled.div`
   background-image: url(${mapImg});
   background-repeat: no-repeat;
   width: 413px;
   height: 160px;
-`
+`;

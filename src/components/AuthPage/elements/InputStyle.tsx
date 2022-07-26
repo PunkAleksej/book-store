@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-import mail from '../../../assets/images/Mail.png';
+
+type InputStylePropsType = {
+  icon: string;
+};
 
 export const AuthMenuInput = styled.input`
   background: #F0F4EF;
@@ -12,14 +15,14 @@ export const AuthMenuInput = styled.input`
   line-height: 28px;
   font-family: 'Poppins';
   font-style: normal;
-`
-export const InputIconStyle = styled.img`
+`;
+export const InputIconStyle = styled.img<InputStylePropsType>`
   width: 24px;
   height: 18px;
-  background-image: url(${mail});
+  background-image: url(${(p) => p.icon});
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   position: absolute;
   margin: 22px 16px 24px 24px;
-`
+`;

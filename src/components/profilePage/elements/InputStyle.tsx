@@ -11,7 +11,7 @@ export const InputStyle = styled.input`
   border: 0px;
   background-color: #F0F4EF;
   padding: 30px 0px 6px 64px;
-`
+`;
 
 export const InputIconStyle = styled.img`
   width: 24px;
@@ -21,7 +21,7 @@ export const InputIconStyle = styled.img`
   background-size: cover;
   position: absolute;
   margin: 20px 16px 20px 24px;
-`
+`;
 
 export const InputTitleStyle = styled.div`
   position: absolute;
@@ -33,4 +33,4 @@ export const InputTitleStyle = styled.div`
   color: #344966;
   align-items: center;
   letter-spacing: 0.75px;
-`
+`;

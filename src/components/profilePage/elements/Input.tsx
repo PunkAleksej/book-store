@@ -4,9 +4,9 @@ import { InputIconStyle, InputTitleStyle, InputStyle } from './InputStyle';
 function Input() {
   return (
     <div>
-      <InputIconStyle></InputIconStyle>
+      <InputIconStyle />
       <InputTitleStyle>Password</InputTitleStyle>
-      <InputStyle placeholder='Password'></InputStyle>
+      <InputStyle placeholder="Password" />
     </div>
   );
 }

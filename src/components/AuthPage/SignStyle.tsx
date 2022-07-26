@@ -5,7 +5,7 @@ export const HeightContainer = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-`
+`;
 
 export const AuthContainer = styled.div`
   width: 100%;
@@ -15,9 +15,9 @@ export const AuthContainer = styled.div`
   margin: 0px auto;
   justify-content: space-between;
   flex-grow: 1;
-`
+`;
 
-export const AuthMenu = styled.div`
+export const AuthMenu = styled.form`
   display: flex;
   flex-direction: column;
   margin: 0px;
@@ -44,7 +44,7 @@ export const AuthMenu = styled.div`
       margin-top: 30px;
     }
   }
-`
+`;
 
 export const AuthImg = styled.div`
   background-image: url(${manImg});
@@ -52,4 +52,4 @@ export const AuthImg = styled.div`
   background-repeat: no-repeat;
   width: 612px;
   height: 522px;
-`
+`;

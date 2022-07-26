@@ -5,16 +5,15 @@ import {
   FooterInfoLogo,
   FooterText,
   FooterMenu,
-  FooterMapImg
+  FooterMapImg,
 } from './FooterStyles';
-
 
 function Footer() {
   return (
     <FooterContainer>
       <Footerf>
         <div>
-          <FooterInfoLogo></FooterInfoLogo>
+          <FooterInfoLogo />
           <FooterText>tranthuy.nute@gmail.com</FooterText>
           <FooterText>(480) 555-0103</FooterText>
         </div>
@@ -26,7 +25,7 @@ function Footer() {
         </FooterMenu>
         <div>
           <FooterText>6391 Elgin St. Celina, Delaware 10299</FooterText>
-          <FooterMapImg></FooterMapImg>
+          <FooterMapImg />
         </div>
       </Footerf>
     </FooterContainer>

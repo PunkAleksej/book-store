@@ -5,7 +5,7 @@ import SignIn from './components/AuthPage/SignInPage';
 import Main from './components/MainPage/MainPage';
 import ProfilePage from './components/profilePage/ProfilePage';
 import SignUp from './components/AuthPage/SignUpPage';
-
+import TestForm from './TestForm';
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Route path="/login" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/form" element={<TestForm />} />
       </Routes>
     </BrowserRouter>
   );

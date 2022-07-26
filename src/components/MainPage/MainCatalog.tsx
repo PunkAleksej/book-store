@@ -5,10 +5,10 @@ import './MainBannerStyle.css';
 function Catalog() {
   return (
     <div>
-      <BookCard></BookCard>
-      <BookCard></BookCard>
-      <BookCard></BookCard>
-      <BookCard></BookCard>
+      <BookCard />
+      <BookCard />
+      <BookCard />
+      <BookCard />
     </div>
   );
 }
