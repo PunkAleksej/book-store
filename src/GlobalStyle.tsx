@@ -46,6 +46,22 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     line-height: 24px;
   }
+  input {
+    letter-spacing: 0.75px;
+    font-size: 16px;
+    line-height: 28px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+  }
+  label {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.75px;
+    font-weight: 500;
+  }
 `;
 
 export default GlobalStyle;

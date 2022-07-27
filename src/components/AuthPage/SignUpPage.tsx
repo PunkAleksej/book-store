@@ -16,17 +16,17 @@ import Input from './elements/Input';
 
 function SignUp() {
   const signInSchema = Yup.object().shape({
-    password: Yup.string()
+    Password: Yup.string()
       .min(8, 'Too Short!')
       .max(20, 'Too Long!')
       .required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
+    Email: Yup.string().email('Invalid email').required('Required'),
   });
 
   const formik = useFormik({
     initialValues: {
-      password: '',
-      email: '',
+      Password: '',
+      Email: '',
     },
     validationSchema: signInSchema,
     onSubmit: (values) => {
@@ -42,32 +42,44 @@ function SignUp() {
           <h1 className="auth-menu_title">Sign Up</h1>
 
           <Input
-            icon={Mail}
-            name="email"
-            placeholder="Email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            />
+          icon={Mail}
+          name="Email"
+          type="email"
+          placeholder="Email"
+          onChange={formik.handleChange}
+          value={formik.values.Email}
+          err={formik.errors.Email}
+          touch={formik.touched.Email}
+          onBlur={formik.handleBlur}
+          />
 
           <p className="auth-menu_text">Enter your email</p>
 
           <Input
-            icon={Hide}
-            name="password"
-            placeholder="password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            />
+          icon={Hide}
+          name="Password"
+          type="password"
+          placeholder="Password"
+          onChange={formik.handleChange}
+          value={formik.values.Password}
+          err={formik.errors.Password}
+          touch={formik.touched.Password}
+          onBlur={formik.handleBlur}
+          />
 
           <p className="auth-menu_text">Enter your password</p>
 
           <Input
-            icon={Hide}
-            name="password"
-            placeholder="Password replay"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            />
+          icon={Hide}
+          name="Password"
+          type="password"
+          placeholder="Password"
+          onChange={formik.handleChange}
+          value={formik.values.Password}
+          err={formik.errors.Password}
+          touch={formik.touched.Password}
+          onBlur={formik.handleBlur}
+          />
 
           <p className="auth-menu_text">Repeat your password without errors</p>
           <Link to="/login">sign in</Link>

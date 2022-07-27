@@ -1,34 +1,56 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
-  AuthMenuInput,
   InputIconStyle,
+  InputContainer,
 } from './InputStyle';
 
 type InputPropsType = {
   icon: string;
   name: string;
+  type: string;
   placeholder: string;
   value: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onChange: (e: React.ChangeEvent<any>)=>void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>)=>void;
+  err?: string;
+  touch: boolean | undefined;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement, Element>) => void;
 };
 
-function Input(props: InputPropsType) {
-  const { icon, name, placeholder, value, onChange } = props;
+const Input:React.FC<InputPropsType> = (props) => {
+  const {
+    icon,
+    name,
+    type,
+    placeholder,
+    value,
+    onChange,
+    err,
+    touch,
+    onBlur,
+  } = props;
+useEffect(() => {
+  console.log(err, touch);
+}, [err, touch])
   return (
-    <label>
+    <div>
       <InputIconStyle
       icon={icon}
       />
-      <AuthMenuInput
-      placeholder={placeholder}
-      name={name}
-      onChange={onChange}
-      value={value}
-      />
-    </label>
-
+      <InputContainer
+      err={err}
+      >
+        <label className="label">{name}</label>
+        <input className="input"
+          type={type}
+          placeholder={placeholder}
+          name={name}
+          onChange={onChange}
+          value={value}
+          onBlur={onBlur}
+          />
+      </InputContainer>
+    </div>
   );
-}
+};
 
 export default Input;
