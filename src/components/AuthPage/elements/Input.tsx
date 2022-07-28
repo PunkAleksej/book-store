@@ -28,9 +28,20 @@ const Input:React.FC<InputPropsType> = (props) => {
     touch,
     onBlur,
   } = props;
-useEffect(() => {
-  console.log(err, touch);
-}, [err, touch])
+  useEffect(() => {
+    console.log(err, touch);
+  }, [err, touch]);
+  let inputText;
+  if (err) {
+    inputText = err;
+  } else {
+    if (name === 'Email') {
+      inputText = 'Enter your email';
+    }
+    if (name === 'Password') {
+      inputText = 'Enter your password';
+    }
+  }
   return (
     <div>
       <InputIconStyle
@@ -48,6 +59,7 @@ useEffect(() => {
           value={value}
           onBlur={onBlur}
           />
+          <p className="text">{inputText}</p>
       </InputContainer>
     </div>
   );

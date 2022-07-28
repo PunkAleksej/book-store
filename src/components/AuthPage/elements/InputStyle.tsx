@@ -52,6 +52,14 @@ export const InputContainer = styled.div<InputStyleType>`
     letter-spacing: 0.75px;
     color: #C30052;
   }
+
+  .text {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      color: #344966;
+      padding: 9px 0px 30px 0px;
+    }
 `;
 
 export const InputIconStyle = styled.img<ImgPropsType>`
