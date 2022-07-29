@@ -9,12 +9,13 @@ import {
   HeightContainer,
 } from './SignStyle';
 
-import customAxios from '../axios/api';
+import customAxios from '../../api';
 import Mail from '../../assets/images/Mail.svg';
 import Hide from '../../assets/images/Hide.svg';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Input from './elements/Input';
+import { signIn } from '../../api/authentication';
 
 const signInSchema = Yup.object().shape({
   Password: Yup.string()
@@ -35,12 +36,16 @@ const SignIn:React.FC = () => {
     onSubmit: async (values) => {
       //alert(JSON.stringify(values, null, 2));
       try {
-        const response = await customAxios.post(
-          '/auth/sign-in',
-          {
-            email: `${formik.values.Email}`,
-            password: `${formik.values.Password}`,
-          });
+        // const response = await customAxios.post(
+        //   '/auth/sign-in',
+        //   {
+        //     email: `${formik.values.Email}`,
+        //     password: `${formik.values.Password}`,
+        //   });
+        const response = await signIn({
+          password: values.Password,
+          email: values.Email
+        });
         alert(response.data.token);
       } catch (error) {
         alert(error);
@@ -58,18 +63,14 @@ const SignIn:React.FC = () => {
     },
   });
 
-  let emailLabelText;
+  let emailLabelText = 'Enter your email';
   if (formik.errors.Email) {
     emailLabelText = formik.errors.Email;
-  } else {
-    emailLabelText = 'Enter your email';
   }
 
-  let passwordLabelText;
+  let passwordLabelText = 'Enter your password';
   if (formik.errors.Password) {
     passwordLabelText = formik.errors.Password;
-  } else {
-    passwordLabelText = 'Enter your password';
   }
 
   return (
@@ -90,6 +91,7 @@ const SignIn:React.FC = () => {
           err={formik.errors.Email && formik.touched.Email ? formik.errors.Email : undefined}
           touch={formik.touched.Email}
           onBlur={formik.handleBlur}
+          inputText={emailLabelText}
           />
 
           <Input
@@ -103,6 +105,7 @@ const SignIn:React.FC = () => {
             formik.errors.Password : undefined}
           touch={formik.touched.Password}
           onBlur={formik.handleBlur}
+          inputText={passwordLabelText}
           />
 
           <Link to="/sign-up">reg now</Link>

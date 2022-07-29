@@ -51,9 +51,9 @@ function SignUp() {
           err={formik.errors.Email}
           touch={formik.touched.Email}
           onBlur={formik.handleBlur}
+          inputText={'emailLabelText'}
           />
 
-          <p className="auth-menu_text">Enter your email</p>
 
           <Input
           icon={Hide}
@@ -65,9 +65,9 @@ function SignUp() {
           err={formik.errors.Password}
           touch={formik.touched.Password}
           onBlur={formik.handleBlur}
+          inputText={'emailLabelText'}
           />
 
-          <p className="auth-menu_text">Enter your password</p>
 
           <Input
           icon={Hide}
@@ -79,9 +79,9 @@ function SignUp() {
           err={formik.errors.Password}
           touch={formik.touched.Password}
           onBlur={formik.handleBlur}
+          inputText={'emailLabelText'}
           />
 
-          <p className="auth-menu_text">Repeat your password without errors</p>
           <Link to="/login">sign in</Link>
           <button className="auth-menu_button">Log In</button>
           <Link to="/">Main Page</Link>

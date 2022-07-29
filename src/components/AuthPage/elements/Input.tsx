@@ -14,6 +14,7 @@ type InputPropsType = {
   err?: string;
   touch: boolean | undefined;
   onBlur?: (e: React.FocusEvent<HTMLInputElement, Element>) => void;
+  inputText: string;
 };
 
 const Input:React.FC<InputPropsType> = (props) => {
@@ -27,21 +28,21 @@ const Input:React.FC<InputPropsType> = (props) => {
     err,
     touch,
     onBlur,
+    inputText,
   } = props;
-  useEffect(() => {
-    console.log(err, touch);
-  }, [err, touch]);
-  let inputText;
-  if (err) {
-    inputText = err;
-  } else {
-    if (name === 'Email') {
-      inputText = 'Enter your email';
-    }
-    if (name === 'Password') {
-      inputText = 'Enter your password';
-    }
-  }
+
+
+  // let inputText;
+  // if (err) {
+  //   inputText = err;
+  // } else {
+  //   if (name === 'Email') {
+  //     inputText = 'Enter your email';
+  //   }
+  //   if (name === 'Password') {
+  //     inputText = 'Enter your password';
+  //   }
+  // }
   return (
     <div>
       <InputIconStyle
