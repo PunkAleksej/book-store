@@ -1,67 +1,84 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export type Todo = {
-  key: number;
-  text: string;
-  id: number;
-  active: boolean;
+export type UserType = {
+  firstName?: string;
+  lastName?: string;
+  email: string;
+  id: string;
+  photo?: string;
 }
 
-export type FilterTypes = 'ALL' | 'COMPLETE' | 'ACTIVE';
-
-export type TodosState = {
-  todos: Todo[];
-  filter: FilterTypes;
+export type UserToUpdateType = {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  photo?: string;
 }
 
-
-const initialState: TodosState = {
-  todos: [],
-  filter: 'ALL',
+export type UserState = {
+  user: UserType | null;
 }
 
-
-let id = 1;
-const createTodoTask = (text: string): Todo => {
-  return {
-    key: Math.floor(Math.random() * (1000000 - 1) + 1),
-    text,
-    id: id++,
-    active: true
-  }
+const initialState: UserState = {
+  user: null,
 }
 
-const todoReducer = createSlice({
-  name: "todoReducer",
+const userToUpdate: UserToUpdateType = {
+  email: '',
+  firstName: '',
+  lastName: '',
+  photo: ''
+}
+// const user = {
+//   email: '',
+//   id: '',
+//   firstName: '',
+//   lastName: '',
+//   photo: ''
+// }
+
+const userReduser = createSlice({
+  name: "userReduser",
   initialState,
   reducers: {
-    addTask: (state, action: PayloadAction<string>) => {
-      state.todos.push(createTodoTask(action.payload))
+    addUser: (state, action: PayloadAction<UserType | null>) => {
+      state.user = action.payload
     },
-    deleteTask: (state, action: PayloadAction<number>) => {
-      state.todos = state.todos.filter(i => i.key !== action.payload)
-    },
-    completeTask: (state, action: PayloadAction<number>) => {
-      const elem = state.todos.find(i => i.key === action.payload);
-      if (elem) {
-        elem.active = !elem.active
+    deleteUser: (state, action: PayloadAction<number>) => {
+      state.user =  {
+        email: '', 
+        id: '',
       }
     },
-    filterPriority: (state, action: PayloadAction<FilterTypes>) => {
-      state.filter = action.payload
+    updateUser: (state, action: PayloadAction<UserToUpdateType>) => {
+      if (userToUpdate.email && state.user) {
+        state.user.email = userToUpdate.email
+      }
+      if (userToUpdate.firstName && state.user) {
+        state.user.firstName = userToUpdate.firstName
+      }
+      if (userToUpdate.lastName && state.user) {
+        state.user.lastName = userToUpdate.lastName
+      }
+      if (userToUpdate.photo && state.user) {
+        state.user.photo = userToUpdate.photo
+      }
     },
   }
 })
 
 
-const { actions, reducer } = todoReducer;
+// const { actions, reducer } = userReduser;
+
+// export const {
+//   addUser,
+//   deleteUser,
+//   //updateUser,
+// } = actions;
 
 
-export const {
-  addTask,
-  deleteTask,
-  completeTask,
-  filterPriority
-} = actions;
+export const userActions = userReduser.actions;
 
-export default reducer;
+export default userReduser.reducer;
+
+// export default reducer;

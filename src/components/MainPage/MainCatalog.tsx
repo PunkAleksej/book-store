@@ -2,7 +2,7 @@ import React from 'react';
 import BookCard from './elements/BookCard';
 import './MainBannerStyle.css';
 
-function Catalog() {
+const Catalog:React.FC = () => {
   return (
     <div>
       <BookCard />

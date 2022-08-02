@@ -16,6 +16,11 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Input from './elements/Input';
 import { signIn } from '../../api/authentication';
+import { store } from '../../store';
+import { createSlice } from '@reduxjs/toolkit';
+import { useAppDispatch } from '../../store';
+import { userActions } from '../../store/user/reduser';
+import { useStore } from 'react-redux';
 
 const signInSchema = Yup.object().shape({
   Password: Yup.string()
@@ -26,6 +31,7 @@ const signInSchema = Yup.object().shape({
 });
 
 const SignIn:React.FC = () => {
+  const dispatch = useAppDispatch()
   const [state, setState] = useState('');
   const formik = useFormik({
     initialValues: {
@@ -34,32 +40,21 @@ const SignIn:React.FC = () => {
     },
     validationSchema: signInSchema,
     onSubmit: async (values) => {
-      //alert(JSON.stringify(values, null, 2));
       try {
-        // const response = await customAxios.post(
-        //   '/auth/sign-in',
-        //   {
-        //     email: `${formik.values.Email}`,
-        //     password: `${formik.values.Password}`,
-        //   });
-        const response = await signIn({
+        const response: any = await signIn({
           password: values.Password,
           email: values.Email
         });
-        alert(response.data.token);
+
+        localStorage.setItem('token', response.data.token);
+        console.log(response.data.user)
+        console.log(response.data.token)
+        const user = response.data.user;
+        console.log(user)
+        dispatch(userActions.addUser(user));
       } catch (error) {
         alert(error);
       }
-
-      // try {
-      //   const response = await fetch('https://jsonplaceholder.typicode.com/users/1', {
-      //     method: 'GET',
-      //   });
-      //   const data = await response.json();
-      //   setState(data.name);
-      // } catch (e) {
-      //   console.log('ERR');
-      // }
     },
   });
 

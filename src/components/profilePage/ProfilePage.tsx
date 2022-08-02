@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import './test.css';
 import Input from './elements/Input';
 
-function ProfilePage() {
+const ProfilePage:React.FC = () => {
   return (
     <div>
       <ProfileContainer>

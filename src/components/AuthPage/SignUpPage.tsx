@@ -14,7 +14,7 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Input from './elements/Input';
 
-function SignUp() {
+const SignUp:React.FC = () => {
   const signInSchema = Yup.object().shape({
     Password: Yup.string()
       .min(8, 'Too Short!')

@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import RequireAuth from './AppTest';
+import RequireAuth from './RequireAuth';
 import SignIn from './components/AuthPage/SignInPage';
 import Main from './components/MainPage/MainPage';
 import ProfilePage from './components/profilePage/ProfilePage';
 import SignUp from './components/AuthPage/SignUpPage';
 
-function App() {
+const App:React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>

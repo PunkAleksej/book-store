@@ -5,7 +5,7 @@ import {
   InputIconStyle,
 } from './HeaderStyles';
 
-function Header() {
+const Header:React.FC = () => {
   return (
     <HeaderContainer>
         <div className="header_logo" />

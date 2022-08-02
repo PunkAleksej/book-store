@@ -7,7 +7,7 @@ import CatalogBar from './MainCatalogBar';
 import Footer from '../Footer/Footer';
 import './MainCatalogBarStyle.css';
 
-function Main() {
+const Main:React.FC = () => {
   return (
     <div className="main_container">
       <Header />

@@ -1,7 +1,7 @@
 import React from 'react';
 import './MainCatalogBarStyle.css';
 
-function CatalogBar() {
+const CatalogBar:React.FC = () => {
   return (
     <div className="catalog-bar">
         <h1 className="catalog-bar_title">Catalog</h1>

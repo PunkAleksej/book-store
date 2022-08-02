@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputIconStyle, InputTitleStyle, InputStyle } from './InputStyle';
 
-function Input() {
+const Input:React.FC = () => {
   return (
     <div>
       <InputIconStyle />
