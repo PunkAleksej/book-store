@@ -9,9 +9,11 @@ import {
   Navigate,
   Outlet,
 } from "react-router-dom";
+import { useAppSelector } from "./store";
 
 function RequireAuth({ children }: { children: JSX.Element }) {
-  let auth = localStorage.getItem('token')
+  const auth = useAppSelector((store) => store.userState.user?.email )
+  //let auth = localStorage.getItem('token')
   let location = useLocation();
   //auth = '';
   if (!auth) {

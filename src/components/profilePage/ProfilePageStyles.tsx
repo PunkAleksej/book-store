@@ -8,6 +8,19 @@ export const ProfileContainer = styled.div`
   display: flex;
   margin: 0px auto;
   justify-content: start;
+  .profile_info {
+    display:  flex;
+    justify-content:  space-between;
+  }
+  .profile_info_text {
+    color: #8D9F4F;
+    font-size: 14px;
+    line-height: 21px;
+    text-decoration-line: underline;
+    font-size: 14px;
+    line-height: 21px;
+    margin: auto 0px;
+  }
 `;
 
 export const AuthMenuTitle = styled.div`
@@ -39,6 +52,7 @@ export const ProfileMenuInput = styled.input`
   border: 0px;
   width: 413px;
   padding: 18px 0px;
+  display: block;
 `;
 
 export const AuthMenuButton = styled.div`

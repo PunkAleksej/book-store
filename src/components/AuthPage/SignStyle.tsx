@@ -34,8 +34,8 @@ export const AuthMenu = styled.form`
 
     &_text {
       font-weight: 500;
-      font-size: 14px;
-      line-height: 24px;
+      font-size: 16px;
+      line-height: 26px;
       color: #344966;
       padding: 9px 0px 30px 0px;
     }

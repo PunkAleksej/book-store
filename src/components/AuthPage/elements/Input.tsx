@@ -31,18 +31,6 @@ const Input:React.FC<InputPropsType> = (props) => {
     inputText,
   } = props;
 
-
-  // let inputText;
-  // if (err) {
-  //   inputText = err;
-  // } else {
-  //   if (name === 'Email') {
-  //     inputText = 'Enter your email';
-  //   }
-  //   if (name === 'Password') {
-  //     inputText = 'Enter your password';
-  //   }
-  // }
   return (
     <div>
       <InputIconStyle

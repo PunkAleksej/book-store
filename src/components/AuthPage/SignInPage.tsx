@@ -41,17 +41,21 @@ const SignIn:React.FC = () => {
     validationSchema: signInSchema,
     onSubmit: async (values) => {
       try {
-        const response: any = await signIn({
+        const response = await signIn({
           password: values.Password,
           email: values.Email
         });
 
         localStorage.setItem('token', response.data.token);
-        console.log(response.data.user)
-        console.log(response.data.token)
+        const newUser = {
+          firstName : response.data.user.firstName,
+          lastName : response.data.user.lastName,
+          email : response.data.user.email,
+          id : response.data.user.id,
+          photo: response.data.user.photo
+        }
         const user = response.data.user;
-        console.log(user)
-        dispatch(userActions.addUser(user));
+        dispatch(userActions.addUser(newUser));
       } catch (error) {
         alert(error);
       }
@@ -103,7 +107,7 @@ const SignIn:React.FC = () => {
           inputText={passwordLabelText}
           />
 
-          <Link to="/sign-up">reg now</Link>
+          <Link to="/sign-up" className='auth-menu_text'>Registration</Link>
           <button className="auth-menu_button" type="submit">Log In</button>
 
         </AuthMenu>
