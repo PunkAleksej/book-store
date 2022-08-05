@@ -20,6 +20,7 @@ export const ProfileContainer = styled.div`
     font-size: 14px;
     line-height: 21px;
     margin: auto 0px;
+    user-select: none;
   }
 `;
 

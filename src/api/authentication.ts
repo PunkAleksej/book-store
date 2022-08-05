@@ -8,6 +8,15 @@ type OptionsType = {
   password: string;
 };
 
+type ChangePassType = {
+  oldPassword: string;
+  newPassword: string;
+}
+type UpdateUserType = {
+  firstName?: string;
+  email?: string;
+  lastName?: string;
+}
 
 type AuthResponsetype = {
   user: UserType;
@@ -22,6 +31,20 @@ type ResponseType = {
 export const signIn = (options: OptionsType): Promise<AxiosResponse<ResponseType>> => {
   return customAxios.post(
     '/auth/sign-in',
+    options,
+  );
+};
+
+export const changePass = (options: ChangePassType): Promise<AxiosResponse<ResponseType>> => {
+  return customAxios.post(
+    '/user/change-pass',
+    options,
+  );
+};
+
+export const updateUser = (options: UpdateUserType): Promise<AxiosResponse<ResponseType>> => {
+  return customAxios.patch(
+    '/user/update',
     options,
   );
 };

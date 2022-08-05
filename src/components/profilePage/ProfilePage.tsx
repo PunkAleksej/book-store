@@ -11,6 +11,10 @@ import Hide from '../../assets/images/Hide.svg';
 import profile from '../../assets/images/User_profile_gray.svg';
 import PasswordForm from './elements/PasswordForm';
 import { useAppDispatch } from '../../store';
+import { useFormik } from 'formik';
+import UserInfoForm from './elements/UserInfoForm';
+import ProfilePhoto from './elements/ProfilePhoto';
+
 
 const ProfilePage:React.FC = () => {
   const userInfo = useAppSelector((store) => store.userState.user)
@@ -21,26 +25,29 @@ const ProfilePage:React.FC = () => {
     userEmail = `${userInfo.email}`
   }
   const touch = true;
-  const [ isPasswordChange, setIsPasswordChange ] = useState(true);
+  const [ isPasswordChange, setIsPasswordChange ] = useState(false);
   function ChangePassState () {
     setIsPasswordChange(!isPasswordChange)
   }
-  // if (true) {
-  //   setIsPasswordChange(true)
-  // }
+  const [ isUserInfoChange, setIsUserInfoChange ] = useState(false);
+  function ChangeUserInfoState () {
+    setIsUserInfoChange(!isUserInfoChange)
+  }
   
   return (
     <div>
       <Header></Header>
       <ProfileContainer>
-        <ProfileImg />
+        <ProfilePhoto />
         <div>
           <div className="profile_info">
             <h2 className="profile_info_title">Personal information</h2>
-            <p className="profile_info_text">Change information</p>
+            <p className="profile_info_text" onClick={ChangeUserInfoState}>Change information</p>
           </div>
-          
-          <Input
+          <UserInfoForm
+          isUserInfoChange={isUserInfoChange}
+          ></UserInfoForm>
+          {/* <Input
           icon={profile}
           name="Your name"
           type="email"
@@ -57,7 +64,7 @@ const ProfilePage:React.FC = () => {
           value={userEmail}
           touch={touch}
           inputText=''
-          />
+          /> */}
           <div className="profile_info">
             <h2 className="profile_info_title">Password</h2>
             <p className="profile_info_text" onClick={ChangePassState}>Change password</p>

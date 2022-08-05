@@ -10,7 +10,7 @@ type InputPropsType = {
   type: string;
   placeholder: string;
   value: string;
-  //onChange: (e: React.ChangeEvent<HTMLInputElement>)=>void;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>)=>void;
   err?: string;
   touch: boolean | undefined;
   onBlur?: (e: React.FocusEvent<HTMLInputElement, Element>) => void;
@@ -24,7 +24,7 @@ const Input:React.FC<InputPropsType> = (props) => {
     type,
     placeholder,
     value,
-    //onChange,
+    onChange,
     err,
     touch,
     onBlur,
@@ -39,10 +39,11 @@ const Input:React.FC<InputPropsType> = (props) => {
       <InputContainer
       err={err}
       >
-        <label className="label">{name}</label>
+        <label className="label">{placeholder}</label>
         <input className="input"
           type={type}
           placeholder={placeholder}
+          onChange={onChange}
           name={name}
           value={value}
           onBlur={onBlur}
