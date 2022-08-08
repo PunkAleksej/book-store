@@ -15,6 +15,13 @@ const GlobalStyle = createGlobalStyle`
     margin-block-start: 0em;
     margin-block-end: 0em;
   }
+  h2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+  }
   p {
     font-family: 'Poppins';
     font-style: normal;

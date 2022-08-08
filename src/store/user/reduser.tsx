@@ -2,10 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export type UserType = {
   firstName?: string;
-  lastName?: string;
+  photo?: string;
   email: string;
   id: string;
-  photo?: string;
 }
 
 export type UserToUpdateType = {
@@ -29,13 +28,6 @@ const userToUpdate: UserToUpdateType = {
   lastName: '',
   photo: ''
 }
-// const user = {
-//   email: '',
-//   id: '',
-//   firstName: '',
-//   lastName: '',
-//   photo: ''
-// }
 
 const userReduser = createSlice({
   name: "userReduser",
@@ -57,9 +49,6 @@ const userReduser = createSlice({
       if (userToUpdate.firstName && state.user) {
         state.user.firstName = userToUpdate.firstName
       }
-      if (userToUpdate.lastName && state.user) {
-        state.user.lastName = userToUpdate.lastName
-      }
       if (userToUpdate.photo && state.user) {
         state.user.photo = userToUpdate.photo
       }
@@ -67,18 +56,6 @@ const userReduser = createSlice({
   }
 })
 
-
-// const { actions, reducer } = userReduser;
-
-// export const {
-//   addUser,
-//   deleteUser,
-//   //updateUser,
-// } = actions;
-
-
 export const userActions = userReduser.actions;
 
 export default userReduser.reducer;
-
-// export default reducer;

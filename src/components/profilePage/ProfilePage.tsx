@@ -21,7 +21,7 @@ const ProfilePage:React.FC = () => {
   let fullUserName = '';
   let userEmail = '';
   if (userInfo) {
-    fullUserName = `${userInfo.firstName} ${userInfo.lastName}`
+    fullUserName = `${userInfo.firstName} ${userInfo.photo}`
     userEmail = `${userInfo.email}`
   }
   const touch = true;

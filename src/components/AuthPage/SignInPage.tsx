@@ -49,7 +49,7 @@ const SignIn:React.FC = () => {
         localStorage.setItem('token', response.data.token);
         const newUser = {
           firstName : response.data.user.firstName,
-          lastName : response.data.user.lastName,
+          lastName : response.data.user.photo,
           email : response.data.user.email,
           id : response.data.user.id,
           photo: response.data.user.photo

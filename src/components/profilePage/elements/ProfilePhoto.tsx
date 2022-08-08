@@ -1,74 +1,80 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import profilePhoto from '../../../assets/images/profilePhoto.png';
-import Camera from '../../../assets/images/Camera.svg';
-import {
-  InputIconStyle,
-  InputContainer,
-} from './InputStyle';
-import { useFormik } from 'formik';
-import { updateUser } from '../../../api/authentication';
-import * as Yup from 'yup';
+import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '../../../store';
+import UserProfileIcon from '../../../assets/images/UserProfileLogo.png'
+import { userActions } from '../../../store/user/reduser';
+import { ProfileImg, PhotoInput, InputButton } from './ProfilePhotoStyles';
+import { updatePhoto } from '../../../api/authentication';
 
-export const ProfileImg = styled.div`
-  background-image: url(${profilePhoto});
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 305px;
-  height: 305px;
-  margin: 0px 128px 0px 0px;
-`;
-export const PhotoInput = styled.input`
-  display: ;
-`
-export const InputButton = styled.button`
-  width: 48px;
-  height: 48px;
-  padding: 0px;
-  position: absolute;
-  margin: 237px 0px 0px 237px;
-  background-color: #344966;
-  border-radius: 50%;
-  background-image: url(${Camera});
-  background-repeat: no-repeat;
-  background-size: 26px 26px;
-  background-position: center;
-`
-
-const changePassShema = Yup.object().shape({
-  lastName: Yup.string(),
-});
+const convertToBase64 = (file: Blob) => {
+  return new Promise<string>((resolve, reject) => {
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = () => {
+      resolve(fileReader.result as string);
+    };
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  })
+};
 
 const ProfilePhoto:React.FC = () => {
-  const formik = useFormik({
-    initialValues: {
-      photo: '',
-    },
-    // validationSchema: changePassShema,
-    onSubmit: async (values) => {
+  const dispatch = useDispatch();
+  const user = useAppSelector((store) => { 
+    return store.userState.user
+  })
+  const fileInput = useRef<HTMLInputElement>(null);
+  const photo = user?.photo || UserProfileIcon;
+  const handleClick = () => {
+    fileInput.current?.click()
+  }
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
       try {
-        console.log(values)
-        // const response = await updateUser({
-        //   lastName: values.photo,
-        // });
-      } catch (error) {
-        alert(error);
+        const file = e.target.files[0];
+        const base64 = await convertToBase64(file);
+        const response = await updatePhoto({photo: base64});
+        dispatch(userActions.updateUser(response.data.user));
+      } catch (err) {
+        console.log(err)
       }
-    },
-  });
-  console.log(formik.values)
+    }
+  }
+
+  // const formik = useFormik({
+  //   initialValues: {
+  //     photo: '',
+  //   },
+  //   // validationSchema: changePassShema,
+  //   onSubmit: async (values) => {
+  //     try {
+  //       //console.log(values);
+  //       console.log(values)
+  //       // const response = await updateUser({
+  //       //   lastName: values.photo,
+  //       // });
+  //     } catch (error) {
+  //       alert(error);
+  //     }
+  //   },
+  // });
+
   return (
-    <form onSubmit = {formik.handleSubmit}>
-      <InputButton type='submit'></InputButton>
+    <div>
+      <InputButton type="button" onClick={handleClick}></InputButton>
       <PhotoInput
-      type="file"
-      name="photo"
-      onChange={formik.handleChange}
-      value={formik.values.photo}
-      multiple accept="image/*"
+        ref={fileInput}
+        className="test"
+        type="file"
+        accept="image/png, image/jpeg, image/jpg"
+        id="uploadAvatar"
+        onChange={(e) => handleChange(e)}
       ></PhotoInput>
-      <ProfileImg />
-    </form>
+      <ProfileImg 
+        profilePhoto={photo}
+      />
+    </div>
   );
 };
 

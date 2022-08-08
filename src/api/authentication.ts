@@ -21,7 +21,9 @@ type UpdateUserType = {
 type AuthResponsetype = {
   user: UserType;
 }
-
+type UpdatePhotoType ={
+  photo: string;
+}
 type ResponseType = {
   token: string;
   user: UserType;
@@ -48,6 +50,14 @@ export const updateUser = (options: UpdateUserType): Promise<AxiosResponse<Respo
     options,
   );
 };
+
+export const updatePhoto = (options: UpdatePhotoType): Promise<AxiosResponse<ResponseType>> => {
+  return customAxios.patch(
+    '/user/update-photo',
+    options,
+  );
+};
+
 
 export const signUp = (options: OptionsType): Promise<AxiosResponse<ResponseType>> => {
   return customAxios.post(
