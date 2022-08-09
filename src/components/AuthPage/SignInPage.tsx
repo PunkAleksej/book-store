@@ -69,7 +69,6 @@ const SignIn:React.FC = () => {
           onChange={formik.handleChange}
           value={formik.values.Email}
           err={formik.errors.Email && formik.touched.Email ? formik.errors.Email : undefined}
-          touch={formik.touched.Email}
           onBlur={formik.handleBlur}
           inputText={emailLabelText}
           />
@@ -83,7 +82,6 @@ const SignIn:React.FC = () => {
           value={formik.values.Password}
           err={formik.errors.Password && formik.touched.Password ?
             formik.errors.Password : undefined}
-          touch={formik.touched.Password}
           onBlur={formik.handleBlur}
           inputText={passwordLabelText}
           />

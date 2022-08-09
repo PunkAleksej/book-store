@@ -6,6 +6,7 @@ type ProfilePhotoType = {
   profilePhoto: string;
 }
 
+
 export const ProfileImg = styled.div<ProfilePhotoType>`
   background-image: ${(p) => (p.profilePhoto? `url(${p.profilePhoto})` : `url(${UserProfileIcon}`)};
   background-size: cover;

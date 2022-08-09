@@ -70,7 +70,6 @@ const SignUp:React.FC = () => {
           onChange={formik.handleChange}
           value={formik.values.Email}
           err={formik.errors.Email}
-          touch={formik.touched.Email}
           onBlur={formik.handleBlur}
           inputText={emailLabelText}
           />
@@ -84,7 +83,6 @@ const SignUp:React.FC = () => {
           onChange={formik.handleChange}
           value={formik.values.Password}
           err={formik.errors.Password}
-          touch={formik.touched.Password}
           onBlur={formik.handleBlur}
           inputText={passwordLabelText}
           />
@@ -98,7 +96,6 @@ const SignUp:React.FC = () => {
           onChange={formik.handleChange}
           value={formik.values.RepeatPassword}
           err={formik.errors.RepeatPassword}
-          touch={formik.touched.RepeatPassword}
           onBlur={formik.handleBlur}
           inputText={repeatPasswordLabelText}
           />

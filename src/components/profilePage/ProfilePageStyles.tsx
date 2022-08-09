@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import profilePhoto from '../../assets/images/profilePhoto.png';
 
+export const PageContainer = styled.div`
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+`
 export const ProfileContainer = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -11,6 +16,9 @@ export const ProfileContainer = styled.div`
   .profile_info {
     display:  flex;
     justify-content:  space-between;
+  }
+  .profile_info_title {
+    margin: 0px 0px 30px 0px;
   }
   .profile_info_text {
     color: #8D9F4F;

@@ -2,6 +2,8 @@ import React from 'react';
 import { useAppSelector } from "../../../store/index";
 import { useFormik } from 'formik';
 import { updateUser } from '../../../api/authentication';
+import { useDispatch } from 'react-redux';
+import { userActions } from '../../../store/user/reduser';
 import Input from '../elements/Input';
 import profile from '../../../assets/images/User_profile_gray.svg';
 import Mail from '../../../assets/images/Mail.svg';
@@ -12,8 +14,9 @@ type PropsUserInfoType = {
 }
 
 const UserInfoForm:React.FC<PropsUserInfoType> = (props) => {
+  const dispatch = useDispatch();
   const { isUserInfoChange } = props;
-  const userInfo = useAppSelector((store) => store.userState.user)
+  const userInfo = useAppSelector((store) => store.userState.user);
   let userName = '';
   if (userInfo) {
     userName = `${userInfo.firstName}`
@@ -21,7 +24,7 @@ const UserInfoForm:React.FC<PropsUserInfoType> = (props) => {
   const formik = useFormik({
     initialValues: {
       firstName: userName,
-      email: '',
+      email: userInfo? userInfo.email: '',
     },
     validationSchema: userInfoSchema,
     onSubmit: async (values) => {
@@ -33,13 +36,14 @@ const UserInfoForm:React.FC<PropsUserInfoType> = (props) => {
         });
 
         localStorage.setItem('token', response.data.token);
+        dispatch(userActions.updateUser(response.data.user));
         const user = response.data.user;
       } catch (error) {
         alert(error);
       }
     },
   });
-  const auth = useAppSelector((store) => store.userState.user?.email )
+
   if (!isUserInfoChange) {
     return (
       <div>

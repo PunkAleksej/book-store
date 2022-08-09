@@ -12,7 +12,6 @@ type InputPropsType = {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>)=>void;
   err?: string;
-  touch: boolean | undefined;
   onBlur?: (e: React.FocusEvent<HTMLInputElement, Element>) => void;
   inputText: string;
 };
@@ -26,7 +25,6 @@ const Input:React.FC<InputPropsType> = (props) => {
     value,
     onChange,
     err,
-    touch,
     onBlur,
     inputText,
   } = props;

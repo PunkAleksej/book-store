@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 700;
     font-size: 40px;
     line-height: 60px;
-    font-family: Poppins;
+    font-family: 'Poppins';
     font-style: normal;
     margin-block-start: 0em;
     margin-block-end: 0em;
@@ -21,6 +21,8 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
   }
   p {
     font-family: 'Poppins';

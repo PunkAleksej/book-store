@@ -12,8 +12,6 @@ type PropsPassType = {
 
 const PasswordForm:React.FC<PropsPassType> = (props) => {
   const { isPasswordChange } = props;
-  const userInfo = useAppSelector((store) => store.userState.user)
-  let password = 'any text';
   const formik = useFormik({
     initialValues: {
       oldPassword: '',
@@ -36,7 +34,6 @@ const PasswordForm:React.FC<PropsPassType> = (props) => {
     },
   });
 
-  const auth = useAppSelector((store) => store.userState.user?.email )
   if (!isPasswordChange) {
     return (
     <Input

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAppSelector } from "../../store/index";
-import { ProfileContainer } from './ProfilePageStyles';
+import { ProfileContainer, PageContainer } from './ProfilePageStyles';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import PasswordForm from './elements/PasswordForm';
@@ -9,14 +9,6 @@ import ProfilePhoto from './elements/ProfilePhoto';
 
 
 const ProfilePage:React.FC = () => {
-  const userInfo = useAppSelector((store) => store.userState.user)
-  let fullUserName = '';
-  let userEmail = '';
-  if (userInfo) {
-    fullUserName = `${userInfo.firstName} ${userInfo.photo}`
-    userEmail = `${userInfo.email}`
-  }
-  const touch = true;
   const [ isPasswordChange, setIsPasswordChange ] = useState(false);
   function changePassState () {
     setIsPasswordChange(!isPasswordChange)
@@ -27,7 +19,7 @@ const ProfilePage:React.FC = () => {
   }
   
   return (
-    <div>
+    <PageContainer>
       <Header></Header>
       <ProfileContainer>
         <ProfilePhoto />
@@ -49,7 +41,7 @@ const ProfilePage:React.FC = () => {
         </div>
       </ProfileContainer>
       <Footer />
-    </div>
+    </PageContainer>
   );
 }
 

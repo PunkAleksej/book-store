@@ -45,7 +45,7 @@ export const HeaderInput = styled.input`
   font-family: 'Poppins';
   font-style: normal;
 `;
-export const InputIconStyle = styled.img`
+export const InputIconStyle = styled.div`
   width: 24px;
   height:24px;
   background-image: url(${search});

@@ -64,8 +64,8 @@ export const InputContainer = styled.div<InputStyleType>`
     }
 `;
 
-export const InputIconStyle = styled.img<ImgPropsType>`
-  width: 24px;
+export const InputIconStyle = styled.div<ImgPropsType>`
+  width: 25px;
   height: 24px;
   background-image: url(${(p) => p.icon});
   background-repeat: no-repeat;

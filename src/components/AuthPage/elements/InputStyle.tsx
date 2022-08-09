@@ -62,7 +62,7 @@ export const InputContainer = styled.div<InputStyleType>`
     }
 `;
 
-export const InputIconStyle = styled.img<ImgPropsType>`
+export const InputIconStyle = styled.div<ImgPropsType>`
   width: 24px;
   height: 18px;
   background-image: url(${(p) => p.icon});

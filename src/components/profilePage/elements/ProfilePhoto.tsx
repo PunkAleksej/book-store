@@ -5,19 +5,7 @@ import { useAppSelector } from '../../../store';
 import UserProfileIcon from '../../../assets/images/UserProfileLogo.png'
 import { ProfileImg, PhotoInput, InputButton } from './ProfilePhotoStyles';
 import { updatePhoto } from '../../../api/authentication';
-
-const convertToBase64 = (file: Blob) => {
-  return new Promise<string>((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(file);
-    fileReader.onload = () => {
-      resolve(fileReader.result as string);
-    };
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-  })
-};
+import Base64Converter from '../../utils/Base64Converter';
 
 const ProfilePhoto:React.FC = () => {
   const dispatch = useDispatch();
@@ -25,7 +13,7 @@ const ProfilePhoto:React.FC = () => {
     return store.userState.user
   })
   const fileInput = useRef<HTMLInputElement>(null);
-  const photo = user?.photo || UserProfileIcon;
+  const photo = user?.photo? `${user.photo}` : `${UserProfileIcon}`;
   const handleClick = () => {
     fileInput.current?.click()
   }
@@ -33,15 +21,15 @@ const ProfilePhoto:React.FC = () => {
     if (e.target.files && e.target.files.length > 0) {
       try {
         const file = e.target.files[0];
-        const base64 = await convertToBase64(file);
+        const base64 = await Base64Converter(file);
         const response = await updatePhoto({photo: base64});
         dispatch(userActions.updateUser(response.data.user));
+        console.log(response.data)
       } catch (err) {
         console.log(err)
       }
     }
   }
-
   return (
     <div>
       <InputButton type="button" onClick={handleClick}></InputButton>
@@ -51,11 +39,10 @@ const ProfilePhoto:React.FC = () => {
         type="file"
         accept="image/png, image/jpeg, image/jpg"
         id="uploadAvatar"
-        onChange={(e) => handleChange(e)}
+        onChange={handleChange}
       ></PhotoInput>
-      <ProfileImg 
-        profilePhoto={photo}
-      />
+      <ProfileImg profilePhoto={photo}>
+      </ProfileImg>
     </div>
   );
 };
