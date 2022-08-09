@@ -1,10 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  HeaderContainer,
-  HeaderInput,
-  InputIconStyle,
-} from '../HeaderStyles';
 import profile from '../../../assets/images/User_profile_white.svg';
 import heart from '../../../assets/images/Heart.svg'
 import cart from '../../../assets/images/Cart.svg'

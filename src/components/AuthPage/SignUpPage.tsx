@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
+import { useAppDispatch } from '../../store';
+import { userActions } from '../../store/user/reduser';
 import {
   AuthContainer,
   AuthMenu,
@@ -13,20 +14,10 @@ import Hide from '../../assets/images/Hide.svg';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Input from './elements/Input';
-import { useAppDispatch } from '../../store';
-import { userActions } from '../../store/user/reduser';
 import { signUp } from '../../api/authentication';
+import signUpSchema from '../schemas/SignUpSchema';
 
 const SignUp:React.FC = () => {
-  const signInSchema = Yup.object().shape({
-    Password: Yup.string()
-      .min(8, 'Too Short!')
-      .max(20, 'Too Long!')
-      .required('Required'),
-    RepeatPassword: Yup.string().oneOf([Yup.ref('Password'), null], 'Passwords must match'),
-    Email: Yup.string().email('Invalid email').required('Required'),
-  });
-
   const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
@@ -34,7 +25,7 @@ const SignUp:React.FC = () => {
       RepeatPassword: '',
       Email: '',
     },
-    validationSchema: signInSchema,
+    validationSchema: signUpSchema,
     onSubmit: async (values) => {
       try {
         const response = await signUp({
@@ -42,15 +33,8 @@ const SignUp:React.FC = () => {
           email: values.Email,
         });
         localStorage.setItem('token', response.data.token);
-        const newUser = {
-          firstName : response.data.user.firstName,
-          lastName : response.data.user.photo,
-          email : response.data.user.email,
-          id : response.data.user.id,
-          photo: response.data.user.photo
-        }
         const user = response.data.user;
-        dispatch(userActions.addUser(newUser));
+        dispatch(userActions.addUser(user));
       } catch (error) {
         alert(error);
       }

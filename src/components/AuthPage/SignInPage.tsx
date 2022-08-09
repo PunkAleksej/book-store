@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
+import { useAppDispatch } from '../../store';
+import { userActions } from '../../store/user/reduser';
 import {
   AuthContainer,
   AuthMenu,
@@ -9,26 +10,13 @@ import {
   HeightContainer,
 } from './SignStyle';
 
-import customAxios from '../../api';
 import Mail from '../../assets/images/Mail.svg';
 import Hide from '../../assets/images/Hide.svg';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import Input from './elements/Input';
 import { signIn } from '../../api/authentication';
-import { store } from '../../store';
-import { createSlice } from '@reduxjs/toolkit';
-import { useAppDispatch } from '../../store';
-import { userActions } from '../../store/user/reduser';
-import { useStore } from 'react-redux';
-
-const signInSchema = Yup.object().shape({
-  Password: Yup.string()
-    .min(8, 'Password too short')
-    .max(20, 'password too long')
-    .required('Password required'),
-  Email: Yup.string().email('Email is not correct').required('Email required'),
-});
+import signInSchema from '../schemas/SignInPageShema';
 
 const SignIn:React.FC = () => {
   const dispatch = useAppDispatch()
@@ -47,15 +35,8 @@ const SignIn:React.FC = () => {
         });
 
         localStorage.setItem('token', response.data.token);
-        const newUser = {
-          firstName : response.data.user.firstName,
-          lastName : response.data.user.photo,
-          email : response.data.user.email,
-          id : response.data.user.id,
-          photo: response.data.user.photo
-        }
         const user = response.data.user;
-        dispatch(userActions.addUser(newUser));
+        dispatch(userActions.addUser(user));
       } catch (error) {
         alert(error);
       }

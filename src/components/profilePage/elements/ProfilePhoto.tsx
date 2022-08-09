@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { userActions } from '../../../store/user/reduser';
 import { useAppSelector } from '../../../store';
 import UserProfileIcon from '../../../assets/images/UserProfileLogo.png'
-import { userActions } from '../../../store/user/reduser';
 import { ProfileImg, PhotoInput, InputButton } from './ProfilePhotoStyles';
 import { updatePhoto } from '../../../api/authentication';
 
@@ -41,24 +41,6 @@ const ProfilePhoto:React.FC = () => {
       }
     }
   }
-
-  // const formik = useFormik({
-  //   initialValues: {
-  //     photo: '',
-  //   },
-  //   // validationSchema: changePassShema,
-  //   onSubmit: async (values) => {
-  //     try {
-  //       //console.log(values);
-  //       console.log(values)
-  //       // const response = await updateUser({
-  //       //   lastName: values.photo,
-  //       // });
-  //     } catch (error) {
-  //       alert(error);
-  //     }
-  //   },
-  // });
 
   return (
     <div>

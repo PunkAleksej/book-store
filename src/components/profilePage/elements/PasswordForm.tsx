@@ -1,32 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ProfileContainer, ProfileImg, ProfileMenuInput } from '../ProfilePageStyles';
-import Footer from '../../Footer/Footer';
+import { useFormik } from 'formik';
 import Input from '../elements/Input';
 import { useAppSelector } from "../../../store/index";
-import Header from '../../Header/Header';
 import Hide from '../../../assets/images/Hide.svg';
-import { boolean } from 'yup';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import { changePass } from '../../../api/authentication';
+import changePassSchema from '../../schemas/ChangePassSchema';
 
 type PropsPassType = {
   isPasswordChange: boolean;
 }
-
-const changePassShema = Yup.object().shape({
-  oldPassword: Yup.string()
-    .min(8, 'Password too short')
-    .max(20, 'password too long')
-    .required('Password required'),
-  newPassword: Yup.string()
-    .min(8, 'Password too short')
-    .max(20, 'password too long')
-    .required('Password required'),
-  repeatPassword: Yup.string()
-    .oneOf([Yup.ref('newPassword'), null], 'Passwords must match'),
-});
 
 const PasswordForm:React.FC<PropsPassType> = (props) => {
   const { isPasswordChange } = props;
@@ -38,7 +20,7 @@ const PasswordForm:React.FC<PropsPassType> = (props) => {
       newPassword: '',
       repeatPassword: '',
     },
-    validationSchema: changePassShema,
+    validationSchema: changePassSchema,
     onSubmit: async (values) => {
       try {
         const response = await changePass({
@@ -54,7 +36,6 @@ const PasswordForm:React.FC<PropsPassType> = (props) => {
     },
   });
 
-  const touch = true;
   const auth = useAppSelector((store) => store.userState.user?.email )
   if (!isPasswordChange) {
     return (
@@ -65,7 +46,6 @@ const PasswordForm:React.FC<PropsPassType> = (props) => {
     placeholder="Password"
     onChange={formik.handleChange}
     value='11111111111'
-    touch={touch}
     inputText=''
     />
     )
@@ -80,7 +60,6 @@ const PasswordForm:React.FC<PropsPassType> = (props) => {
       placeholder="Old password"
       onChange={formik.handleChange}
       value={formik.values.oldPassword}
-      touch={touch}
       inputText=''
       />
       <Input
@@ -90,7 +69,6 @@ const PasswordForm:React.FC<PropsPassType> = (props) => {
       placeholder="New password"
       onChange={formik.handleChange}
       value={formik.values.newPassword}
-      touch={touch}
       inputText='Enter your password'
       />
       <Input
@@ -100,7 +78,6 @@ const PasswordForm:React.FC<PropsPassType> = (props) => {
       placeholder="Password replay"
       onChange={formik.handleChange}
       value={formik.values.repeatPassword}
-      touch={touch}
       inputText='Repeat your password without errors'
       />
       <button type="submit">Confirm</button>
