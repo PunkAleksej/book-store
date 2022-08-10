@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { StyledButtonBar } from './HeaderButtonStyle';
+import { StyledButtonBar, StyledLoginButton } from './HeaderButtonStyle';
 
 const HeaderButton:React.FC = () => {
   const isAuth = localStorage.getItem('token');
   if (!isAuth) {
     return (
-      <Link to="/login"><button className="header_button">Log In/ Sing Up</button></Link>
+      <Link to="/login">
+        <StyledLoginButton>Log In/ Sing Up</StyledLoginButton>
+      </Link>
     )
   }
   return (
@@ -17,5 +19,6 @@ const HeaderButton:React.FC = () => {
     </StyledButtonBar>
   )
 };
+
 
 export default HeaderButton;

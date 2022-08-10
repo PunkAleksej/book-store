@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   FooterContainer,
   Footerf,
@@ -18,10 +19,10 @@ function Footer() {
           <FooterText>(480) 555-0103</FooterText>
         </div>
         <FooterMenu>
-          <FooterText>Catalog</FooterText>
-          <FooterText>My Account</FooterText>
-          <FooterText>Cart</FooterText>
-          <FooterText>Home Page</FooterText>
+          <Link to="/"><FooterText>Catalog</FooterText></Link>
+          <Link to="/profile"><FooterText>My Account</FooterText></Link>
+          <Link to="/"><FooterText>Cart</FooterText></Link>
+          <Link to="/"><FooterText>Home Page</FooterText></Link>
         </FooterMenu>
         <div>
           <FooterText>6391 Elgin St. Celina, Delaware 10299</FooterText>

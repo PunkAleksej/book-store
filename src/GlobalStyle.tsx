@@ -71,6 +71,15 @@ const GlobalStyle = createGlobalStyle`
     letter-spacing: 0.75px;
     font-weight: 500;
   }
+  a:-webkit-any-link {
+    color: '';
+    cursor: pointer;
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-thickness: '';
+    text-decoration-style: none;
+    text-decoration-color: '';
+}
 `;
 
 export default GlobalStyle;

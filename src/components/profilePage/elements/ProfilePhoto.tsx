@@ -1,14 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { userActions } from '../../../store/user/reduser';
 import { useAppSelector } from '../../../store';
 import UserProfileIcon from '../../../assets/images/UserProfileLogo.png'
-import { ProfileImg, PhotoInput, InputButton } from './ProfilePhotoStyles';
+import { ProfileImg, PhotoInput, InputButton, ErrorLabel } from './ProfilePhotoStyles';
 import { updatePhoto } from '../../../api/authentication';
 import Base64Converter from '../../utils/Base64Converter';
 
 const ProfilePhoto:React.FC = () => {
   const dispatch = useDispatch();
+  const [ loadingError, setLoadingError ] = useState('');
   const user = useAppSelector((store) => { 
     return store.userState.user
   })
@@ -24,9 +25,9 @@ const ProfilePhoto:React.FC = () => {
         const base64 = await Base64Converter(file);
         const response = await updatePhoto({photo: base64});
         dispatch(userActions.updateUser(response.data.user));
-        console.log(response.data)
       } catch (err) {
         console.log(err)
+        setLoadingError('Loading error, try again')
       }
     }
   }
@@ -42,6 +43,7 @@ const ProfilePhoto:React.FC = () => {
       ></PhotoInput>
       <ProfileImg profilePhoto={photo}>
       </ProfileImg>
+      {loadingError? <ErrorLabel>{loadingError}</ErrorLabel>: ''}
     </div>
   );
 };

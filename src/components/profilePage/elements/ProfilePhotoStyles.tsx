@@ -31,3 +31,9 @@ export const InputButton = styled.button`
   background-size: 26px 26px;
   background-position: center;
 `
+
+export const ErrorLabel = styled.label`
+  position: absolute;
+  padding: 30px 0px 0px 0px;
+  color: ${props => props.theme.palette.error};
+`

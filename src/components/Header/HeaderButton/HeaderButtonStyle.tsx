@@ -28,3 +28,6 @@ export const StyledButtonBar = styled.div`
     background-image: url(${cart});
   }
 `
+export const StyledLoginButton = styled.button`
+  margin: 8px 0px auto 94px;
+`
