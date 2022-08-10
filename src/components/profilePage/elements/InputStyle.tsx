@@ -11,7 +11,7 @@ type InputStyleType = {
 export const InputContainer = styled.div<InputStyleType>`
   display: flex;
   flex-direction: column;
-  color:#344966;
+  color:#${props => props.theme.palette.darkBlue};
   justify-content: space-between;
   &:last-child {
     .label {
@@ -25,10 +25,10 @@ export const InputContainer = styled.div<InputStyleType>`
   }
 
   .input {
-    background: #F0F4EF;
+    background: ${props => props.theme.palette.lightGreen};
     border-radius: 16px;
-    border: 2px solid #F0F4EF;
-    border-color: ${(p) => (p.err ? '#ED2E7E' : '')};
+    border: 2px solid ${props => props.theme.palette.lightGreen};
+    border-color: ${(p) => (p.err ? props => props.theme.palette.error : '')};
     width: 413px;
     padding: 18px 0px 18px 64px;
     outline: none;
@@ -36,11 +36,11 @@ export const InputContainer = styled.div<InputStyleType>`
     color:#344966;
     &:disabled {
       opacity: 0.5;
-      background: #F0F4EF;
+      background: ${props => props.theme.palette.lightGreen};
     }
     &:focus {
-      background-color: #F0F4EF;
-      border: 2px solid #344966;
+      background-color: #${props => props.theme.palette.lightGreen};
+      border: 2px solid ${props => props.theme.palette.darkBlue};
     }
   }
   .input_info {
@@ -52,7 +52,7 @@ export const InputContainer = styled.div<InputStyleType>`
     display: flex;
     align-items: center;
     letter-spacing: 0.75px;
-    color: #C30052;
+    color: ${props => props.theme.palette.error};
   }
 
   .text {

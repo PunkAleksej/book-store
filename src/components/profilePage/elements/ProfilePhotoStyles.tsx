@@ -24,7 +24,7 @@ export const InputButton = styled.button`
   padding: 0px;
   position: absolute;
   margin: 237px 0px 0px 237px;
-  background-color: #344966;
+  background-color: ${props => props.theme.palette.darkBlue};
   border-radius: 50%;
   background-image: url(${Camera});
   background-repeat: no-repeat;

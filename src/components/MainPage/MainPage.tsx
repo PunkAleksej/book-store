@@ -12,8 +12,8 @@ const Main:React.FC = () => {
     <div className="main_container">
       <Header />
       <Banner />
-      <CatalogBar />
-      <Catalog />
+      {/* <CatalogBar />
+      <Catalog /> */}
       <Footer />
     </div>
   );

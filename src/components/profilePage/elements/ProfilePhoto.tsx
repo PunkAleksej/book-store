@@ -13,7 +13,7 @@ const ProfilePhoto:React.FC = () => {
     return store.userState.user
   })
   const fileInput = useRef<HTMLInputElement>(null);
-  const photo = user?.photo? `${user.photo}` : `${UserProfileIcon}`;
+  const photo = user?.photo? user.photo : UserProfileIcon;
   const handleClick = () => {
     fileInput.current?.click()
   }
@@ -35,7 +35,6 @@ const ProfilePhoto:React.FC = () => {
       <InputButton type="button" onClick={handleClick}></InputButton>
       <PhotoInput
         ref={fileInput}
-        className="test"
         type="file"
         accept="image/png, image/jpeg, image/jpg"
         id="uploadAvatar"

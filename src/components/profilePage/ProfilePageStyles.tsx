@@ -36,7 +36,7 @@ export const AuthMenuTitle = styled.div`
   font-weight: 700;
   font-size: 40px;
   line-height: 60px;
-  color: #0D1821;
+  color: ${props => props.theme.palette.darkBlack};
 `;
 export const AuthMenu = styled.div`
   display: flex;
@@ -51,12 +51,12 @@ export const AuthMenuText = styled.div`
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
-  color: #344966;
+  color: ${props => props.theme.palette.darkBlue};
   padding: 9px 0px 30px 0px;
 `;
 
 export const ProfileMenuInput = styled.input`
-  background: #F0F4EF;
+  background: ${props => props.theme.palette.lightGreen};
   border-radius: 16px;
   border: 0px;
   width: 413px;
@@ -65,9 +65,9 @@ export const ProfileMenuInput = styled.input`
 `;
 
 export const AuthMenuButton = styled.div`
-  background: #344966;
+  background: ${props => props.theme.palette.darkBlue};
   border-radius: 16px;
-  color: #F0F4EF;
+  color: ${props => props.theme.palette.lightGreen};
   align-items: center;
   text-align: center;
   letter-spacing: 0.75px;

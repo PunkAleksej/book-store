@@ -4,7 +4,7 @@ import footerLogo from '../../assets/images/logo_footer.svg';
 
 export const FooterContainer = styled.div`
   width: 100%;
-  background-color: #0D1821;
+  background-color: ${props => props.theme.palette.darkBlack};
   margin: 0px auto;
 `;
 
@@ -33,7 +33,7 @@ export const FooterText = styled.p`
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
-  color: #F0F4EF;
+  color: ${props => props.theme.palette.lightGreen};
   padding: 0px 0px 5px 0px;
   margin-block-start: 0em;
   margin-block-end: 0em;

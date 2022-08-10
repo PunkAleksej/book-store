@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import HeaderButton from './HeaderButton/HeaderButton';
 import {
   HeaderContainer,
@@ -10,7 +11,7 @@ const Header:React.FC = () => {
 
   return (
     <HeaderContainer>
-        <a href="/"><div className="header_logo" /></a>
+        <Link to="/"><div className="header_logo" /></Link>
         <p className="header_text">Catalog</p>
         <div>
           <InputIconStyle />

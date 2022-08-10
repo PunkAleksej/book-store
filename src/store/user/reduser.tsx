@@ -43,14 +43,15 @@ const userReduser = createSlice({
       }
     },
     updateUser: (state, action: PayloadAction<UserToUpdateType>) => {
-      if (userToUpdate.email && state.user) {
-        state.user.email = userToUpdate.email
+      console.log(action.payload)
+      if (action.payload.email && state.user) {
+        state.user.email = action.payload.email
       }
-      if (userToUpdate.firstName && state.user) {
-        state.user.firstName = userToUpdate.firstName
+      if (action.payload.firstName && state.user) {
+        state.user.firstName = action.payload.firstName
       }
-      if (userToUpdate.photo && state.user) {
-        state.user.photo = userToUpdate.photo
+      if (action.payload.photo && state.user) {
+        state.user.photo = action.payload.photo
       }
     },
   }

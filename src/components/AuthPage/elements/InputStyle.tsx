@@ -24,10 +24,10 @@ export const InputContainer = styled.div<InputStyleType>`
   }
 
   .input {
-    background: #F0F4EF;
+    background: ${props => props.theme.palette.lightGreen};
     border-radius: 16px;
-    border: 2px solid #F0F4EF;
-    border-color: ${(p) => (p.err ? '#ED2E7E' : '')};
+    border: 2px solid ${props => props.theme.palette.lightGreen};
+    border-color: ${(p) => (p.err ? props => props.theme.palette.error : '')};
     width: 413px;
     padding: 18px 0px 18px 64px;
     &:disabled {
@@ -35,8 +35,8 @@ export const InputContainer = styled.div<InputStyleType>`
       background: #F0F4EF;
     }
     &:focus {
-      background-color: #F0F4EF;
-      border: 2px solid #344966;
+      background-color: ${props => props.theme.palette.lightGreen};
+      border: 2px solid ${props => props.theme.palette.darkBlue};
       outline: none;
       padding: 30px 0px 6px 64px;
     }
@@ -50,7 +50,7 @@ export const InputContainer = styled.div<InputStyleType>`
     display: flex;
     align-items: center;
     letter-spacing: 0.75px;
-    color: #C30052;
+    color: ${props => props.theme.palette.error};
   }
 
   .text {

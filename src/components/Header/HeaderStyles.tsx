@@ -15,6 +15,7 @@ export const HeaderContainer = styled.div`
     font-size: 16px;
     line-height: 24px;
     color: #000000;
+    letter-spacing: 0px;
     padding: 0px 43px 0px 128px;
     align-self: center;
   }
@@ -27,14 +28,14 @@ export const HeaderContainer = styled.div`
     height: 46px;
     margin-top: 8px;
   }
-  
+
   .header_button {
-    margin: auto 0px auto 98px;
+    margin: auto 0px auto 94px;
   }
 `;
 
 export const HeaderInput = styled.input`
-  background: #F0F4EF;
+  background: ${props => props.theme.palette.lightGreen};
   border-radius: 16px;
   border: 0px;
   width: 566px;

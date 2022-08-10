@@ -35,9 +35,9 @@ const GlobalStyle = createGlobalStyle`
     line-height: 24px
   }
   button {
-    background: #344966;
+    background: ${props => props.theme.palette.darkBlue};
     border-radius: 16px;
-    color: #F0F4EF;
+    color: ${props => props.theme.palette.lightGreen};
     align-items: center;
     text-align: center;
     letter-spacing: 0.75px;

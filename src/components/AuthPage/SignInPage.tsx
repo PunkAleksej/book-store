@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useAppDispatch } from '../../store';
+import { useNavigate } from 'react-router-dom';
 import { userActions } from '../../store/user/reduser';
 import {
   AuthContainer,
@@ -19,6 +20,7 @@ import { signIn } from '../../api/authentication';
 import signInSchema from '../schemas/SignInPageShema';
 
 const SignIn:React.FC = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch()
   const [state, setState] = useState('');
   const formik = useFormik({
@@ -37,8 +39,10 @@ const SignIn:React.FC = () => {
         localStorage.setItem('token', response.data.token);
         const user = response.data.user;
         dispatch(userActions.addUser(user));
-      } catch (error) {
-        alert(error);
+        navigate('/');
+      } catch (err: any) {
+        formik.errors.Password = err.response.data.payload[0].message;
+        formik.errors.Email = err.response.data.payload[0].message;
       }
     },
   });

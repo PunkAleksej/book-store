@@ -17,10 +17,7 @@ const UserInfoForm:React.FC<PropsUserInfoType> = (props) => {
   const dispatch = useDispatch();
   const { isUserInfoChange } = props;
   const userInfo = useAppSelector((store) => store.userState.user);
-  let userName = '';
-  if (userInfo) {
-    userName = `${userInfo.firstName}`
-  }
+  const userName =  userInfo?.firstName ?? '';
   const formik = useFormik({
     initialValues: {
       firstName: userName,
