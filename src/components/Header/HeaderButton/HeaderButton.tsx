@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { StyledButtonBar, StyledLoginButton } from './HeaderButtonStyle';
+import { useAppSelector } from "../../../store/index";
 
 const HeaderButton:React.FC = () => {
   const isAuth = localStorage.getItem('token');
-  if (!isAuth) {
+  const user = useAppSelector((store) => store.userState.user);
+  if (!isAuth && user) {
     return (
       <Link to="/login">
         <StyledLoginButton>Log In/ Sing Up</StyledLoginButton>

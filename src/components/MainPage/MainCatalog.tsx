@@ -1,15 +1,18 @@
 import React from 'react';
 import BookCard from './elements/BookCard';
-import './MainBannerStyle.css';
-
+import { BookContainer } from './MainCatalogBarStyle';
 const Catalog:React.FC = () => {
   return (
-    <div>
+    <BookContainer>
       <BookCard />
       <BookCard />
       <BookCard />
       <BookCard />
-    </div>
+      <BookCard />
+      <BookCard />
+      <BookCard />
+      <BookCard />
+    </BookContainer>
   );
 }
 
