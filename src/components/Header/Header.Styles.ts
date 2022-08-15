@@ -35,7 +35,7 @@ export const HeaderContainer = styled.div`
 `;
 
 export const HeaderInput = styled.input`
-  background: ${props => props.theme.palette.lightGreen};
+  background: ${(props) => props.theme.palette.lightGreen};
   border-radius: 16px;
   border: 0px;
   width: 566px;

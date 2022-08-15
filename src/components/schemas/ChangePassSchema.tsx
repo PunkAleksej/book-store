@@ -10,7 +10,7 @@ const changePassSchema = Yup.object().shape({
     .max(20, 'password too long')
     .required('Password required'),
   repeatPassword: Yup.string()
-    .oneOf([Yup.ref('newPassword'), null], 'Passwords must match'),
+    .oneOf([Yup.ref('newPassword'), null], 'Passwords must match').required(),
 });
 
 export default changePassSchema;

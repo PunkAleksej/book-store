@@ -5,10 +5,9 @@ import {
   HeaderContainer,
   HeaderInput,
   InputIconStyle,
-} from './HeaderStyles';
+} from './Header.Styles';
 
 const Header:React.FC = () => {
-
   return (
     <HeaderContainer>
         <Link to="/"><div className="header_logo" /></Link>
@@ -17,10 +16,10 @@ const Header:React.FC = () => {
           <InputIconStyle />
           <HeaderInput placeholder="Search" />
         </div>
-        <HeaderButton></HeaderButton>
+        <HeaderButton />
     </HeaderContainer>
 
   );
-}
+};
 
 export default Header;

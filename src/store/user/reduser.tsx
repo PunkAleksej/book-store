@@ -1,61 +1,55 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+/* eslint-disable no-param-reassign */
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 export type UserType = {
   firstName?: string;
   photo?: string;
   email: string;
   id: string;
-}
+};
 
 export type UserToUpdateType = {
   firstName?: string;
   lastName?: string;
   email?: string;
   photo?: string;
-}
+};
 
-export type UserState = {
+export type UserStateType = {
   user: UserType | null;
-}
+};
 
-const initialState: UserState = {
+const initialState: UserStateType = {
   user: null,
-}
-
-const userToUpdate: UserToUpdateType = {
-  email: '',
-  firstName: '',
-  lastName: '',
-  photo: ''
-}
+};
 
 const userReduser = createSlice({
-  name: "userReduser",
+  name: 'userReduser',
   initialState,
   reducers: {
     addUser: (state, action: PayloadAction<UserType | null>) => {
-      state.user = action.payload
+      state.user = action.payload;
     },
-    deleteUser: (state, action: PayloadAction<number>) => {
-      state.user =  {
-        email: '', 
-        id: '',
-      }
-    },
+    // deleteUser: (state, action: PayloadAction<number>) => {
+    //   state.user = {
+    //     email: '',
+    //     id: '',
+    //   };
+    // },
     updateUser: (state, action: PayloadAction<UserToUpdateType>) => {
-      console.log(action.payload)
       if (action.payload.email && state.user) {
-        state.user.email = action.payload.email
+        state.user.email = action.payload.email;
       }
       if (action.payload.firstName && state.user) {
-        state.user.firstName = action.payload.firstName
+        state.user.firstName = action.payload.firstName;
       }
       if (action.payload.photo && state.user) {
-        state.user.photo = action.payload.photo
+        state.user.photo = action.payload.photo;
       }
     },
-  }
-})
+  },
+});
 
 export const userActions = userReduser.actions;
 

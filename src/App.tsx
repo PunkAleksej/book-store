@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
+import { ToastContainer } from 'react-toastify';
 import Loading from './components/LoadingPage/LoadingPage';
 import RequireAuth from './RequireAuth';
 import SignIn from './components/AuthPage/SignInPage';
@@ -10,28 +10,29 @@ import SignUp from './components/AuthPage/SignUpPage';
 import { useAppDispatch } from './store';
 import { getMe } from './api/authentication';
 import { userActions } from './store/user/reduser';
+import toastsWriter from './components/utils/Toasts';
 
 const App:React.FC = () => {
   const dispatch = useAppDispatch();
-  const [ isAuth, setIsAuth ] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
 
   useEffect(() => {
     (async () => {
       try {
         const response = await getMe();
-        dispatch(userActions.addUser(response.data.user))    
-      } catch (err) {
-        console.log(err)
+        dispatch(userActions.addUser(response.data.user));
+      } catch (err: any) {
+        toastsWriter({ text: err.message, style: 'error' });
       } finally {
-        setIsAuth(true)
+        setIsAuth(true);
       }
     })();
-  }, [dispatch])
+  }, [dispatch]);
 
   if (!isAuth) {
     return (
       <Loading />
-    )
+    );
   }
 
   return (
@@ -44,14 +45,15 @@ const App:React.FC = () => {
         <Route
             path="/profile"
             element={
-              <RequireAuth>
+              (<RequireAuth>
                 <ProfilePage />
-              </RequireAuth>
+               </RequireAuth>)
             }
           />
       </Routes>
+      <ToastContainer />
     </BrowserRouter>
   );
-}
+};
 
 export default App;

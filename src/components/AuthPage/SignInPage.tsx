@@ -1,28 +1,27 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useAppDispatch } from '../../store';
-import { useNavigate } from 'react-router-dom';
 import { userActions } from '../../store/user/reduser';
 import {
   AuthContainer,
   AuthMenu,
   AuthImg,
   HeightContainer,
-} from './SignStyle';
+} from './Sign.Styles';
 
 import Mail from '../../assets/images/Mail.svg';
 import Hide from '../../assets/images/Hide.svg';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import Input from './elements/Input';
+import Input from '../profilePage/elements/Input';
 import { signIn } from '../../api/authentication';
 import signInSchema from '../schemas/SignInPageShema';
+import toastsWriter from '../utils/Toasts';
 
 const SignIn:React.FC = () => {
   const navigate = useNavigate();
-  const dispatch = useAppDispatch()
-  const [state, setState] = useState('');
+  const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
       Password: '',
@@ -33,29 +32,24 @@ const SignIn:React.FC = () => {
       try {
         const response = await signIn({
           password: values.Password,
-          email: values.Email
+          email: values.Email,
         });
 
         localStorage.setItem('token', response.data.token);
         const user = response.data.user;
         dispatch(userActions.addUser(user));
         navigate('/');
-      } catch (err: any) {
-        formik.errors.Password = err.response.data.payload[0].message;
-        formik.errors.Email = err.response.data.payload[0].message;
+      } catch (error: any) {
+        const errorText = error.response.data
+          ? error.response.data.payload[0].message
+          : error.message;
+        toastsWriter({ text: errorText, style: 'error' });
       }
     },
   });
 
-  let emailLabelText = 'Enter your email';
-  if (formik.errors.Email) {
-    emailLabelText = formik.errors.Email;
-  }
-
-  let passwordLabelText = 'Enter your password';
-  if (formik.errors.Password) {
-    passwordLabelText = formik.errors.Password;
-  }
+  const emailLabelText = formik.errors.Email ? formik.errors.Email : 'Enter your email';
+  const passwordLabelText = formik.errors.Password ? formik.errors.Password : 'Enter your password';
 
   return (
     <HeightContainer>
@@ -64,7 +58,7 @@ const SignIn:React.FC = () => {
 
       <AuthContainer>
         <AuthMenu onSubmit={formik.handleSubmit}>
-          <h1 className="auth-menu_title">Log In {state}</h1>
+          <h1 className="auth-menu_title">Log In</h1>
           <Input
           icon={Mail}
           name="Email"
@@ -75,6 +69,7 @@ const SignIn:React.FC = () => {
           err={formik.errors.Email && formik.touched.Email ? formik.errors.Email : undefined}
           onBlur={formik.handleBlur}
           inputText={emailLabelText}
+          authInput
           />
 
           <Input
@@ -84,13 +79,14 @@ const SignIn:React.FC = () => {
           placeholder="Password"
           onChange={formik.handleChange}
           value={formik.values.Password}
-          err={formik.errors.Password && formik.touched.Password ?
-            formik.errors.Password : undefined}
+          err={formik.errors.Password && formik.touched.Password
+            ? formik.errors.Password : undefined}
           onBlur={formik.handleBlur}
           inputText={passwordLabelText}
+          authInput
           />
 
-          <Link to="/sign-up" className='auth-menu_text'>Registration</Link>
+          <Link to="/sign-up" className="auth-menu_text">Registration</Link>
           <button className="auth-menu_button" type="submit">Log In</button>
 
         </AuthMenu>

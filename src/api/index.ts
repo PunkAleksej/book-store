@@ -10,12 +10,13 @@ customAxios.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
 
   if (token) {
+    // eslint-disable-next-line no-param-reassign
     config.headers = {
       ...config.headers,
       authorization: `Bearear ${token}`,
     };
   }
   return config;
-})
+});
 
 export default customAxios;

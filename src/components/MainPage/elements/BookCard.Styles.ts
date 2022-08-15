@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import BookImg from '../../../assets/images/book.png'
-import YellowStar from '../../../assets/images/Star_yellow.png'
-import Heart from '../../../assets/images/Heart.svg'
+import BookImg from '../../../assets/images/book.png';
+import YellowStar from '../../../assets/images/Star_yellow.png';
+import Heart from '../../../assets/images/Heart.svg';
 
 export const CardContainer = styled.div`
   width: 305px;
@@ -12,7 +12,7 @@ export const CardContainer = styled.div`
     background-image: url(${BookImg});
   }
   .card_img_save {
-    background-color: #344966;
+    background-color: ${(props) => props.theme.palette.darkBlue};
     width: 48px;
     height: 48px;
     position: relative;
@@ -32,7 +32,7 @@ export const CardContainer = styled.div`
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
-    color: #B9BAC4;
+    color: ${(props) => props.theme.palette.ligthGrey};
   }
   .card_info_book-name {
     margin-block-start: 0em;
@@ -40,13 +40,13 @@ export const CardContainer = styled.div`
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
-    color: #344966;
+    color: ${(props) => props.theme.palette.darkBlue};
   }
   .card_info_book-author {
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
-    color: #B9BAC4;
+    color: ${(props) => props.theme.palette.ligthGrey};
     margin-block-start: 0em;
     margin-block-end: 0em;
   }
@@ -67,6 +67,4 @@ export const CardContainer = styled.div`
     width: 100%;
     margin: 30px 0px 60px 0px;
   }
-`
-
-
+`;

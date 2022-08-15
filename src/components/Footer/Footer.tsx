@@ -7,7 +7,7 @@ import {
   FooterText,
   FooterMenu,
   FooterMapImg,
-} from './FooterStyles';
+} from './Footer.Styles';
 
 function Footer() {
   return (

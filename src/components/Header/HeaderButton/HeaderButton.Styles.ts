@@ -13,7 +13,7 @@ export const StyledButtonBar = styled.div`
     height: 48px;
     margin: auto 0px;
     border-radius: 50%;
-    background-color: ${props => props.theme.palette.darkBlue};
+    background-color: ${(props) => props.theme.palette.darkBlue};
     background-size: 26px 26px;
     background-repeat: no-repeat;
     background-position:  center;
@@ -27,7 +27,7 @@ export const StyledButtonBar = styled.div`
   .cart {
     background-image: url(${cart});
   }
-`
+`;
 export const StyledLoginButton = styled.button`
   margin: 8px 0px auto 94px;
-`
+`;

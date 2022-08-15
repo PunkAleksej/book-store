@@ -2,7 +2,7 @@ import React from 'react';
 import {
   InputIconStyle,
   InputContainer,
-} from './InputStyle';
+} from './Input.Styles';
 
 type InputPropsType = {
   icon: string;
@@ -14,6 +14,7 @@ type InputPropsType = {
   err?: string;
   onBlur?: (e: React.FocusEvent<HTMLInputElement, Element>) => void;
   inputText: string;
+  authInput?: boolean;
 };
 
 const Input:React.FC<InputPropsType> = (props) => {
@@ -27,6 +28,7 @@ const Input:React.FC<InputPropsType> = (props) => {
     err,
     onBlur,
     inputText,
+    authInput,
   } = props;
 
   return (
@@ -36,6 +38,7 @@ const Input:React.FC<InputPropsType> = (props) => {
       />
       <InputContainer
       err={err}
+      authInput={authInput}
       >
         <label className="label">{placeholder}</label>
         <input className="input"

@@ -2,7 +2,7 @@ import 'styled-components';
 
 const theme = {
   palette: {
-    ligthGrey: '#B9BAC3',
+    ligthGrey: '#B9BAC4',
     darkBlue: '#344966',
     darkBlack: '#0D1821',
     green: '#BFCC94',

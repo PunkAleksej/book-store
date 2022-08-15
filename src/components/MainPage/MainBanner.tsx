@@ -1,5 +1,5 @@
 import React from 'react';
-import { BannerContainer } from './MainBannerStyles';
+import { BannerContainer } from './MainBanner.Styles';
 
 const Banner:React.FC = () => {
   return (
@@ -12,6 +12,6 @@ const Banner:React.FC = () => {
       <div className="banner_img" />
     </BannerContainer>
   );
-}
+};
 
 export default Banner;

@@ -35,9 +35,9 @@ const GlobalStyle = createGlobalStyle`
     line-height: 24px
   }
   button {
-    background: ${props => props.theme.palette.darkBlue};
+    background: ${(props) => props.theme.palette.darkBlue};
     border-radius: 16px;
-    color: ${props => props.theme.palette.lightGreen};
+    color: ${(props) => props.theme.palette.lightGreen};
     align-items: center;
     text-align: center;
     letter-spacing: 0.75px;
@@ -54,6 +54,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
+    cursor: pointer;
   }
   input {
     letter-spacing: 0.75px;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardContainer } from './BookCardStyles';
+import { CardContainer } from './BookCard.Styles';
 
 function BookCard() {
   return (
@@ -21,7 +21,7 @@ function BookCard() {
           <p className="card_info_book-ratting_number">5.0</p>
         </div>
       </div>
-      <button className='card_button'>$14.99 USD</button>
+      <button className="card_button">$14.99 USD</button>
     </CardContainer>
   );
 }

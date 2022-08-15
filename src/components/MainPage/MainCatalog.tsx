@@ -1,6 +1,7 @@
 import React from 'react';
 import BookCard from './elements/BookCard';
-import { BookContainer } from './MainCatalogBarStyle';
+import { BookContainer } from './MainCatalogBar.Styles';
+
 const Catalog:React.FC = () => {
   return (
     <BookContainer>
@@ -14,6 +15,6 @@ const Catalog:React.FC = () => {
       <BookCard />
     </BookContainer>
   );
-}
+};
 
 export default Catalog;

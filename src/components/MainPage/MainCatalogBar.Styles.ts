@@ -10,14 +10,14 @@ export const MainPageContainer = styled.div`
     font-weight: 700;
     font-size: 40px;
     line-height: 60px;
-    color: #0D1821;
+    color: ${(props) => props.theme.palette.darkBlack};
     margin-block-start: 0em;
     margin-block-end: 0em;
   }
 
 
   .catalog-bar_selectors_button {
-    background: #F0F4EF;
+    background: ${(props) => props.theme.palette.lightGreen};
     border-radius: 16px;
     border: 0px;
     font-weight: 500;
@@ -27,7 +27,7 @@ export const MainPageContainer = styled.div`
     align-items: center;
     text-align: center;
     letter-spacing: 0.75px;
-    color: #344966;
+    color: ${(props) => props.theme.palette.darkBlue};
   }
 
   .catalog-bar_selectors {
@@ -42,7 +42,7 @@ export const MainPageContainer = styled.div`
     justify-content: space-between;
     width: 1280px;
   }
-`
+`;
 export const BookContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -50,4 +50,4 @@ export const BookContainer = styled.div`
   margin: 0px auto;
   justify-content: space-between;
   width: 1280px;
-`
+`;

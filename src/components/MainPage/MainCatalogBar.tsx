@@ -1,6 +1,6 @@
 import React from 'react';
-//import './MainCatalogBarStyle.css';
-import { MainPageContainer } from './MainCatalogBarStyle';
+// import './MainCatalogBarStyle.css';
+import { MainPageContainer } from './MainCatalogBar.Styles';
 
 const CatalogBar:React.FC = () => {
   return (
@@ -13,6 +13,6 @@ const CatalogBar:React.FC = () => {
         </div>
     </MainPageContainer>
   );
-}
+};
 
 export default CatalogBar;

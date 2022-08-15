@@ -1,7 +1,6 @@
 import type { AxiosResponse } from 'axios';
-import { config } from 'process';
 import customAxios from '.';
-import { UserType } from '../store/user/reduser';
+import type { UserType } from '../store/user/reduser';
 
 type OptionsType = {
   email: string;
@@ -11,24 +10,23 @@ type OptionsType = {
 type ChangePassType = {
   oldPassword: string;
   newPassword: string;
-}
+};
 type UpdateUserType = {
   firstName?: string;
   email?: string;
   lastName?: string;
-}
+};
 
-type AuthResponsetype = {
+type AuthResponseType = {
   user: UserType;
-}
+};
 type UpdatePhotoType ={
   photo: string;
-}
+};
 type ResponseType = {
   token: string;
   user: UserType;
 };
-
 
 export const signIn = (options: OptionsType): Promise<AxiosResponse<ResponseType>> => {
   return customAxios.post(
@@ -58,7 +56,6 @@ export const updatePhoto = (options: UpdatePhotoType): Promise<AxiosResponse<Res
   );
 };
 
-
 export const signUp = (options: OptionsType): Promise<AxiosResponse<ResponseType>> => {
   return customAxios.post(
     '/auth/sign-up',
@@ -66,8 +63,8 @@ export const signUp = (options: OptionsType): Promise<AxiosResponse<ResponseType
   );
 };
 
-export const getMe = (): Promise<AxiosResponse<AuthResponsetype>> => {
+export const getMe = (): Promise<AxiosResponse<AuthResponseType>> => {
   return customAxios.get(
-    '/auth/me'
+    '/auth/me',
   );
 };

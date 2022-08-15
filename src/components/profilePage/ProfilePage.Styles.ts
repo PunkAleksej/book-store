@@ -5,7 +5,7 @@ export const PageContainer = styled.div`
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
-`
+`;
 export const ProfileContainer = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -36,7 +36,7 @@ export const AuthMenuTitle = styled.div`
   font-weight: 700;
   font-size: 40px;
   line-height: 60px;
-  color: ${props => props.theme.palette.darkBlack};
+  color: ${(props) => props.theme.palette.darkBlack};
 `;
 export const AuthMenu = styled.div`
   display: flex;
@@ -51,12 +51,12 @@ export const AuthMenuText = styled.div`
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
-  color: ${props => props.theme.palette.darkBlue};
+  color: ${(props) => props.theme.palette.darkBlue};
   padding: 9px 0px 30px 0px;
 `;
 
 export const ProfileMenuInput = styled.input`
-  background: ${props => props.theme.palette.lightGreen};
+  background: ${(props) => props.theme.palette.lightGreen};
   border-radius: 16px;
   border: 0px;
   width: 413px;
@@ -65,9 +65,9 @@ export const ProfileMenuInput = styled.input`
 `;
 
 export const AuthMenuButton = styled.div`
-  background: ${props => props.theme.palette.darkBlue};
+  background: ${(props) => props.theme.palette.darkBlue};
   border-radius: 16px;
-  color: ${props => props.theme.palette.lightGreen};
+  color: ${(props) => props.theme.palette.lightGreen};
   align-items: center;
   text-align: center;
   letter-spacing: 0.75px;

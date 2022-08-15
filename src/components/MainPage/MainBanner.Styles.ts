@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import BannerImg from '../../assets/images/banner1.png'
+import BannerImg from '../../assets/images/banner1.png';
 
 export const BannerContainer = styled.div`
   display: flex;
@@ -21,7 +21,7 @@ export const BannerContainer = styled.div`
     font-weight: 700;
     font-size: 40px;
     line-height: 60px;
-    color: #0D1821;
+    color: ${(props) => props.theme.palette.darkBlack};
     margin-block-start: 0em;
     margin-block-end: 0em;
   }
@@ -29,7 +29,7 @@ export const BannerContainer = styled.div`
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
-    color: #344966;
+    color: ${(props) => props.theme.palette.darkBlue};
     margin-block-start: 0em;
     margin-block-end: 0em;
     margin: 10px 0px 50px 0px
@@ -37,7 +37,7 @@ export const BannerContainer = styled.div`
   .banner_info_button {
     background: #344966;
     border-radius: 16px;
-    color: #F0F4EF;
+    color: ${(props) => props.theme.palette.lightGreen};
     align-items: center;
     text-align: center;
     letter-spacing: 0.75px;
@@ -47,4 +47,4 @@ export const BannerContainer = styled.div`
     font-size: 16px;
     line-height: 24px;
   }
-`
+`;

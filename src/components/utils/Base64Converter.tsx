@@ -8,7 +8,7 @@ const convertToBase64 = (file: Blob) => {
     fileReader.onerror = (error) => {
       reject(error);
     };
-  })
+  });
 };
 
 export default convertToBase64;

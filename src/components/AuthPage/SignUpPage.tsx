@@ -1,22 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useAppDispatch } from '../../store';
-import { useNavigate } from 'react-router-dom';
 import { userActions } from '../../store/user/reduser';
 import {
   AuthContainer,
   AuthMenu,
   AuthImg,
   HeightContainer,
-} from './SignStyle';
+} from './Sign.Styles';
 import Mail from '../../assets/images/Mail.svg';
 import Hide from '../../assets/images/Hide.svg';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
-import Input from './elements/Input';
+import Input from '../profilePage/elements/Input';
 import { signUp } from '../../api/authentication';
 import signUpSchema from '../schemas/SignUpSchema';
+import toastsWriter from '../utils/Toasts';
 
 const SignUp:React.FC = () => {
   const navigate = useNavigate();
@@ -38,26 +38,20 @@ const SignUp:React.FC = () => {
         const user = response.data.user;
         dispatch(userActions.addUser(user));
         navigate('/profile');
-      } catch (err: any) {
-        formik.errors.Email = err.response.data.payload[0].message;
+        toastsWriter({ text: 'Registration success', style: 'success' });
+      } catch (error: any) {
+        const errorText = error.response.data
+          ? error.response.data.payload[0].message
+          : error.message;
+        toastsWriter({ text: errorText, style: 'error' });
       }
     },
   });
 
-  let emailLabelText = 'Enter your email';
-  if (formik.errors.Email) {
-    emailLabelText = formik.errors.Email;
-  }
+  const emailLabelText = formik.errors.Email ? formik.errors.Email : 'Enter your email';
+  const passwordLabelText = formik.errors.Password ? formik.errors.Password : 'Enter your password';
+  const repeatPasswordLabelText = formik.errors.RepeatPassword ? formik.errors.RepeatPassword : 'Repeat your password';
 
-  let passwordLabelText = 'Enter your password';
-  if (formik.errors.Password) {
-    passwordLabelText = formik.errors.Password;
-  }
-
-  let repeatPasswordLabelText = 'Repeat your password';
-  if (formik.errors.RepeatPassword) {
-    repeatPasswordLabelText = formik.errors.RepeatPassword;
-  }
   return (
     <HeightContainer>
       <Header />
@@ -75,8 +69,8 @@ const SignUp:React.FC = () => {
           err={formik.errors.Email}
           onBlur={formik.handleBlur}
           inputText={emailLabelText}
+          authInput
           />
-
 
           <Input
           icon={Hide}
@@ -88,8 +82,8 @@ const SignUp:React.FC = () => {
           err={formik.errors.Password}
           onBlur={formik.handleBlur}
           inputText={passwordLabelText}
+          authInput
           />
-
 
           <Input
           icon={Hide}
@@ -101,9 +95,10 @@ const SignUp:React.FC = () => {
           err={formik.errors.RepeatPassword}
           onBlur={formik.handleBlur}
           inputText={repeatPasswordLabelText}
+          authInput
           />
 
-          <Link to="/login" className='auth-menu_text'>Sign in</Link>
+          <Link to="/login" className="auth-menu_text">Sign in</Link>
           <button className="auth-menu_button">Registration</button>
         </AuthMenu>
         <AuthImg />
@@ -111,21 +106,6 @@ const SignUp:React.FC = () => {
       <Footer />
     </HeightContainer>
   );
-}
+};
 
 export default SignUp;
-
-
-// import { useNavigate } from "react-router-dom";
-
-// function SignupForm() {
-//   let navigate = useNavigate();
-
-//   async function handleSubmit(event) {
-//     event.preventDefault();
-//     await submitForm(event.target);
-//     navigate("../success", { replace: true });
-//   }
-
-//   return <form onSubmit={handleSubmit}>{/* ... */}</form>;
-// }
