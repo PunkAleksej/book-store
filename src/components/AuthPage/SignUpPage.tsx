@@ -17,6 +17,7 @@ import Input from '../profilePage/elements/Input';
 import { signUp } from '../../api/authentication';
 import signUpSchema from '../schemas/SignUpSchema';
 import toastsWriter from '../utils/Toasts';
+import ButtonComponent from '../Elements/Button';
 
 const SignUp:React.FC = () => {
   const navigate = useNavigate();
@@ -99,7 +100,10 @@ const SignUp:React.FC = () => {
           />
 
           <Link to="/login" className="auth-menu_text">Sign in</Link>
-          <button className="auth-menu_button">Registration</button>
+          <ButtonComponent
+          text="Registration"
+          type="submit"
+          />
         </AuthMenu>
         <AuthImg />
       </AuthContainer>

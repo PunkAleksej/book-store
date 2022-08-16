@@ -18,6 +18,7 @@ import Input from '../profilePage/elements/Input';
 import { signIn } from '../../api/authentication';
 import signInSchema from '../schemas/SignInPageShema';
 import toastsWriter from '../utils/Toasts';
+import ButtonComponent from '../Elements/Button';
 
 const SignIn:React.FC = () => {
   const navigate = useNavigate();
@@ -87,7 +88,10 @@ const SignIn:React.FC = () => {
           />
 
           <Link to="/sign-up" className="auth-menu_text">Registration</Link>
-          <button className="auth-menu_button" type="submit">Log In</button>
+          <ButtonComponent
+          text="Log In"
+          type="submit"
+          />
 
         </AuthMenu>
         <AuthImg />

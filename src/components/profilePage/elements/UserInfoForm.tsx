@@ -34,7 +34,6 @@ const UserInfoForm:React.FC<PropsUserInfoType> = (props) => {
 
         localStorage.setItem('token', response.data.token);
         dispatch(userActions.updateUser(response.data.user));
-        const user = response.data.user;
         toastsWriter({ text: 'User info is changed', style: 'success' });
       } catch (error: any) {
         const errorText = error.response.data

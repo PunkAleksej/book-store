@@ -1,7 +1,9 @@
 import React from 'react';
 import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
 import Input from '../elements/Input';
 import Hide from '../../../assets/images/Hide.svg';
+import { userActions } from '../../../store/user/reduser';
 import { changePass } from '../../../api/authentication';
 import changePassSchema from '../../schemas/ChangePassSchema';
 import toastsWriter from '../../utils/Toasts';
@@ -11,6 +13,7 @@ type PropsPassType = {
 };
 
 const PasswordForm:React.FC<PropsPassType> = (props) => {
+  const dispatch = useDispatch();
   const { isPasswordChange } = props;
   const formik = useFormik({
     initialValues: {
@@ -25,7 +28,7 @@ const PasswordForm:React.FC<PropsPassType> = (props) => {
           oldPassword: values.oldPassword,
           newPassword: values.newPassword,
         });
-        const user = response.data;
+        dispatch(userActions.updateUser(response.data.user));
         toastsWriter({ text: 'User password is changed', style: 'success' });
       } catch (error: any) {
         const errorText = error.response.data

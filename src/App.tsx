@@ -11,6 +11,7 @@ import { useAppDispatch } from './store';
 import { getMe } from './api/authentication';
 import { userActions } from './store/user/reduser';
 import toastsWriter from './components/utils/Toasts';
+import ButtonComponent from './components/Elements/Button';
 
 const App:React.FC = () => {
   const dispatch = useAppDispatch();

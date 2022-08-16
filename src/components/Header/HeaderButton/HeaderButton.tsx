@@ -1,15 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { StyledButtonBar, StyledLoginButton } from './HeaderButton.Styles';
+import { StyledButtonBar, ButtonContainer } from './HeaderButton.Styles';
 import { useAppSelector } from '../../../store/index';
+import ButtonComponent from '../../Elements/Button';
 
 const HeaderButton:React.FC = () => {
   const user = useAppSelector((store) => store.userState.user);
   if (!user) {
     return (
-      <Link to="/login">
-        <StyledLoginButton>Log In/ Sing Up</StyledLoginButton>
-      </Link>
+      <ButtonContainer>
+        <Link to="/login">
+          <ButtonComponent
+          text="Log In/ Sing Up"
+          />
+        </Link>
+      </ButtonContainer>
+
     );
   }
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonComponent from '../../Elements/Button';
 import { CardContainer } from './BookCard.Styles';
 
 function BookCard() {
@@ -22,6 +23,9 @@ function BookCard() {
         </div>
       </div>
       <button className="card_button">$14.99 USD</button>
+      <ButtonComponent
+      text="$14.99 USD"
+      />
     </CardContainer>
   );
 }
