@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { StyledButtonBar, ButtonContainer } from './HeaderButton.Styles';
 import { useAppSelector } from '../../../store/index';
 import ButtonComponent from '../../Elements/Button';
+import profile from '../../../assets/images/User_profile_white.svg';
+import heart from '../../../assets/images/Heart.svg';
+import cart from '../../../assets/images/Cart.svg';
 
 const HeaderButton:React.FC = () => {
   const user = useAppSelector((store) => store.userState.user);
@@ -20,9 +23,9 @@ const HeaderButton:React.FC = () => {
   }
   return (
     <StyledButtonBar>
-      <Link to="/"><div className="headers_button cart" /></Link>
-      <Link to="/"><div className="headers_button heart" /></Link>
-      <Link to="/profile"><div className="headers_button profile" /></Link>
+      <Link to="/"><ButtonComponent size="small" icon={cart} /></Link>
+      <Link to="/"><ButtonComponent size="small" icon={heart} /></Link>
+      <Link to="/profile"><ButtonComponent size="small" icon={profile} /></Link>
     </StyledButtonBar>
   );
 };

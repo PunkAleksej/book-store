@@ -1,13 +1,19 @@
 import React from 'react';
 import ButtonComponent from '../../Elements/Button';
 import { CardContainer } from './BookCard.Styles';
+import heart from '../../../assets/images/Heart.svg';
 
 function BookCard() {
   return (
     <CardContainer>
       <div className="card_img">
         <div className="card_img_background">
-          <div className="card_img_save" />
+          <div className="card_img_bacground_button-container">
+            <ButtonComponent
+            size="small"
+            icon={heart}
+            />
+          </div>
         </div>
       </div>
       <div className="card_info">
@@ -22,10 +28,13 @@ function BookCard() {
           <p className="card_info_book-ratting_number">5.0</p>
         </div>
       </div>
-      <button className="card_button">$14.99 USD</button>
-      <ButtonComponent
-      text="$14.99 USD"
-      />
+      <div className="card_button-container">
+        <ButtonComponent
+        text="$14.99 USD"
+        size="large"
+        />
+      </div>
+
     </CardContainer>
   );
 }

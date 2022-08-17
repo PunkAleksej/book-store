@@ -7,6 +7,8 @@ type ButtonPropsType = {
   disable?: boolean;
   loading?: boolean;
   type?: string;
+  size?: 'small' | 'medium' | 'large';
+  icon?: string;
 };
 
 const ButtonComponent:React.FC<ButtonPropsType> = (props) => {
@@ -15,8 +17,13 @@ const ButtonComponent:React.FC<ButtonPropsType> = (props) => {
       <StyledTestButton
       disable={props.disable}
       secondaryStyle={props.secondaryStyle}
+      icon={props.icon}
+      size={props.size}
+      loading={props.loading}
       >
-        {props.loading ? <LoadingIcon /> : props.text}
+        {props.loading
+          ? <LoadingIcon secondaryStyle={props.secondaryStyle} />
+          : props.text}
       </StyledTestButton>
     </div>
   );

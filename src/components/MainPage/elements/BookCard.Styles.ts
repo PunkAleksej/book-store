@@ -11,17 +11,11 @@ export const CardContainer = styled.div`
     border-radius: 16px;
     background-image: url(${BookImg});
   }
-  .card_img_save {
-    background-color: ${(props) => props.theme.palette.darkBlue};
-    width: 48px;
-    height: 48px;
-    position: relative;
-    left: 20px;
-    top: 20px;
-    border-radius: 50%;
-    background-image: url(${Heart});
-    background-repeat: no-repeat;
-    background-position: center;
+  .card_img_bacground_button-container {
+    padding: 20px;
+  }
+  .card_button-container {
+    padding: 30px 0px 60px 0px;
   }
   .card_img {
     width: 305px;

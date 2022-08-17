@@ -7,6 +7,7 @@ import { userActions } from '../../../store/user/reduser';
 import { changePass } from '../../../api/authentication';
 import changePassSchema from '../../schemas/ChangePassSchema';
 import toastsWriter from '../../utils/Toasts';
+import ButtonComponent from '../../Elements/Button';
 
 type PropsPassType = {
   isPasswordChange: boolean;
@@ -85,7 +86,7 @@ const PasswordForm:React.FC<PropsPassType> = (props) => {
       value={formik.values.repeatPassword}
       inputText={repeatPasswordLabelText}
       />
-      <button type="submit">Confirm</button>
+      <ButtonComponent text="Confirm" type="submit" />
     </form>
   );
 };
