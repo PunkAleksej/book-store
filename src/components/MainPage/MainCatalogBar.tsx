@@ -1,8 +1,26 @@
 import React from 'react';
-// import './MainCatalogBarStyle.css';
+import { useFormik } from 'formik';
 import { MainPageContainer } from './MainCatalogBar.Styles';
+import toastsWriter from '../utils/Toasts';
 
 const CatalogBar:React.FC = () => {
+  const formik = useFormik({
+    initialValues: {
+      genre: '',
+      price: '',
+      sortBy: '',
+    },
+    onSubmit: async (values) => {
+      try {
+        const response = '';
+      } catch (error: any) {
+        const errorText = error.response.data
+          ? error.response.data.payload[0].message
+          : error.message;
+        toastsWriter({ text: errorText, style: 'error' });
+      }
+    },
+  });
   return (
     <MainPageContainer>
         <h1 className="catalog-bar_title">Catalog</h1>

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import BookImg from '../../../assets/images/book.png';
 import YellowStar from '../../../assets/images/Star_yellow.png';
-import Heart from '../../../assets/images/Heart.svg';
 
 export const CardContainer = styled.div`
   width: 305px;

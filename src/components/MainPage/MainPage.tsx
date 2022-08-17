@@ -2,9 +2,10 @@ import React from 'react';
 
 import Header from '../Header/Header';
 import Catalog from './MainCatalog';
-import Banner from './MainBanner';
+import Banner from '../TopBanner/MainBanner';
 import CatalogBar from './MainCatalogBar';
 import Footer from '../Footer/Footer';
+import CatalogBanner from '../BottomBanner/CatalogBanner';
 
 const Main:React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const Main:React.FC = () => {
       <Banner />
       <CatalogBar />
       <Catalog />
+      <CatalogBanner />
       <Footer />
     </div>
   );
