@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledTestButton, LoadingIcon } from './Button.Styles';
+import { StyledTestButton, LoadingIcon } from './Button.styles';
 
 type ButtonPropsType = {
   text?: string;

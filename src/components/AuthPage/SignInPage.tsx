@@ -8,7 +8,7 @@ import {
   AuthMenu,
   AuthImg,
   HeightContainer,
-} from './Sign.Styles';
+} from './Sign.styles';
 
 import Mail from '../../assets/images/Mail.svg';
 import Hide from '../../assets/images/Hide.svg';

@@ -18,6 +18,7 @@ export const MainPageContainer = styled.div`
 
   .catalog-bar_selectors_button {
     background: ${(props) => props.theme.palette.lightGreen};
+    width: 200px;
     border-radius: 16px;
     border: 0px;
     font-weight: 500;
@@ -32,6 +33,7 @@ export const MainPageContainer = styled.div`
 
   .catalog-bar_selectors {
     display: flex;
+    position: relative;
   }
 
   .book_container {

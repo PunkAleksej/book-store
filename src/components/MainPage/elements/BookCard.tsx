@@ -1,6 +1,6 @@
 import React from 'react';
 import ButtonComponent from '../../Elements/Button';
-import { CardContainer } from './BookCard.Styles';
+import { CardContainer } from './BookCard.styles';
 import heart from '../../../assets/images/Heart.svg';
 
 function BookCard() {

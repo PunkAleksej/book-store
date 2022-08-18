@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ProfileContainer, PageContainer } from './ProfilePage.Styles';
+import { ProfileContainer, PageContainer } from './ProfilePage.styles';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import PasswordForm from './elements/PasswordForm';

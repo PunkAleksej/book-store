@@ -1,6 +1,6 @@
 import React from 'react';
 import BookCard from './elements/BookCard';
-import { BookContainer } from './MainCatalogBar.Styles';
+import { BookContainer } from './MainCatalogBar.styles';
 
 const Catalog:React.FC = () => {
   return (

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { userActions } from '../../../store/user/reduser';
 import { useAppSelector } from '../../../store';
 import UserProfileIcon from '../../../assets/images/UserProfileLogo.png';
-import { ProfileImg, PhotoInput, InputButton, ErrorLabel } from './ProfilePhoto.Styles';
+import { ProfileImg, PhotoInput, InputButton, ErrorLabel } from './ProfilePhoto.styles';
 import { updatePhoto } from '../../../api/authentication';
 import Base64Converter from '../../utils/Base64Converter';
 import toastsWriter from '../../utils/Toasts';

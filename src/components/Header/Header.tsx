@@ -5,7 +5,7 @@ import {
   HeaderContainer,
   HeaderInput,
   InputIconStyle,
-} from './Header.Styles';
+} from './Header.styles';
 
 const Header:React.FC = () => {
   return (

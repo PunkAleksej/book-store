@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
-import { MainPageContainer } from './MainCatalogBar.Styles';
+import { MainPageContainer } from './MainCatalogBar.styles';
 import toastsWriter from '../utils/Toasts';
+import PriceSlider from './elements/PriceSlyder';
 
 const CatalogBar:React.FC = () => {
+  const [isActiveSlider, setIsActiveSlider] = useState(false);
+  const changeSliderState = () => {
+    setIsActiveSlider(!isActiveSlider);
+  };
   const formik = useFormik({
     initialValues: {
       genre: '',
@@ -23,11 +28,16 @@ const CatalogBar:React.FC = () => {
   });
   return (
     <MainPageContainer>
-        <h1 className="catalog-bar_title">Catalog</h1>
+        <h1 className="catalog-bar_title">
+          Catalog
+        </h1>
         <div className="catalog-bar_selectors">
           <button className="catalog-bar_selectors_button">Genre</button>
-          <button className="catalog-bar_selectors_button">Price</button>
+          <button className="catalog-bar_selectors_button" onClick={changeSliderState}>
+            Price
+          </button>
           <button className="catalog-bar_selectors_button">Sort by price</button>
+          {isActiveSlider ? <PriceSlider /> : null}
         </div>
     </MainPageContainer>
   );

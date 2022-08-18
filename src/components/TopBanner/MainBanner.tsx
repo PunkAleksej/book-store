@@ -1,6 +1,6 @@
 import React from 'react';
 import ButtonComponent from '../Elements/Button';
-import { BannerContainer } from './MainBanner.Styles';
+import { BannerContainer } from './MainBanner.styles';
 
 const Banner:React.FC = () => {
   return (

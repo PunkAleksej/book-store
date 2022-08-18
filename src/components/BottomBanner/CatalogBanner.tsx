@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ButtonComponent from '../Elements/Button';
-import { BannerContainer } from './CatalogBanner.Styles';
+import { BannerContainer } from './CatalogBanner.styles';
 
 const CatalogBanner:React.FC = () => {
   return (

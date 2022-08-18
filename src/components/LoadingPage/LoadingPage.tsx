@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadingContainer, LoadingText } from './LoadingPage.Styles';
+import { LoadingContainer, LoadingText } from './LoadingPage.styles';
 
 const Loading:React.FC = () => {
   return (

@@ -2,7 +2,7 @@ import React from 'react';
 import {
   InputIconStyle,
   InputContainer,
-} from './Input.Styles';
+} from './Input.styles';
 
 type InputPropsType = {
   icon: string;

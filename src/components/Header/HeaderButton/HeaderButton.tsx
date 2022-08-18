@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { StyledButtonBar, ButtonContainer } from './HeaderButton.Styles';
+import { StyledButtonBar, ButtonContainer } from './HeaderButton.styles';
 import { useAppSelector } from '../../../store/index';
 import ButtonComponent from '../../Elements/Button';
 import profile from '../../../assets/images/User_profile_white.svg';

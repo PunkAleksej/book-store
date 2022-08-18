@@ -10,8 +10,7 @@ import SignUp from './components/AuthPage/SignUpPage';
 import { useAppDispatch } from './store';
 import { getMe } from './api/authentication';
 import { userActions } from './store/user/reduser';
-import toastsWriter from './components/utils/Toasts';
-import ButtonComponent from './components/Elements/Button';
+import TestDropMenu from './testDropMenu';
 
 const App:React.FC = () => {
   const dispatch = useAppDispatch();
@@ -22,8 +21,8 @@ const App:React.FC = () => {
       try {
         const response = await getMe();
         dispatch(userActions.addUser(response.data.user));
-      } catch (err: any) {
-        toastsWriter({ text: err.message, style: 'error' });
+      } catch (err) {
+        // toastsWriter({ text: err.message, style: 'error' });
       } finally {
         setIsAuth(true);
       }
@@ -43,6 +42,7 @@ const App:React.FC = () => {
         <Route path="/login" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/loading" element={<Loading />} />
+        <Route path="/test" element={<TestDropMenu />} />
         <Route
             path="/profile"
             element={
