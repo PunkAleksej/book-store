@@ -31,12 +31,6 @@ const userReduser = createSlice({
     addUser: (state, action: PayloadAction<UserType | null>) => {
       state.user = action.payload;
     },
-    // deleteUser: (state, action: PayloadAction<number>) => {
-    //   state.user = {
-    //     email: '',
-    //     id: '',
-    //   };
-    // },
     updateUser: (state, action: PayloadAction<UserToUpdateType>) => {
       if (action.payload.email && state.user) {
         state.user.email = action.payload.email;

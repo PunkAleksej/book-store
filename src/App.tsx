@@ -11,6 +11,7 @@ import { useAppDispatch } from './store';
 import { getMe } from './api/authentication';
 import { userActions } from './store/user/reduser';
 import TestDropMenu from './testDropMenu';
+import FilterByGenre from './components/Elements/DropMenu/DropMenu';
 
 const App:React.FC = () => {
   const dispatch = useAppDispatch();
@@ -42,7 +43,7 @@ const App:React.FC = () => {
         <Route path="/login" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/loading" element={<Loading />} />
-        <Route path="/test" element={<TestDropMenu />} />
+        <Route path="/test" element={<FilterByGenre />} />
         <Route
             path="/profile"
             element={
