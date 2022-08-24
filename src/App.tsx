@@ -10,8 +10,9 @@ import SignUp from './components/AuthPage/SignUpPage';
 import { useAppDispatch } from './store';
 import { getMe } from './api/authentication';
 import { userActions } from './store/user/reduser';
-import TestDropMenu from './testDropMenu';
 import FilterByGenre from './components/Elements/DropMenu/DropMenu';
+import { getGenres } from './api/catalog';
+import { booksActions } from './store/book/reduser';
 
 const App:React.FC = () => {
   const dispatch = useAppDispatch();
@@ -20,6 +21,8 @@ const App:React.FC = () => {
   useEffect(() => {
     (async () => {
       try {
+        const responseGenre = await getGenres();
+        dispatch(booksActions.loadGenres(responseGenre.data.genres));
         const response = await getMe();
         dispatch(userActions.addUser(response.data.user));
       } catch (err) {

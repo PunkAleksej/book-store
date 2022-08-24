@@ -12,7 +12,7 @@ const StyledFilterOption = styled.li<StyledPropsType>`
     margin-bottom: 10px;
   }
 
-  .option__button {
+  .option_button {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -23,7 +23,7 @@ const StyledFilterOption = styled.li<StyledPropsType>`
     z-index: 50;
   }
 
-  .option__checkbox {
+  .option_checkbox {
     width: 24px;
     height: 24px;
     border: 1px ${({ theme }) => theme.palette.darkBlue} solid;

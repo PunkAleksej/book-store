@@ -6,11 +6,11 @@ import FilterOption from './FilterButton';
 const FilterByGenre: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const dispatch = useAppDispatch();
-  const genres = [{ id: 1, name: 'ffff' }, { id: 2, name: 'hhhh' }];
+  const genres = useAppSelector((store) => store.bookState.genres);
   const isInitial = useRef(true);
-  const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
+  const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
 
-  const handleClick = (id: number) => {
+  const handleClick = (id: string) => {
     const updatedSelectedGenres = selectedGenres.filter((num) => num !== id);
     if (updatedSelectedGenres.length === selectedGenres.length) {
       updatedSelectedGenres.push(id);
@@ -21,12 +21,12 @@ const FilterByGenre: React.FC = () => {
   return (
     <StyledFilterByGenre isVisible={isVisible}>
       <button
-        className="filter__select"
+        className="filter_select"
         onClick={() => setIsVisible(!isVisible)}
       >
         Genre
       </button>
-      <ul className="filter__options" id="genre-filter-options">
+      <ul className="filter_options" id="genre-filter-options">
         {genres &&
           genres.map((genre) => (
             <FilterOption

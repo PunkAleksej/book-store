@@ -6,7 +6,7 @@ type StyledPropsType = {
 
 const StyledFilterByGenre = styled.div<StyledPropsType>`
 
-  .filter__select {
+  .filter_select {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -22,7 +22,7 @@ const StyledFilterByGenre = styled.div<StyledPropsType>`
     border-radius: 16px;
   }
 
-  .filter__options {
+  .filter_options {
     display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
     margin: 26px 0;
     position: absolute;
