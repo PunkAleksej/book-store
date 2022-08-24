@@ -1,14 +1,15 @@
 import type { AxiosResponse } from 'axios';
 import customAxios from '.';
-type Genre = {
+
+type GenreType = {
     id: string;
     name: string;
-}
-type GenresResponse = {
-    genres: Genre[];
-}
-export const getGenres = (): Promise<AxiosResponse<GenresResponse>> => {
+};
+type GenresResponseType = {
+    genres: GenreType[];
+};
+export const getGenres = (): Promise<AxiosResponse<GenresResponseType>> => {
   return customAxios.get(
-    '/catalog/getGenres'
+    '/catalog/getGenres',
   );
 };

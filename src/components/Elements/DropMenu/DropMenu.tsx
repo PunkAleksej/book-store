@@ -6,7 +6,7 @@ import FilterOption from './FilterButton';
 const FilterByGenre: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const dispatch = useAppDispatch();
-  const genres =[{id: 1,name: "ffff"}, {id: 2,name: "hhhh"}];
+  const genres = [{ id: 1, name: 'ffff' }, { id: 2, name: 'hhhh' }];
   const isInitial = useRef(true);
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
 

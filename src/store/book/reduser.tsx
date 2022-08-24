@@ -2,34 +2,34 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-export type Genre = {
+export type GenreType = {
     id: string;
     name: string;
 };
-export type Author = {
+export type AuthorType = {
     id: string;
     name: string;
 };
-export type Rating = {
+export type RatingType = {
     id: string;
     bookRating: string;
 };
-export type Book = {
+export type BookType = {
     id: string;
     name: string;
     description: string;
     price: string;
     paperPrice: string;
     cover: string;
-    genres: Genre[];
-    author: Author;
-    rating: Rating[];
+    genres: GenreType[];
+    author: AuthorType;
+    rating: RatingType[];
 };
 export type BookStateType = {
 };
 const initialState: BookStateType = {
   books: [],
-  filter:[]
+  filter: [],
 };
 
 const bookReduser = createSlice({
