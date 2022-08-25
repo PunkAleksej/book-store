@@ -15,19 +15,19 @@ class PriceSlider extends Component {
 
     return (
       <SlyderContainer>
-          <div className="slider_range-width">
-            <Range
-              range
-              onChange={this.handleChange}
-              defaultValue={[100, 1000]}
-              min={100}
-              max={1000}
-            />
-          </div>
-        <div className="slider_range-text">
-          <p>$ {sliderValues[0]}</p>
-          <p>$ {sliderValues[1]}</p>
+        <div className="slider_range-width">
+          <Range
+            range
+            onChange={this.handleChange}
+            defaultValue={[100, 1000]}
+            min={100}
+            max={1000}
+          />
         </div>
+      <div className="slider_range-text">
+        <p>$ {sliderValues[0]}</p>
+        <p>$ {sliderValues[1]}</p>
+      </div>
       </SlyderContainer>
     );
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import StyledFilterOption from './FilterButton.styles';
-import checked from '../../../assets/images/GenreCheker.svg';
+import checked from '../../../../assets/images/GenreCheker.svg';
 
 type PropsType = {
   text: string;

@@ -10,7 +10,6 @@ import SignUp from './components/AuthPage/SignUpPage';
 import { useAppDispatch } from './store';
 import { getMe } from './api/authentication';
 import { userActions } from './store/user/reduser';
-import FilterByGenre from './components/Elements/DropMenu/DropMenu';
 import { getGenres } from './api/catalog';
 import { booksActions } from './store/book/reduser';
 
@@ -46,7 +45,6 @@ const App:React.FC = () => {
         <Route path="/login" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/loading" element={<Loading />} />
-        <Route path="/test" element={<FilterByGenre />} />
         <Route
             path="/profile"
             element={

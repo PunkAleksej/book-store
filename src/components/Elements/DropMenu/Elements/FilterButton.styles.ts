@@ -6,7 +6,7 @@ type StyledPropsType = {
 };
 
 const StyledFilterOption = styled.li<StyledPropsType>`
-
+  list-style-type: none;
   padding: 2px;
   &:not(:last-child) {
     margin-bottom: 10px;
@@ -21,6 +21,7 @@ const StyledFilterOption = styled.li<StyledPropsType>`
     background: none;
     color: ${({ theme }) => theme.palette.darkBlue};
     z-index: 50;
+    padding: 0px ;
   }
 
   .option_checkbox {
@@ -52,7 +53,7 @@ const StyledFilterOption = styled.li<StyledPropsType>`
     }
   }
 
-  .option__checked {
+  .option_checked {
     display: ${({ isChecked }) => (isChecked ? 'block' : 'none')};
   }
 `;
