@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
-export const SlyderContainer = styled.div`
-   display: flex;
+type DropMenuPropsType = {
+  isVisible: number;
+};
+
+export const SlyderContainer = styled.div<DropMenuPropsType>`
+  display: ${(props) => (props.isVisible ? 'flex' : 'none')};
   flex-direction: column;
   justify-content: flex-start;
   float: left;

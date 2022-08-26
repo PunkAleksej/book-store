@@ -33,14 +33,14 @@ export type FilterType = {
   selectGenres: string;
   priceFrom: string;
   priceTo: string;
-  sortBy: 'Price' | 'Author Name' | 'Rating' | 'Date' | 'Name';
+  sortBy: 'Price' | 'Author' | 'Rating' | 'Date' | 'Name';
 };
 
 export type FilterToUpdateType = {
   selectGenres?: string;
   priceFrom?: string;
   priceTo?: string;
-  sortBy?: 'Price' | 'Author Name' | 'Rating' | 'Date' | 'Name';
+  sortBy?: 'Price' | 'Author' | 'Rating' | 'Date' | 'Name';
 };
 
 export type BookStateType = {
@@ -54,7 +54,7 @@ const initialState: BookStateType = {
   filter: {
     selectGenres: '',
     priceFrom: '0',
-    priceTo: '1000',
+    priceTo: '10000',
     sortBy: 'Price',
   },
   genres: [],

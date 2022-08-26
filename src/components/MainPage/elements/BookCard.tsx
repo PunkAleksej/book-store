@@ -3,7 +3,7 @@ import ButtonComponent from '../../Elements/Button';
 import { CardContainer } from './BookCard.styles';
 import heart from '../../../assets/images/Heart.svg';
 
-function BookCard() {
+const BookCard:React.FC = () => {
   return (
     <CardContainer>
       <div className="card_img">

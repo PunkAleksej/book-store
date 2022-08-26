@@ -10,7 +10,7 @@ import SignUp from './components/AuthPage/SignUpPage';
 import { useAppDispatch } from './store';
 import { getMe } from './api/authentication';
 import { userActions } from './store/user/reduser';
-import { getGenres } from './api/catalog';
+import { getGenres, getBooks } from './api/catalog';
 import { booksActions } from './store/book/reduser';
 
 const App:React.FC = () => {
@@ -21,9 +21,11 @@ const App:React.FC = () => {
     (async () => {
       try {
         const responseGenre = await getGenres();
-        dispatch(booksActions.loadGenres(responseGenre.data.genres));
         const response = await getMe();
+        // const responseBooks = await getBooks();
         dispatch(userActions.addUser(response.data.user));
+        // dispatch(booksActions.loadBooks(responseBooks.data));
+        dispatch(booksActions.loadGenres(responseGenre.data.genres));
       } catch (err) {
         // toastsWriter({ text: err.message, style: 'error' });
       } finally {
