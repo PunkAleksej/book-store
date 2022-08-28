@@ -15,8 +15,8 @@ const SortPriorityMenu: React.FC<DropMenuPropsType> = (props) => {
   const [sortPriorityChoice, setSortPriorityChoice] = useState(sortPriorityState);
   const testAxios = async () => {
     try {
-      //const response = await getFilteredBooks(filterState);
-      //dispatch(booksActions.loadBooks(response.data));
+      const response = await getFilteredBooks(filterState);
+      dispatch(booksActions.loadBooks(response.data));
     } catch (err) {
       console.log(err);
     }

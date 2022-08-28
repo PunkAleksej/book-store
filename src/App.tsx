@@ -8,7 +8,6 @@ import Main from './components/MainPage/MainPage';
 import ProfilePage from './components/profilePage/ProfilePage';
 import SignUp from './components/AuthPage/SignUpPage';
 import { useAppDispatch } from './store';
-import { getMe } from './api/authentication';
 import { userActions } from './store/user/reduser';
 import { getGenres, getBooks } from './api/catalog';
 import { booksActions } from './store/book/reduser';
@@ -20,15 +19,13 @@ const App:React.FC = () => {
   useEffect(() => {
     (async () => {
       try {
-        const responseGenre = await getGenres();
-        const response = await getMe();
-        // const responseBooks = await getBooks();
-        dispatch(userActions.addUser(response.data.user));
-        // dispatch(booksActions.loadBooks(responseBooks.data));
+        const responseGenre = await getGenres();  
+        dispatch(userActions.addUser(responseGenre.data.user));
+        dispatch(booksActions.loadBooks(responseGenre.data.books));
         dispatch(booksActions.loadGenres(responseGenre.data.genres));
       } catch (err) {
         // toastsWriter({ text: err.message, style: 'error' });
-      } finally {
+      } finally { 
         setIsAuth(true);
       }
     })();

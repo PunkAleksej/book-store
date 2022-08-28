@@ -1,6 +1,7 @@
 import type { AxiosResponse } from 'axios';
 import customAxios from '.';
 import type { BookType, FilterType } from '../store/book/reduser';
+import { UserType } from '../store/user/reduser';
 
 type GenreType = {
     id: string;
@@ -9,6 +10,8 @@ type GenreType = {
 
 type GenresResponseType = {
     genres: GenreType[];
+    books: BookType[];
+    user: UserType;
 };
 
 export const getGenres = (): Promise<AxiosResponse<GenresResponseType>> => {

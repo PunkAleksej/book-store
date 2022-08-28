@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Range from 'rc-slider';
-import { booksActions } from '../../../store/book/reduser';
-import { useAppDispatch } from '../../../store';
 import { SlyderContainer } from './PriceSlyder.styles';
+import { booksActions } from '../../../store/book/reduser';
+import { useAppDispatch, useAppSelector } from '../../../store';
+import { getFilteredBooks } from '../../../api/catalog';
 import 'rc-slider/assets/index.css';
 
 type DropMenuPropsType = {
@@ -13,6 +14,16 @@ const PriceSlider:React.FC<DropMenuPropsType> = (props) => {
   const dispatch = useAppDispatch();
   const sliderValues = [0, 10000];
   const [priceChoice, setPriceChoice] = useState(sliderValues);
+  const filterState = useAppSelector((store) => store.bookState.filter);
+  const testAxios = async () => {
+    try {
+      const response = await getFilteredBooks(filterState);
+      dispatch(booksActions.loadBooks(response.data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  testAxios();
   useEffect(() => {
     dispatch(booksActions.changeFilter({ priceFrom: priceChoice[0].toString() }));
     dispatch(booksActions.changeFilter({ priceTo: priceChoice[1].toString() }));

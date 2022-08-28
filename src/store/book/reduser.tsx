@@ -27,6 +27,7 @@ export type BookType = {
     genres: GenreType[];
     author: AuthorType;
     rating: RatingType[];
+    middleRating: string;
 };
 
 export type FilterType = {

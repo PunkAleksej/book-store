@@ -1,14 +1,18 @@
 import styled from 'styled-components';
 import BookImg from '../../../assets/images/book.png';
 import YellowStar from '../../../assets/images/Star_yellow.png';
+import WhiteStar from '../../../assets/images/Star_white.png';
 
-export const CardContainer = styled.div`
+type BookCoverType = {
+  cover: string;
+}
+export const CardContainer = styled.div<BookCoverType>`
   width: 305px;
   .card_img_background {
     width: 100%;
     height: 100%;
     border-radius: 16px;
-    background-image: url(${BookImg});
+    background-image: url(${(props) => props.cover});
   }
   .card_img_bacground_button-container {
     padding: 20px;
@@ -60,4 +64,14 @@ export const CardContainer = styled.div`
     width: 100%;
     margin: 30px 0px 60px 0px;
   }
+`;
+
+type RatingStarType = {
+  isActive: boolean;
+}
+
+export const RatingStar = styled.div<RatingStarType>`
+    background-image: url(${(props) => (props.isActive ? YellowStar : WhiteStar)});
+    width: 24px;
+    height: 24px;
 `;

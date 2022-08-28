@@ -5,17 +5,19 @@ import { useAppSelector } from '../../store';
 
 const Catalog:React.FC = () => {
   const booksInStore = useAppSelector((store) => store.bookState.books);
-  
   return (
     <BookContainer>
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
+        {booksInStore[0] &&
+          booksInStore.map((book) => (
+            <BookCard
+              middleRating={book.middleRating}
+              bookName={book.name}
+              cover={book.cover}
+              price={book.price}
+              author={book.author.name}
+            />
+            ))
+        }
     </BookContainer>
   );
 };

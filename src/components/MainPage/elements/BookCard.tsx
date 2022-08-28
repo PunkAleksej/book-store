@@ -1,11 +1,23 @@
 import React from 'react';
 import ButtonComponent from '../../Elements/Button';
-import { CardContainer } from './BookCard.styles';
+import { CardContainer, RatingStar } from './BookCard.styles';
 import heart from '../../../assets/images/Heart.svg';
 
-const BookCard:React.FC = () => {
+type BookCatalogType = {
+  bookName: string;
+  cover: string;
+  author: string;
+  middleRating: string;
+  price: string;
+}
+
+const BookCard:React.FC<BookCatalogType> = (props) => {
+  const bookPrice =`$ ${props.price} USD`;
+  console.log(parseInt(props.middleRating))
+  const middleRatingStarsColor = parseInt(props.middleRating);
+
   return (
-    <CardContainer>
+    <CardContainer cover={props.cover}>
       <div className="card_img">
         <div className="card_img_background">
           <div className="card_img_bacground_button-container">
@@ -17,20 +29,20 @@ const BookCard:React.FC = () => {
         </div>
       </div>
       <div className="card_info">
-        <h2 className="card_info_book-name">The Chronicles of Narnia</h2>
-        <h2 className="card_info_book-author">C. S. Lewis</h2>
+        <h2 className="card_info_book-name">{props.bookName}</h2>
+        <h2 className="card_info_book-author">{props.author}</h2>
         <div className="card_info_book-raiting">
-          <div className="card_info_book-ratting_star" />
-          <div className="card_info_book-ratting_star" />
-          <div className="card_info_book-ratting_star" />
-          <div className="card_info_book-ratting_star" />
-          <div className="card_info_book-ratting_star" />
-          <p className="card_info_book-ratting_number">5.0</p>
+          <RatingStar isActive={middleRatingStarsColor >= 1}/>
+          <RatingStar isActive={middleRatingStarsColor >= 2} />
+          <RatingStar isActive={middleRatingStarsColor >= 3} />
+          <RatingStar isActive={middleRatingStarsColor >= 4} />
+          <RatingStar isActive={middleRatingStarsColor >= 5} />
+          <p className="card_info_book-ratting_number">{middleRatingStarsColor}.0</p>
         </div>
       </div>
       <div className="card_button-container">
         <ButtonComponent
-        text="$14.99 USD"
+        text={bookPrice}
         size="large"
         />
       </div>
