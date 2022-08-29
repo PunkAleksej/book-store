@@ -31,19 +31,19 @@ const CatalogBar:React.FC = () => {
         <div className="catalog-bar_selectors">
           <DropMenuButton
           buttonText="Genres"
-          direction={isActiveGenres ? 1 : 0}
+          arrowDirection={isActiveGenres}
           onClick={changeGenresState}
           dropMenuType="genresMenu"
           />
           <DropMenuButton
           buttonText="Price"
-          direction={isActiveSlider ? 1 : 0}
+          arrowDirection={isActiveSlider}
           onClick={changeSliderState}
           dropMenuType="priceSlider"
           />
           <DropMenuButton
           buttonText="Sort by price"
-          direction={isActiveSortPriority ? 1 : 0}
+          arrowDirection={isActiveSortPriority}
           onClick={changeSortPriorityState}
           dropMenuType="sortPriority"
           />

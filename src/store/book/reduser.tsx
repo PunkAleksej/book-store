@@ -30,6 +30,11 @@ export type BookType = {
     middleRating: string;
 };
 
+export type LoadGenresAndBooksType = {
+  genres: GenreType[];
+  books: BookType[];
+};
+
 export type FilterType = {
   selectGenres: string;
   priceFrom: string;
@@ -68,9 +73,10 @@ const bookReduser = createSlice({
     loadBooks: (state, action: PayloadAction<BookType[] | []>) => {
       state.books = action.payload;
     },
-    // changeFilter: (state, action:PayloadAction<FilterType>) => {
-    //   state.filter = action.payload;
-    // },
+    loadGenresAndBooks: (state, action: PayloadAction<LoadGenresAndBooksType>) => {
+      state.genres = action.payload.genres;
+      state.books = action.payload.books;
+    },
     loadGenres: (state, action: PayloadAction<GenreType[] | []>) => {
       state.genres = action.payload;
     },

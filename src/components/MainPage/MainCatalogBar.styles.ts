@@ -50,8 +50,8 @@ export const MainPageContainer = styled.div`
 export const BookContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 0px 80px;
+  padding: 0px 70px;
   margin: 0px auto;
-  justify-content: space-between;
-  width: 1280px;
+  justify-content: flex-start;
+  width: 1300px;
 `;

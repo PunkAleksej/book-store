@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-import BookImg from '../../../assets/images/book.png';
 import YellowStar from '../../../assets/images/Star_yellow.png';
 import WhiteStar from '../../../assets/images/Star_white.png';
 
 type BookCoverType = {
   cover: string;
-}
+};
+
 export const CardContainer = styled.div<BookCoverType>`
+  padding: 0px 10px;
   width: 305px;
   .card_img_background {
     width: 100%;
@@ -37,6 +38,8 @@ export const CardContainer = styled.div<BookCoverType>`
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
     color: ${(props) => props.theme.palette.darkBlue};
   }
   .card_info_book-author {
@@ -68,7 +71,7 @@ export const CardContainer = styled.div<BookCoverType>`
 
 type RatingStarType = {
   isActive: boolean;
-}
+};
 
 export const RatingStar = styled.div<RatingStarType>`
     background-image: url(${(props) => (props.isActive ? YellowStar : WhiteStar)});

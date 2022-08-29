@@ -9,7 +9,7 @@ import ProfilePage from './components/profilePage/ProfilePage';
 import SignUp from './components/AuthPage/SignUpPage';
 import { useAppDispatch } from './store';
 import { userActions } from './store/user/reduser';
-import { getGenres, getBooks } from './api/catalog';
+import { getGenres } from './api/catalog';
 import { booksActions } from './store/book/reduser';
 
 const App:React.FC = () => {
@@ -19,13 +19,14 @@ const App:React.FC = () => {
   useEffect(() => {
     (async () => {
       try {
-        const responseGenre = await getGenres();  
-        dispatch(userActions.addUser(responseGenre.data.user));
-        dispatch(booksActions.loadBooks(responseGenre.data.books));
-        dispatch(booksActions.loadGenres(responseGenre.data.genres));
+        const responseGenre = await getGenres();
+        if (responseGenre.data.user) {
+          dispatch(userActions.addUser(responseGenre.data.user));
+        }
+        dispatch(booksActions.loadGenresAndBooks(responseGenre.data));
       } catch (err) {
         // toastsWriter({ text: err.message, style: 'error' });
-      } finally { 
+      } finally {
         setIsAuth(true);
       }
     })();

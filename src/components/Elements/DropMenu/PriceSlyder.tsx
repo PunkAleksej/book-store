@@ -7,42 +7,44 @@ import { getFilteredBooks } from '../../../api/catalog';
 import 'rc-slider/assets/index.css';
 
 type DropMenuPropsType = {
-  direction: number;
+  arrowDirection: boolean;
 };
 
 const PriceSlider:React.FC<DropMenuPropsType> = (props) => {
   const dispatch = useAppDispatch();
-  const sliderValues = [0, 10000];
-  const [priceChoice, setPriceChoice] = useState(sliderValues);
   const filterState = useAppSelector((store) => store.bookState.filter);
-  const testAxios = async () => {
-    try {
-      const response = await getFilteredBooks(filterState);
-      dispatch(booksActions.loadBooks(response.data));
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  testAxios();
+  const sliderValues = [0, 10000]; // [+filterState.priceFrom, +filterState.priceTo];
+  const [priceChoice, setPriceChoice] = useState(sliderValues);
+
   useEffect(() => {
     dispatch(booksActions.changeFilter({ priceFrom: priceChoice[0].toString() }));
     dispatch(booksActions.changeFilter({ priceTo: priceChoice[1].toString() }));
+    const filterResponse = async () => {
+      try {
+        const response = await getFilteredBooks(filterState);
+        dispatch(booksActions.loadBooks(response.data));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    filterResponse();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, priceChoice[0].toString(), priceChoice[1].toString()]);
+  }, [dispatch, priceChoice]);
 
-  const handleChange = (sliderValues: any): void => {
+  const handleChange = (sliderValues: number | number[]): void => {
+    if (!Array.isArray(sliderValues)) return;
     setPriceChoice(sliderValues);
   };
 
   return (
-    <SlyderContainer isVisible={props.direction}>
+    <SlyderContainer isVisible={props.arrowDirection}>
       <div className="slider_range-width">
         <Range
           range
           onChange={handleChange}
-          defaultValue={sliderValues}
-          min={sliderValues[0]}
-          max={sliderValues[1]}
+          defaultValue={priceChoice}
+          min={0}
+          max={10000}
         />
       </div>
     <div className="slider_range-text">

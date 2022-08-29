@@ -2,14 +2,14 @@ import React from 'react';
 import { StyledMenuArrow } from './DropMenuArrow.styles';
 
 type ArrowDirectionType = {
-  direction: number;
+  arrowDirection: boolean;
 };
 
 const DropMenuArrow: React.FC<ArrowDirectionType> = (props) => {
-  const { direction } = props;
+  const { arrowDirection } = props;
   return (
     <StyledMenuArrow
-    direction={direction}
+    arrowDirection={arrowDirection}
     />
   );
 };

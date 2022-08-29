@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import arrowIcon from '../../../../assets/images/ArrowRight.png';
 
 type StyledPropsType = {
-  direction: number;
+  arrowDirection: boolean;
 };
 
 export const StyledMenuArrow = styled.div<StyledPropsType>`
@@ -11,5 +11,5 @@ export const StyledMenuArrow = styled.div<StyledPropsType>`
   background-image: url(${arrowIcon});
   background-position: center;
   background-repeat: no-repeat;
-  transform: ${(props) => (props.direction ? 'rotate(90deg)' : 'rotate(0deg)')};
+  transform: ${(props) => (props.arrowDirection ? 'rotate(90deg)' : 'rotate(0deg)')};
 `;

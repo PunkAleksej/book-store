@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../../store';
 import { getFilteredBooks } from '../../../api/catalog';
 
 type DropMenuPropsType = {
-  direction: number;
+  arrowDirection: boolean;
 };
 
 const SortPriorityMenu: React.FC<DropMenuPropsType> = (props) => {
@@ -13,15 +13,7 @@ const SortPriorityMenu: React.FC<DropMenuPropsType> = (props) => {
   const filterState = useAppSelector((store) => store.bookState.filter);
   const sortPriorityState = useAppSelector((store) => store.bookState.filter.sortBy);
   const [sortPriorityChoice, setSortPriorityChoice] = useState(sortPriorityState);
-  const testAxios = async () => {
-    try {
-      const response = await getFilteredBooks(filterState);
-      dispatch(booksActions.loadBooks(response.data));
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  testAxios();
+
   const ChoicePrice = () => {
     setSortPriorityChoice('Price');
   };
@@ -38,10 +30,21 @@ const SortPriorityMenu: React.FC<DropMenuPropsType> = (props) => {
     setSortPriorityChoice('Name');
   };
   useEffect(() => {
+    const updateBooks = async () => {
+      try {
+        const response = await getFilteredBooks(filterState);
+        console.log(response.data)
+        dispatch(booksActions.loadBooks(response.data));
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    updateBooks();
     dispatch(booksActions.changeFilter({ sortBy: sortPriorityChoice }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, sortPriorityChoice]);
   return (
-    <StyledSortPriorityMenu isVisible={props.direction}>
+    <StyledSortPriorityMenu isVisible={props.arrowDirection}>
       <StyledSortPriorityTarget
       className="sort-priority_text"
       isActive={sortPriorityChoice === 'Price'}

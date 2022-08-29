@@ -5,7 +5,7 @@ type SortPtiorityPropsType = {
 };
 
 type DropMenuPropsType = {
-  isVisible: number;
+  isVisible: boolean;
 };
 
 export const StyledSortPriorityMenu = styled.div<DropMenuPropsType>`

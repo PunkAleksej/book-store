@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 type DropMenuPropsType = {
-  isVisible: number;
+  isVisible: boolean;
 };
 
 export const StyledFilterByGenre = styled.div<DropMenuPropsType>`
