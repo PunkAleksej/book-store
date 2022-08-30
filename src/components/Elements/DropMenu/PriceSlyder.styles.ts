@@ -17,6 +17,7 @@ export const SlyderContainer = styled.div<DropMenuPropsType>`
   left: 0px;
   top: 74px;
   border-radius: 16px;
+  z-index: 100;
   .rc-slider {
     position: relative;
     height: 0px;

@@ -40,6 +40,7 @@ export const CardContainer = styled.div<BookCoverType>`
     line-height: 30px;
     white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
     color: ${(props) => props.theme.palette.darkBlue};
   }
   .card_info_book-author {

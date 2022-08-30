@@ -27,7 +27,7 @@ export const ProfileContainer = styled.div`
     text-decoration-line: underline;
     font-size: 14px;
     line-height: 21px;
-    margin: auto 0px;
+    margin: 5px 0px;
     user-select: none;
   }
 `;

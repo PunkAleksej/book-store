@@ -11,6 +11,7 @@ import { useAppDispatch } from './store';
 import { userActions } from './store/user/reduser';
 import { getGenres } from './api/catalog';
 import { booksActions } from './store/book/reduser';
+import BookPage from './components/BookPage/BookPage';
 
 const App:React.FC = () => {
   const dispatch = useAppDispatch();
@@ -45,6 +46,7 @@ const App:React.FC = () => {
         <Route path="/login" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/loading" element={<Loading />} />
+        <Route path="/test" element={<BookPage />} />
         <Route
             path="/profile"
             element={

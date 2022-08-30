@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Range from 'rc-slider';
+import toastsWriter from '../../utils/Toasts';
 import { SlyderContainer } from './PriceSlyder.styles';
 import { booksActions } from '../../../store/book/reduser';
 import { useAppDispatch, useAppSelector } from '../../../store';
@@ -24,7 +25,7 @@ const PriceSlider:React.FC<DropMenuPropsType> = (props) => {
         const response = await getFilteredBooks(filterState);
         dispatch(booksActions.loadBooks(response.data));
       } catch (err) {
-        console.log(err);
+        toastsWriter({ text: 'Something went wrong!', style: 'error' });
       }
     };
     filterResponse();

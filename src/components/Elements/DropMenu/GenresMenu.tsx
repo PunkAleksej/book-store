@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../store';
+import toastsWriter from '../../utils/Toasts';
 import { StyledFilterByGenre } from './GenresMenu.styles';
 import FilterOption from './Elements/FilterButton';
 import { booksActions } from '../../../store/book/reduser';
@@ -14,32 +15,31 @@ const FilterByGenre: React.FC<DropMenuPropsType> = (props) => {
   const genres = useAppSelector((store) => store.bookState.genres);
   const isInitial = useRef(true);
   const filterState = useAppSelector((store) => store.bookState.filter);
-  const initialGenres = filterState.selectGenres.length ? filterState.selectGenres.split(',') : [];
-  const [selectedGenres, setSelectedGenres] = useState<string[]>(initialGenres);
+  const initialGenres = filterState.selectGenres.length ? filterState.selectGenres.slice() : [];
+  const [selectedGenres, setSelectedGenres] = useState<number[]>(initialGenres);
   const handleClick = (id: string) => {
-    const updatedSelectedGenres = selectedGenres.filter((num) => num !== id);
+    const numberId = +id;
+    const updatedSelectedGenres = selectedGenres.filter((num) => num !== numberId);
     if (updatedSelectedGenres.length === selectedGenres.length) {
-      updatedSelectedGenres.push(id);
+      updatedSelectedGenres.push(numberId);
     }
     setSelectedGenres(updatedSelectedGenres);
-    console.log(selectedGenres)
-    dispatch(booksActions.changeFilter({ selectGenres: selectedGenres.toString() }));
+    dispatch(booksActions.changeFilter({ selectGenres: updatedSelectedGenres }));
+  };
+  useEffect(() => {
+    if (isInitial.current) {
+      isInitial.current = false;
+    }
     const filterResponse = async () => {
       try {
         const response = await getFilteredBooks(filterState);
         dispatch(booksActions.loadBooks(response.data));
       } catch (err) {
-        console.log(err);
+        toastsWriter({ text: 'Something went wrong!', style: 'error' });
       }
     };
     filterResponse();
-  };
-  useEffect(() => {
-    if (isInitial.current) {
-      isInitial.current = false;
-      return;
-    }
-    // dispatch(booksActions.changeFilter({ selectGenres: selectedGenres.toString() }));
+    // dispatch(booksActions.changeFilter({ selectGenres: selectedGenres }));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, selectedGenres]);
   return (
@@ -51,7 +51,7 @@ const FilterByGenre: React.FC<DropMenuPropsType> = (props) => {
               key={genre.id}
               text={genre.name}
               id={genre.id}
-              isSelected={selectedGenres.includes(genre.id)}
+              isSelected={selectedGenres.includes(+genre.id)}
               handleClick={handleClick}
             />
           ))

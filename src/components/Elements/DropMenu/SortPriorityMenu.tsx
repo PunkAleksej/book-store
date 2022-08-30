@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import toastsWriter from '../../utils/Toasts';
 import { StyledSortPriorityMenu, StyledSortPriorityTarget } from './SortPriorityMenu.styles';
 import { booksActions } from '../../../store/book/reduser';
 import { useAppDispatch, useAppSelector } from '../../../store';
@@ -14,69 +15,73 @@ const SortPriorityMenu: React.FC<DropMenuPropsType> = (props) => {
   const sortPriorityState = useAppSelector((store) => store.bookState.filter.sortBy);
   const [sortPriorityChoice, setSortPriorityChoice] = useState(sortPriorityState);
 
-  const ChoicePrice = () => {
-    setSortPriorityChoice('Price');
+  const choicePrice = () => {
+    setSortPriorityChoice('price');
+    dispatch(booksActions.changeFilter({ sortBy: 'price' }));
   };
-  const ChoiseAuthor = () => {
-    setSortPriorityChoice('Author');
+  const choiseAuthor = () => {
+    setSortPriorityChoice('author');
+    dispatch(booksActions.changeFilter({ sortBy: 'author' }));
   };
-  const ChoiceRating = () => {
-    setSortPriorityChoice('Rating');
+  const choiceRating = () => {
+    setSortPriorityChoice('middleRating');
+    dispatch(booksActions.changeFilter({ sortBy: 'middleRating' }));
   };
-  const ChoiceDate = () => {
-    setSortPriorityChoice('Date');
+  const choiceDate = () => {
+    setSortPriorityChoice('releasedAt');
+    dispatch(booksActions.changeFilter({ sortBy: 'releasedAt' }));
   };
-  const ChoiceName = () => {
-    setSortPriorityChoice('Name');
+  const choiceName = () => {
+    setSortPriorityChoice('name');
+    dispatch(booksActions.changeFilter({ sortBy: 'name' }));
   };
+  const updateBooks = async () => {
+    try {
+      const response = await getFilteredBooks(filterState);
+      dispatch(booksActions.loadBooks(response.data));
+    } catch (err) {
+      toastsWriter({ text: 'Something went wrong!', style: 'error' });
+    }
+  };
+
   useEffect(() => {
-    const updateBooks = async () => {
-      try {
-        const response = await getFilteredBooks(filterState);
-        console.log(response.data)
-        dispatch(booksActions.loadBooks(response.data));
-      } catch (err) {
-        console.log(err);
-      }
-    };
     updateBooks();
-    dispatch(booksActions.changeFilter({ sortBy: sortPriorityChoice }));
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, sortPriorityChoice]);
+  }, [dispatch, filterState]);
   return (
     <StyledSortPriorityMenu isVisible={props.arrowDirection}>
       <StyledSortPriorityTarget
       className="sort-priority_text"
-      isActive={sortPriorityChoice === 'Price'}
-      onClick={ChoicePrice}
+      isActive={sortPriorityChoice === 'price'}
+      onClick={choicePrice}
       >
       Price
       </StyledSortPriorityTarget>
       <StyledSortPriorityTarget
       className="sort-priority_text"
-      isActive={sortPriorityChoice === 'Name'}
-      onClick={ChoiceName}
+      isActive={sortPriorityChoice === 'name'}
+      onClick={choiceName}
       >
       Name
       </StyledSortPriorityTarget>
       <StyledSortPriorityTarget
       className="sort-priority_text"
-      isActive={sortPriorityChoice === 'Author'}
-      onClick={ChoiseAuthor}
+      isActive={sortPriorityChoice === 'author'}
+      onClick={choiseAuthor}
       >
       Author name
       </StyledSortPriorityTarget>
       <StyledSortPriorityTarget
       className="sort-priority_text"
-      isActive={sortPriorityChoice === 'Rating'}
-      onClick={ChoiceRating}
+      isActive={sortPriorityChoice === 'middleRating'}
+      onClick={choiceRating}
       >
       Rating
       </StyledSortPriorityTarget>
       <StyledSortPriorityTarget
       className="sort-priority_text"
-      isActive={sortPriorityChoice === 'Date'}
-      onClick={ChoiceDate}
+      isActive={sortPriorityChoice === 'releasedAt'}
+      onClick={choiceDate}
       >
       Date of issue
       </StyledSortPriorityTarget>

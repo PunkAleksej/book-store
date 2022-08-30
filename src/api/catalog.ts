@@ -14,11 +14,16 @@ type GenresResponseType = {
     user: UserType;
 };
 
-type GetfilterType = {
-  selectGenres: string;
-  priceFrom: string;
-  priceTo: string;
-  sortBy: 'Price' | 'Author' | 'Rating' | 'Date' | 'Name';
+type CreateRatingType = {
+  bookId: string;
+  bookRating: string;
+};
+
+type CreateRatingResponceType = {
+  rating: {
+    Book: BookType;
+    User: UserType;
+  };
 };
 
 export const getGenres = (): Promise<AxiosResponse<GenresResponseType>> => {
@@ -37,5 +42,13 @@ export const getFilteredBooks =
 (params: FilterType): Promise<AxiosResponse<BookType[]>> => {
   return customAxios.get(
     '/catalog/filter', { params },
+  );
+};
+
+export const createRating =
+(options: CreateRatingType): Promise<AxiosResponse<CreateRatingResponceType>> => {
+  return customAxios.post(
+    '/catalog/rating',
+    options,
   );
 };

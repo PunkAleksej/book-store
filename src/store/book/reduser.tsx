@@ -36,17 +36,17 @@ export type LoadGenresAndBooksType = {
 };
 
 export type FilterType = {
-  selectGenres: string;
+  selectGenres: number[];
   priceFrom: string;
   priceTo: string;
-  sortBy: 'Price' | 'Author' | 'Rating' | 'Date' | 'Name';
+  sortBy: 'price' | 'author' | 'middleRating' | 'releasedAt' | 'name';
 };
 
 export type FilterToUpdateType = {
-  selectGenres?: string;
+  selectGenres?: number[];
   priceFrom?: string;
   priceTo?: string;
-  sortBy?: 'Price' | 'Author' | 'Rating' | 'Date' | 'Name';
+  sortBy?: 'price' | 'author' | 'middleRating' | 'releasedAt' | 'name';
 };
 
 export type BookStateType = {
@@ -58,10 +58,10 @@ export type BookStateType = {
 const initialState: BookStateType = {
   books: [],
   filter: {
-    selectGenres: '',
+    selectGenres: [],
     priceFrom: '0',
     priceTo: '10000',
-    sortBy: 'Price',
+    sortBy: 'middleRating',
   },
   genres: [],
 };
