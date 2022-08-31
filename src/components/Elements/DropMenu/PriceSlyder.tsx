@@ -6,31 +6,38 @@ import { booksActions } from '../../../store/book/reduser';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { getFilteredBooks } from '../../../api/catalog';
 import 'rc-slider/assets/index.css';
+import useDebounce from '../../utils/useDebounce';
 
 type DropMenuPropsType = {
   arrowDirection: boolean;
 };
 
 const PriceSlider:React.FC<DropMenuPropsType> = (props) => {
-  const dispatch = useAppDispatch();
   const filterState = useAppSelector((store) => store.bookState.filter);
-  const sliderValues = [0, 10000]; // [+filterState.priceFrom, +filterState.priceTo];
+  const sliderValues = [filterState.priceFrom, filterState.priceTo];
+  const dispatch = useAppDispatch();
   const [priceChoice, setPriceChoice] = useState(sliderValues);
+  const debouncedSearchTerm = useDebounce(priceChoice, 500);
+
+  dispatch(booksActions.changeFilter({
+    priceFrom: priceChoice[0],
+    priceTo: priceChoice[1],
+  }));
 
   useEffect(() => {
-    dispatch(booksActions.changeFilter({ priceFrom: priceChoice[0].toString() }));
-    dispatch(booksActions.changeFilter({ priceTo: priceChoice[1].toString() }));
-    const filterResponse = async () => {
-      try {
-        const response = await getFilteredBooks(filterState);
-        dispatch(booksActions.loadBooks(response.data));
-      } catch (err) {
-        toastsWriter({ text: 'Something went wrong!', style: 'error' });
-      }
-    };
-    filterResponse();
+    if (debouncedSearchTerm) {
+      (async () => {
+        try {
+          const response = await getFilteredBooks(filterState);
+          dispatch(booksActions.loadBooks(response.data));
+        } catch (err) {
+          toastsWriter({ text: 'Something went wrong!', style: 'error' });
+        }
+      })();
+    }
+  },
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, priceChoice]);
+  [debouncedSearchTerm]);
 
   const handleChange = (sliderValues: number | number[]): void => {
     if (!Array.isArray(sliderValues)) return;

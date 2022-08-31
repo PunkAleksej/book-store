@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import ButtonComponent from '../Elements/Button';
 import { BookPageContainer, BookPageInfo, RatingStar } from './BookPage.styles';
-import { useAppSelector, useAppDispatch } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
 import heart from '../../assets/images/Heart.svg';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import CatalogBanner from '../BottomBanner/CatalogBanner';
-import { createRating } from '../../api/catalog';
+import { createRating, getGenres } from '../../api/catalog';
+import BookRatingStars from './elements/BookRatingStars';
+import { booksActions } from '../../store/book/reduser';
 
 type BookCatalogType = {
     bookName: string;
@@ -19,14 +21,13 @@ type BookCatalogType = {
 
 const BookPage:React.FC = () => {
   const dispatch = useAppDispatch();
-  const booksInStore = useAppSelector((store) => store.bookState.books);
-  const targetBook = booksInStore[5];
+  const targetBook = useAppSelector((store) => store.bookState.books[0]);
   const handleClick = async (id: string) => {
     try {
       const ratingResponse = await createRating({
-        bookId: targetBook.id.toString(), bookRating: id,
+        bookId: +targetBook.id.toString(), bookRating: +id,
       });
-      console.log(ratingResponse.data.rating.Book.middleRating);
+      console.log('>>', ratingResponse.data.rating.Book.middleRating);
       setMiddleRatingStarColor(Math.round(+ratingResponse.data.rating.Book.middleRating));
     } catch (err) {
       console.log(err);
@@ -34,7 +35,7 @@ const BookPage:React.FC = () => {
   };
   const bookPrice = `$ ${targetBook.price} USD`;
   const [middleRatingStarColor, setMiddleRatingStarColor] =
-    useState(Math.round(+targetBook.middleRating));
+  useState(Math.round(+targetBook.middleRating));
   useEffect(() => {
     // setMiddleRatingStarColor(Math.round(+targetBook.middleRating));
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -54,11 +55,7 @@ const BookPage:React.FC = () => {
             <div className="card_info_book-raiting">
               <RatingStar isActive={!!middleRatingStarColor} />
               <p className="card_info_book-ratting_number">{middleRatingStarColor}.0</p>
-              <RatingStar onClick={() => handleClick('1')} isActive={middleRatingStarColor >= 1} />
-              <RatingStar onClick={() => handleClick('2')} isActive={middleRatingStarColor >= 2} />
-              <RatingStar onClick={() => handleClick('3')} isActive={middleRatingStarColor >= 3} />
-              <RatingStar onClick={() => handleClick('4')} isActive={middleRatingStarColor >= 4} />
-              <RatingStar onClick={() => handleClick('5')} isActive={middleRatingStarColor >= 5} />
+              <BookRatingStars bookId={+targetBook.id} middleRating={+targetBook.middleRating} />
               <div className="card_info_book-ratting_arrow" />
               <p className="card_info_book-ratting_number">Rate this book</p>
             </div>

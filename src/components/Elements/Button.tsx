@@ -6,26 +6,25 @@ type ButtonPropsType = {
   secondaryStyle?: boolean;
   disable?: boolean;
   loading?: boolean;
-  type?: string;
+  type?: 'button' | 'submit' | 'reset';
   size?: 'small' | 'medium' | 'large';
   icon?: string;
 };
 
-const ButtonComponent:React.FC<ButtonPropsType> = (props) => {
+const ButtonComponent: React.FC<ButtonPropsType> = (props) => {
   return (
-    <div>
-      <StyledTestButton
+    <StyledTestButton
       disable={props.disable}
       secondaryStyle={props.secondaryStyle}
       icon={props.icon}
       size={props.size}
       loading={props.loading}
-      >
-        {props.loading
-          ? <LoadingIcon secondaryStyle={props.secondaryStyle} />
-          : props.text}
-      </StyledTestButton>
-    </div>
+      type={props.type}
+    >
+      {props.loading
+        ? <LoadingIcon secondaryStyle={props.secondaryStyle} />
+        : props.text}
+    </StyledTestButton>
   );
 };
 

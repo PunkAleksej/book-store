@@ -37,15 +37,15 @@ export type LoadGenresAndBooksType = {
 
 export type FilterType = {
   selectGenres: number[];
-  priceFrom: string;
-  priceTo: string;
+  priceFrom: number;
+  priceTo: number;
   sortBy: 'price' | 'author' | 'middleRating' | 'releasedAt' | 'name';
 };
 
 export type FilterToUpdateType = {
   selectGenres?: number[];
-  priceFrom?: string;
-  priceTo?: string;
+  priceFrom?: number;
+  priceTo?: number;
   sortBy?: 'price' | 'author' | 'middleRating' | 'releasedAt' | 'name';
 };
 
@@ -59,8 +59,8 @@ const initialState: BookStateType = {
   books: [],
   filter: {
     selectGenres: [],
-    priceFrom: '0',
-    priceTo: '10000',
+    priceFrom: 0,
+    priceTo: 10000,
     sortBy: 'middleRating',
   },
   genres: [],
@@ -81,16 +81,18 @@ const bookReduser = createSlice({
       state.genres = action.payload;
     },
     changeFilter: (state, action: PayloadAction<FilterToUpdateType>) => {
-      if (action.payload.selectGenres && state.filter) {
+      if (!state.filter) return;
+
+      if (action.payload.selectGenres) {
         state.filter.selectGenres = action.payload.selectGenres;
       }
-      if (action.payload.priceTo && state.filter) {
+      if (action.payload.priceTo) {
         state.filter.priceTo = action.payload.priceTo;
       }
-      if (action.payload.priceFrom && state.filter) {
+      if (action.payload.priceFrom) {
         state.filter.priceFrom = action.payload.priceFrom;
       }
-      if (action.payload.sortBy && state.filter) {
+      if (action.payload.sortBy) {
         state.filter.sortBy = action.payload.sortBy;
       }
     },

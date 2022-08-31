@@ -11,7 +11,6 @@ type DropMenuPropsType = {
 export const StyledSortPriorityMenu = styled.div<DropMenuPropsType>`
   display: ${(props) => (props.isVisible ? 'block' : 'none')};
   width: 197px;
-  height: 226px;
   background-color: ${({ theme }) => theme.palette.lightGreen};
   position: absolute;
   top: 75px;

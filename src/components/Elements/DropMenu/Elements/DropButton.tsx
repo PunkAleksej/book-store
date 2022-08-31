@@ -5,7 +5,7 @@ import SortPriorityMenu from '../SortPriorityMenu';
 import PriceSlider from '../PriceSlyder';
 import FilterByGenre from '../GenresMenu';
 
-type DropMenuButtonType ={
+type DropMenuButtonType = {
   buttonText: string;
   arrowDirection: boolean;
   onClick: (e: React.MouseEvent<HTMLElement>) => void;
@@ -17,24 +17,26 @@ const DropMenuButton: React.FC<DropMenuButtonType> = (props) => {
 
   return (
     <StyledDropButtonContainer>
-      <div className="drop_menu__button"
+      <div
+        className="drop_menu__button"
         onClick={onClick}
       >
         {buttonText}
         <DropMenuArrow
-        arrowDirection={arrowDirection}
+          arrowDirection={arrowDirection}
         />
       </div>
-      {dropMenuType === 'sortPriority' && arrowDirection
-        ? <SortPriorityMenu arrowDirection={arrowDirection} />
-        : null}
-      {dropMenuType === 'priceSlider' && arrowDirection
-        ? <PriceSlider arrowDirection={arrowDirection} />
-        : null}
+      {(dropMenuType === 'sortPriority' && arrowDirection) && (
+        <SortPriorityMenu arrowDirection={arrowDirection} />
+      )}
 
-       {dropMenuType === 'genresMenu' && arrowDirection
-         ? <FilterByGenre arrowDirection={arrowDirection} />
-         : null}
+      {(dropMenuType === 'priceSlider' && arrowDirection) && (
+        <PriceSlider arrowDirection={arrowDirection} />
+      )}
+
+      {dropMenuType === 'genresMenu' && arrowDirection && (
+        <FilterByGenre arrowDirection={arrowDirection} />
+      )}
     </StyledDropButtonContainer>
   );
 };

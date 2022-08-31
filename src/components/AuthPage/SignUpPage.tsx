@@ -19,21 +19,21 @@ import signUpSchema from '../schemas/SignUpSchema';
 import toastsWriter from '../utils/Toasts';
 import ButtonComponent from '../Elements/Button';
 
-const SignUp:React.FC = () => {
+const SignUp: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
-      Password: '',
-      RepeatPassword: '',
-      Email: '',
+      password: '',
+      repeatPassword: '',
+      email: '',
     },
     validationSchema: signUpSchema,
     onSubmit: async (values) => {
       try {
         const response = await signUp({
-          password: values.RepeatPassword,
-          email: values.Email,
+          password: values.repeatPassword,
+          email: values.email,
         });
         localStorage.setItem('token', response.data.token);
         const user = response.data.user;
@@ -49,9 +49,9 @@ const SignUp:React.FC = () => {
     },
   });
 
-  const emailLabelText = formik.errors.Email ? formik.errors.Email : 'Enter your email';
-  const passwordLabelText = formik.errors.Password ? formik.errors.Password : 'Enter your password';
-  const repeatPasswordLabelText = formik.errors.RepeatPassword ? formik.errors.RepeatPassword : 'Repeat your password';
+  const emailLabelText = formik.errors.email ? formik.errors.email : 'Enter your email';
+  const passwordLabelText = formik.errors.password ? formik.errors.password : 'Enter your password';
+  const repeatPasswordLabelText = formik.errors.repeatPassword ? formik.errors.repeatPassword : 'Repeat your password';
 
   return (
     <HeightContainer>
@@ -61,48 +61,48 @@ const SignUp:React.FC = () => {
           <h1 className="auth-menu_title">Sign Up</h1>
 
           <Input
-          icon={Mail}
-          name="Email"
-          type="email"
-          placeholder="Email"
-          onChange={formik.handleChange}
-          value={formik.values.Email}
-          err={formik.errors.Email}
-          onBlur={formik.handleBlur}
-          inputText={emailLabelText}
-          authInput
+            icon={Mail}
+            name="email"
+            type="email"
+            placeholder="Email"
+            onChange={formik.handleChange}
+            value={formik.values.email}
+            err={formik.errors.email}
+            onBlur={formik.handleBlur}
+            inputText={emailLabelText}
+            authInput
           />
 
           <Input
-          icon={Hide}
-          name="Password"
-          type="password"
-          placeholder="Password"
-          onChange={formik.handleChange}
-          value={formik.values.Password}
-          err={formik.errors.Password}
-          onBlur={formik.handleBlur}
-          inputText={passwordLabelText}
-          authInput
+            icon={Hide}
+            name="password"
+            type="password"
+            placeholder="Password"
+            onChange={formik.handleChange}
+            value={formik.values.password}
+            err={formik.errors.password}
+            onBlur={formik.handleBlur}
+            inputText={passwordLabelText}
+            authInput
           />
 
           <Input
-          icon={Hide}
-          name="RepeatPassword"
-          type="password"
-          placeholder="Repeat Password"
-          onChange={formik.handleChange}
-          value={formik.values.RepeatPassword}
-          err={formik.errors.RepeatPassword}
-          onBlur={formik.handleBlur}
-          inputText={repeatPasswordLabelText}
-          authInput
+            icon={Hide}
+            name="repeatPassword"
+            type="password"
+            placeholder="Repeat Password"
+            onChange={formik.handleChange}
+            value={formik.values.repeatPassword}
+            err={formik.errors.repeatPassword}
+            onBlur={formik.handleBlur}
+            inputText={repeatPasswordLabelText}
+            authInput
           />
 
           <Link to="/login" className="auth-menu_text">Sign in</Link>
           <ButtonComponent
-          text="Registration"
-          type="submit"
+            text="Registration"
+            type="submit"
           />
         </AuthMenu>
         <AuthImg />

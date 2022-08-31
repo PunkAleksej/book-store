@@ -9,22 +9,29 @@ import ProfilePage from './components/profilePage/ProfilePage';
 import SignUp from './components/AuthPage/SignUpPage';
 import { useAppDispatch } from './store';
 import { userActions } from './store/user/reduser';
+import { getMe } from './api/authentication';
+import BookPage from './components/BookPage/BookPage';
 import { getGenres } from './api/catalog';
 import { booksActions } from './store/book/reduser';
-import BookPage from './components/BookPage/BookPage';
 
 const App:React.FC = () => {
   const dispatch = useAppDispatch();
   const [isAuth, setIsAuth] = useState(false);
 
+  (async () => {
+    try {
+      const responseGenre = await getGenres();
+      dispatch(booksActions.loadGenresAndBooks(responseGenre.data));
+    } catch (err) {
+      // toastsWriter({ text: err.message, style: 'error' });
+    }
+  })();
+
   useEffect(() => {
     (async () => {
       try {
-        const responseGenre = await getGenres();
-        if (responseGenre.data.user) {
-          dispatch(userActions.addUser(responseGenre.data.user));
-        }
-        dispatch(booksActions.loadGenresAndBooks(responseGenre.data));
+        const authResponse = await getMe();
+        dispatch(userActions.addUser(authResponse.data.user));
       } catch (err) {
         // toastsWriter({ text: err.message, style: 'error' });
       } finally {

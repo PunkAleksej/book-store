@@ -15,8 +15,8 @@ type GenresResponseType = {
 };
 
 type CreateRatingType = {
-  bookId: string;
-  bookRating: string;
+  bookId: number;
+  bookRating: number;
 };
 
 type CreateRatingResponceType = {
