@@ -1,4 +1,5 @@
 import React from 'react';
+import { AxiosError } from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useAppDispatch } from '../../store';
@@ -18,6 +19,13 @@ import { signUp } from '../../api/authentication';
 import signUpSchema from '../schemas/SignUpSchema';
 import toastsWriter from '../utils/Toasts';
 import ButtonComponent from '../Elements/Button';
+
+type ErrorPayloadType = {
+  message: string;
+  field: string;
+  path: string;
+  errorType: string;
+};
 
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
@@ -40,11 +48,15 @@ const SignUp: React.FC = () => {
         dispatch(userActions.addUser(user));
         navigate('/profile');
         toastsWriter({ text: 'Registration success', style: 'success' });
-      } catch (error: any) {
-        const errorText = error.response.data
-          ? error.response.data.payload[0].message
-          : error.message;
-        toastsWriter({ text: errorText, style: 'error' });
+      } catch (error) {
+        if (error instanceof AxiosError) {
+          if (error.response) {
+            error.response.data.payload.map((payload: ErrorPayloadType) => (
+              toastsWriter({ text: payload.message, style: 'error' })
+            ));
+          }
+          toastsWriter({ text: error.message, style: 'error' });
+        }
       }
     },
   });
@@ -62,41 +74,32 @@ const SignUp: React.FC = () => {
 
           <Input
             icon={Mail}
-            name="email"
             type="email"
             placeholder="Email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
             err={formik.errors.email}
-            onBlur={formik.handleBlur}
             inputText={emailLabelText}
             authInput
+            {...formik.getFieldProps('email')}
           />
 
           <Input
             icon={Hide}
-            name="password"
             type="password"
             placeholder="Password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
             err={formik.errors.password}
-            onBlur={formik.handleBlur}
             inputText={passwordLabelText}
             authInput
+            {...formik.getFieldProps('password')}
           />
 
           <Input
             icon={Hide}
-            name="repeatPassword"
             type="password"
             placeholder="Repeat Password"
-            onChange={formik.handleChange}
-            value={formik.values.repeatPassword}
             err={formik.errors.repeatPassword}
-            onBlur={formik.handleBlur}
             inputText={repeatPasswordLabelText}
             authInput
+            {...formik.getFieldProps('repeatPassword')}
           />
 
           <Link to="/login" className="auth-menu_text">Sign in</Link>

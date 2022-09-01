@@ -16,6 +16,7 @@ const Catalog:React.FC = () => {
               cover={book.cover}
               price={book.price}
               author={book.author.name}
+              bookId={book.id}
             />
           ))
         }

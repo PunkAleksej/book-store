@@ -1,29 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { RatingStar, RatingStarContainer } from './BookRatingStars.styles';
-import { createRating } from '../../../api/catalog';
+import { createRating, getBook } from '../../../api/catalog';
+import { booksActions } from '../../../store/book/reduser';
+import { useAppDispatch } from '../../../store';
 
 type BookRatingType = {
   middleRating: number;
-  bookId: number;
+  targetBookId: string;
 };
 
 const BookRatingStars:React.FC<BookRatingType> = (props) => {
-  const handleClick = async (id: number) => {
+  const { targetBookId, middleRating } = props;
+  const dispatch = useAppDispatch();
+  const handleClick = async (star: number) => {
     try {
-      const ratingResponse = await createRating({
-        bookId: props.bookId, bookRating: id,
+      await createRating({
+        bookId: targetBookId.toString(), bookRating: star.toString(),
       });
-      console.log('>>', ratingResponse.data.rating.Book.middleRating);
-      setMiddleRatingStarColor(Math.round(+ratingResponse.data.rating.Book.middleRating));
+      const getBookResponse = await getBook({ id: targetBookId.toString() });
+      dispatch(booksActions.loadBooks([getBookResponse.data]));
     } catch (err) {
       console.log(err);
     }
   };
-  const [bookRating, setMiddleRatingStarColor] = useState(props.middleRating);
-  useEffect(() => {
-    // setMiddleRatingStarColor(Math.round(+targetBook.middleRating));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bookRating]);
   const starsArray: number[] = [1, 2, 3, 4, 5];
   return (
   <RatingStarContainer>
@@ -32,7 +31,7 @@ const BookRatingStars:React.FC<BookRatingType> = (props) => {
         <RatingStar
           key={star}
           onClick={() => handleClick(star)}
-          isActive={bookRating >= star}
+          isActive={middleRating >= star}
         />
       ))
     }

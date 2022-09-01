@@ -15,8 +15,8 @@ type GenresResponseType = {
 };
 
 type CreateRatingType = {
-  bookId: number;
-  bookRating: number;
+  bookId: string;
+  bookRating: string;
 };
 
 type CreateRatingResponceType = {
@@ -24,6 +24,10 @@ type CreateRatingResponceType = {
     Book: BookType;
     User: UserType;
   };
+};
+
+type BookIdType = {
+  id: string;
 };
 
 export const getGenres = (): Promise<AxiosResponse<GenresResponseType>> => {
@@ -35,6 +39,12 @@ export const getGenres = (): Promise<AxiosResponse<GenresResponseType>> => {
 export const getBooks = (): Promise<AxiosResponse<BookType[]>> => {
   return customAxios.post(
     '/catalog/filterBooks',
+  );
+};
+
+export const getBook = (params: BookIdType): Promise<AxiosResponse<BookType>> => {
+  return customAxios.get(
+    '/catalog/getBook', { params },
   );
 };
 

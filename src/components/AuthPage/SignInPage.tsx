@@ -21,6 +21,13 @@ import signInSchema from '../schemas/SignInPageShema';
 import toastsWriter from '../utils/Toasts';
 import ButtonComponent from '../Elements/Button';
 
+type ErrorPayloadType = {
+  message: string;
+  field: string;
+  path: string;
+  errorType: string;
+};
+
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -43,10 +50,16 @@ const SignIn: React.FC = () => {
         navigate('/');
       } catch (error) {
         if (error instanceof AxiosError) {
-          const errorText = error.response?.data
-            ? error.response.data.payload[0].message
-            : error.message;
-          toastsWriter({ text: errorText, style: 'error' });
+          if (error.response) {
+            error.response.data.payload.map((payload: ErrorPayloadType) => (
+              toastsWriter({ text: payload.message, style: 'error' })
+            ));
+          }
+          toastsWriter({ text: error.message, style: 'error' });
+          // const errorText = error.response?.data
+          //   ? error.response.data.payload[0].message
+          //   : error.message;
+          // toastsWriter({ text: errorText, style: 'error' });
         }
       }
     },
@@ -58,7 +71,6 @@ const SignIn: React.FC = () => {
   const passwordError = formik.errors.password && formik.touched.password
     ? formik.errors.password
     : undefined;
-  console.log(formik.errors);
 
   return (
     <HeightContainer>
@@ -73,22 +85,19 @@ const SignIn: React.FC = () => {
             type="email"
             placeholder="Email"
             err={emailError}
-            inputText={emailLabelText}
+            inputText={emailError || emailLabelText}
             authInput
             {...formik.getFieldProps('email')}
           />
 
           <Input
             icon={Hide}
-            name="password"
             type="password"
             placeholder="Password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
             err={passwordError}
-            onBlur={formik.handleBlur}
-            inputText={passwordLabelText}
+            inputText={passwordError || passwordLabelText}
             authInput
+            {...formik.getFieldProps('password')}
           />
 
           <Link to="/sign-up" className="auth-menu_text">Registration</Link>

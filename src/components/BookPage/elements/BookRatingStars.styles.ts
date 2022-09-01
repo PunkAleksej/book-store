@@ -5,6 +5,7 @@ import WhiteStar from '../../../assets/images/Star_white.png';
 type RatingStarType = {
   isActive: boolean;
 };
+
 export const RatingStarContainer = styled.div`
   display: flex;
 `;
