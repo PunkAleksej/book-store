@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ScrollToTop from '../utils/ScrollToTop';
 import Header from '../Header/Header';
 import Catalog from './MainCatalog';
 import Banner from '../TopBanner/MainBanner';
@@ -23,6 +23,7 @@ const Main:React.FC = () => {
   })();
   return (
     <div className="main_container">
+      <ScrollToTop />
       <Header />
       <Banner />
       <CatalogBar />

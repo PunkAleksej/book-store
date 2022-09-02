@@ -17,12 +17,13 @@ export const StyledSortPriorityMenu = styled.div<DropMenuPropsType>`
   right: 5px;
   border-radius: 16px;
   justify-content: flex-start;
+  z-index: 100;
 `;
 
 export const StyledSortPriorityTarget = styled.div<SortPtiorityPropsType>`
-    padding: 10px 15px;
-    text-align: left;
-    color: ${(p) => (p.isActive
+  padding: 10px 15px;
+  text-align: left;
+  color: ${(p) => (p.isActive
     ? (props) => props.theme.palette.darkBlue
     : (props) => props.theme.palette.ligthGrey)
 };

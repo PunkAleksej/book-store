@@ -11,6 +11,7 @@ import { useAppDispatch } from './store';
 import { userActions } from './store/user/reduser';
 import { getMe } from './api/authentication';
 import BookPage from './components/BookPage/BookPage';
+import CartPage from './components/CartPage/CartPage';
 
 const App:React.FC = () => {
   const dispatch = useAppDispatch();
@@ -43,6 +44,7 @@ const App:React.FC = () => {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/loading" element={<Loading />} />
         <Route path="/book/:id" element={<BookPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route
             path="/profile"
             element={

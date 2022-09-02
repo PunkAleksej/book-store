@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ButtonComponent from '../../Elements/Button';
 import { CardContainer, RatingStar } from './BookCard.styles';
 import heart from '../../../assets/images/Heart.svg';
+import BookRatingStars from '../../BookPage/elements/BookRatingStars';
 
 type BookCatalogType = {
   bookName: string;
@@ -20,18 +21,25 @@ const BookCard:React.FC<BookCatalogType> = (props) => {
   return (
     <CardContainer cover={props.cover}>
       <div className="card_img">
-          <div className="card_img_background">
-            <div className="card_img_bacground_button-container">
-              <ButtonComponent
-              size="small"
-              icon={heart}
-              />
-            </div>
+          <Link to={bookLink}><div className="card_img_background" /></Link>
+          <div className="card_img_bacground_button-container">
+            <ButtonComponent
+            size="small"
+            icon={heart}
+            disable
+            />
           </div>
       </div>
       <div className="card_info">
         <Link to={bookLink}><h2 className="card_info_book-name">{props.bookName}</h2></Link>
         <h2 className="card_info_book-author">{props.author}</h2>
+        {/* <div className="card_info_book-raiting">
+          <BookRatingStars
+            middleRating={middleRatingStarColor}
+            targetBookId={props.bookId}
+          />
+          <p className="card_info_book-ratting_number">{middleRatingStarColor}.0</p>
+        </div> */}
         <div className="card_info_book-raiting">
           <RatingStar isActive={middleRatingStarColor >= 1} />
           <RatingStar isActive={middleRatingStarColor >= 2} />

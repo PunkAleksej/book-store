@@ -10,7 +10,7 @@ export const SlyderContainer = styled.div<DropMenuPropsType>`
   justify-content: flex-start;
   float: left;
   background-color: #F0F4EF;
-  padding: 15px;
+  padding: 25px;
   position: absolute;
   width: 380px;
   height: 151px;
@@ -46,6 +46,7 @@ export const SlyderContainer = styled.div<DropMenuPropsType>`
   }
 
   .rc-slider-handle {
+    margin-top: 1px;
     opacity: 1 !important;
     position: absolute;
     width: 32px !important;

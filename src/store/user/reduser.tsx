@@ -2,11 +2,17 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
+type CartType = {
+  booksQuantity: number;
+  id: number;
+};
+
 export type UserType = {
   firstName?: string;
   photo?: string;
   email: string;
   id: string;
+  cart: CartType[];
 };
 
 export type UserToUpdateType = {

@@ -12,16 +12,19 @@ export const CardContainer = styled.div<BookCoverType>`
   .card_img_background {
     width: 100%;
     height: 100%;
+    position: absolute;
     border-radius: 16px;
     background-image: url(${(props) => props.cover});
   }
   .card_img_bacground_button-container {
     padding: 20px;
+    position: absolute;
   }
   .card_button-container {
     padding: 30px 0px 60px 0px;
   }
   .card_img {
+    position: relative;
     width: 305px;
     height: 448px;
     margin-bottom: 30px;

@@ -36,3 +36,7 @@ export const ErrorLabel = styled.label`
   padding: 30px 0px 0px 0px;
   color: ${(props) => props.theme.palette.error};
 `;
+
+export const ButtonContainer = styled.div`
+  margin-bottom: 30px;
+`;

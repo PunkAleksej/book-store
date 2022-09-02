@@ -18,4 +18,9 @@ export const RatingStar = styled.div<RatingStarType>`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  cursor: pointer;
+  :hover {
+    box-shadow: 0px 0px 0px 2px ${(props) => props.theme.palette.green};
+    border-radius: 50%;
+  }
 `;

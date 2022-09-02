@@ -11,6 +11,7 @@ import { getBook } from '../../api/catalog';
 import BookRatingStars from './elements/BookRatingStars';
 import { booksActions } from '../../store/book/reduser';
 import Loading from '../LoadingPage/LoadingPage';
+import ScrollToTop from '../../components/utils/ScrollToTop';
 
 const BookPage:React.FC = () => {
   const params = useParams();
@@ -31,6 +32,7 @@ const BookPage:React.FC = () => {
   const middleRatingStarColor = Math.round(+targetBook.middleRating);
   return (
     <div>
+      <ScrollToTop />
       <Header />
       <BookPageContainer cover={targetBook.cover}>
         <div className="book_cover">

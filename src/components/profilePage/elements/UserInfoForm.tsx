@@ -10,6 +10,7 @@ import Mail from '../../../assets/images/Mail.svg';
 import userInfoSchema from '../../schemas/UserInfoSchema';
 import toastsWriter from '../../utils/Toasts';
 import ButtonComponent from '../../Elements/Button';
+import { ButtonContainer } from './ProfilePhoto.styles';
 
 type PropsUserInfoType = {
   isUserInfoChange: boolean;
@@ -92,7 +93,9 @@ const UserInfoForm:React.FC<PropsUserInfoType> = (props) => {
       value={formik.values.email}
       inputText=""
       />
-      <ButtonComponent text="Confirm" type="submit" />
+      <ButtonContainer>
+        <ButtonComponent text="Confirm" type="submit" />
+      </ButtonContainer>
     </form>
   );
 };
