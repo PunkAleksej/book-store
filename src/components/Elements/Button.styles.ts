@@ -25,21 +25,22 @@ export const StyledTestButton = styled.button<ButtonPropsType>`
     ? (props) => props.theme.palette.white
     : (props) => props.theme.palette.darkBlack)};
   }
-  :focus {
+  :active {
     box-shadow: 0px 0px 0px 8px ${(props) => props.theme.palette.lightBlue};
   }
-  ${({ disabled, secondaryStyle }) => {
-    if (disabled && secondaryStyle) {
+  ${({ disable, secondaryStyle }) => {
+    if (disable && secondaryStyle) {
       return css`
       border: 1px solid ${(props) => props.theme.palette.ligthGrey};
       color: ${(props) => props.theme.palette.ligthGrey};
       `;
     }
-    if (disabled && !secondaryStyle) {
+    if (disable && !secondaryStyle) {
       return css`
       border: 1px solid ${(props) => props.theme.palette.ligthGrey};
       color: ${(props) => props.theme.palette.lightGreen};
-      background-color: ${(props) => props.theme.palette.ligthGrey};
+      /* background-color: ${(props) => props.theme.palette.ligthGrey}; */
+      opacity: 0.5;
       `;
     }
   }}

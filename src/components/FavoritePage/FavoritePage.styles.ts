@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CartContainer = styled.div`
+export const FavoriteContainer = styled.div`
   margin: 0px auto;
   padding: 0px 80px;
   width: 100%;

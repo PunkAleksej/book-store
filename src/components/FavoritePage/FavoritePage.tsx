@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
-import { CartContainer } from './CartPage.styles';
+import { FavoriteContainer } from './FavoritePage.styles';
 import { useAppSelector } from '../../store';
-import BookInCart from './elements/BookInCart';
-import EmptyCart from './elements/EmptyCart';
-import TotalPrice from './elements/TotalPrice';
+import FavoriteBook from './Elements/FavoriteBook';
+import EmptyFavorite from './Elements/EmptyFavorite';
 import { getBooksById } from '../../api/catalog';
 import type { BookType } from '../../store/book/reduser';
 
-const CartPage:React.FC = () => {
-  const cartState = useAppSelector((store) => store.userState.user);
+const FavoritePage:React.FC = () => {
+  const favoriteState = useAppSelector((store) => store.userState.user);
   const [bookArr, setBookArr] = useState([] as BookType[]);
   useEffect(() => {
     getBooksArray();
@@ -17,8 +16,8 @@ const CartPage:React.FC = () => {
   }, [bookArr]);
   const getBooksArray = async () => {
     try {
-      if (cartState) {
-        const booksId = cartState?.cart.map((book) => (book.id));
+      if (favoriteState) {
+        const booksId = favoriteState?.favorite.map((book) => (book.id));
         const response = await getBooksById({ bookId: booksId.toString() });
         const booksResponse = response.data;
         setBookArr(booksResponse);
@@ -27,19 +26,15 @@ const CartPage:React.FC = () => {
       console.log(err);
     }
   };
-  // getBooksArray();
-  // const bookArr = useAppSelector((store) => store.bookState.books);
-  const totalPrice = bookArr.map((book) => (
-    +book.price
-  )).reduce((acc, number) => acc + number, 0);
+
   return (
     <div>
       <Header />
-      <CartContainer>
+      <FavoriteContainer>
         {bookArr &&
         bookArr.map((targetBook) => (
         <div key={targetBook.id}>
-          <BookInCart
+          <FavoriteBook
             cover={targetBook.cover}
             author={targetBook.author.name}
             title={targetBook.name}
@@ -49,12 +44,10 @@ const CartPage:React.FC = () => {
         </div>
         ))
       }
-        {!bookArr.length
-          ? <EmptyCart />
-          : <TotalPrice totalPrice={totalPrice} />}
-      </CartContainer>
+        {!bookArr.length && <EmptyFavorite /> }
+      </FavoriteContainer>
     </div>
   );
 };
 
-export default CartPage;
+export default FavoritePage;

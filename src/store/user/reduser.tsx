@@ -7,12 +7,18 @@ type CartType = {
   id: number;
 };
 
+type FavoriteType = {
+  booksQuantity: number;
+  id: number;
+};
+
 export type UserType = {
   firstName?: string;
   photo?: string;
   email: string;
   id: string;
   cart: CartType[];
+  favorite: FavoriteType[];
 };
 
 export type UserToUpdateType = {

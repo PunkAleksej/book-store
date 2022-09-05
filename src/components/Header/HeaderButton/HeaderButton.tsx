@@ -23,8 +23,8 @@ const HeaderButton:React.FC = () => {
   }
   return (
     <StyledButtonBar>
-      <Link to="/"><ButtonComponent size="small" icon={cart} /></Link>
-      <Link to="/"><ButtonComponent size="small" icon={heart} /></Link>
+      <Link to="/cart"><ButtonComponent size="small" icon={cart} /></Link>
+      <Link to="/favorite"><ButtonComponent size="small" icon={heart} /></Link>
       <Link to="/profile"><ButtonComponent size="small" icon={profile} /></Link>
     </StyledButtonBar>
   );

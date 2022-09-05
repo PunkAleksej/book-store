@@ -19,6 +19,11 @@ type CreateRatingType = {
   bookRating: string;
 };
 
+type AddInCartType = {
+  bookId: string;
+  booksQuantity: string;
+};
+
 type CreateRatingResponceType = {
   rating: {
     Book: BookType;
@@ -30,15 +35,27 @@ type BookIdType = {
   id: string;
 };
 
+type AddToFavoriteType = {
+  bookId: string;
+};
+
+type GetBooksByIdType = {
+  bookId: string;
+};
+type AddToCartResponseType = {
+  user: UserType;
+};
+
 export const getGenres = (): Promise<AxiosResponse<GenresResponseType>> => {
   return customAxios.get(
     '/catalog/getGenres',
   );
 };
 
-export const getBooks = (): Promise<AxiosResponse<BookType[]>> => {
+export const getBooksById = (options: GetBooksByIdType): Promise<AxiosResponse<BookType[]>> => {
   return customAxios.post(
-    '/catalog/filterBooks',
+    '/catalog/cart-books',
+    options,
   );
 };
 
@@ -59,6 +76,22 @@ export const createRating =
 (options: CreateRatingType): Promise<AxiosResponse<CreateRatingResponceType>> => {
   return customAxios.post(
     '/catalog/rating',
+    options,
+  );
+};
+
+export const addToCart =
+(options: AddInCartType): Promise<AxiosResponse<AddToCartResponseType>> => {
+  return customAxios.post(
+    '/catalog/cart',
+    options,
+  );
+};
+
+export const addToFavorite =
+(options: AddToFavoriteType): Promise<AxiosResponse<AddToCartResponseType>> => {
+  return customAxios.post(
+    '/catalog/favorite',
     options,
   );
 };

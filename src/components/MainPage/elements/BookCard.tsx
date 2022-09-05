@@ -4,6 +4,10 @@ import ButtonComponent from '../../Elements/Button';
 import { CardContainer, RatingStar } from './BookCard.styles';
 import heart from '../../../assets/images/Heart.svg';
 import BookRatingStars from '../../BookPage/elements/BookRatingStars';
+import { addToCart, addToFavorite } from '../../../api/catalog';
+import { useAppDispatch } from '../../../store';
+import { userActions } from '../../../store/user/reduser';
+import { getMe } from '../../../api/authentication';
 
 type BookCatalogType = {
   bookName: string;
@@ -12,21 +16,42 @@ type BookCatalogType = {
   middleRating: string;
   price: string;
   bookId: string;
+  isFavorite: boolean;
+  isCart: boolean;
 };
 
 const BookCard:React.FC<BookCatalogType> = (props) => {
-  const bookPrice = `$ ${props.price} USD`;
+  const dispatch = useAppDispatch();
+  const bookPrice = props.isCart ? 'Added to cart' : `$ ${props.price} USD`;
   const middleRatingStarColor = Math.round(+props.middleRating);
   const bookLink = `book/${props.bookId}`;
+  const handleClick = async () => {
+    try {
+      await addToCart({ bookId: props.bookId.toString(), booksQuantity: '1' });
+      const authResponse = await getMe();
+      dispatch(userActions.addUser(authResponse.data.user));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const addFavorite = async () => {
+    try {
+      await addToFavorite({ bookId: props.bookId.toString() });
+      const authResponse = await getMe();
+      dispatch(userActions.addUser(authResponse.data.user));
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <CardContainer cover={props.cover}>
       <div className="card_img">
           <Link to={bookLink}><div className="card_img_background" /></Link>
-          <div className="card_img_bacground_button-container">
+          <div onClick={addFavorite} className="card_img_bacground_button-container">
             <ButtonComponent
             size="small"
             icon={heart}
-            disable
+            disable={props.isFavorite}
             />
           </div>
       </div>
@@ -49,10 +74,11 @@ const BookCard:React.FC<BookCatalogType> = (props) => {
           <p className="card_info_book-ratting_number">{middleRatingStarColor}.0</p>
         </div>
       </div>
-      <div className="card_button-container">
+      <div onClick={handleClick} className="card_button-container">
         <ButtonComponent
         text={bookPrice}
         size="large"
+        secondaryStyle={props.isCart}
         />
       </div>
 

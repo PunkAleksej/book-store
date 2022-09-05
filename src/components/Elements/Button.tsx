@@ -9,6 +9,7 @@ type ButtonPropsType = {
   type?: 'button' | 'submit' | 'reset';
   size?: 'small' | 'medium' | 'large';
   icon?: string;
+  onClick?: () => Promise<void>;
 };
 
 const ButtonComponent: React.FC<ButtonPropsType> = (props) => {
