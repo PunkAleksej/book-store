@@ -4,10 +4,10 @@ import ButtonComponent from '../../Elements/Button';
 import { CardContainer, RatingStar } from './BookCard.styles';
 import heart from '../../../assets/images/Heart.svg';
 import BookRatingStars from '../../BookPage/elements/BookRatingStars';
-import { addToCart, addToFavorite } from '../../../api/catalog';
-import { useAppDispatch } from '../../../store';
+import { addToCart, addToFavorite, deleteFromFavorite } from '../../../api/catalog';
+import { useAppDispatch, useAppSelector } from '../../../store';
 import { userActions } from '../../../store/user/reduser';
-import { getMe } from '../../../api/authentication';
+import FavoriteBook from '../../FavoritePage/Elements/FavoriteBook';
 
 type BookCatalogType = {
   bookName: string;
@@ -25,24 +25,36 @@ const BookCard:React.FC<BookCatalogType> = (props) => {
   const bookPrice = props.isCart ? 'Added to cart' : `$ ${props.price} USD`;
   const middleRatingStarColor = Math.round(+props.middleRating);
   const bookLink = `book/${props.bookId}`;
+  const user = useAppSelector((store) => store.userState.user);
   const handleClick = async () => {
     try {
-      await addToCart({ bookId: props.bookId.toString(), booksQuantity: '1' });
-      const authResponse = await getMe();
-      dispatch(userActions.addUser(authResponse.data.user));
+      const addToCartResponse = await addToCart({ bookId: props.bookId.toString(), booksQuantity: '1' });
+      dispatch(userActions.addUser(addToCartResponse.data.user));
     } catch (err) {
       console.log(err);
     }
   };
   const addFavorite = async () => {
+    if (!user) return;
+    const findFavoriteId = () => {
+      const findFavorite = user.favorite.filter((elem) => elem.bookId === +props.bookId);
+      return findFavorite[0].id.toString();
+    };
     try {
-      await addToFavorite({ bookId: props.bookId.toString() });
-      const authResponse = await getMe();
-      dispatch(userActions.addUser(authResponse.data.user));
+      if (props.isFavorite) {
+        const deleteFromFavoriteResponse = await deleteFromFavorite({
+          id: findFavoriteId(),
+        });
+        dispatch(userActions.addUser(deleteFromFavoriteResponse.data.user));
+      } else {
+        const addToFavoriteResponse = await addToFavorite({ bookId: props.bookId.toString() });
+        dispatch(userActions.addUser(addToFavoriteResponse.data.user));
+      }
     } catch (err) {
       console.log(err);
     }
   };
+
   return (
     <CardContainer cover={props.cover}>
       <div className="card_img">
@@ -51,7 +63,7 @@ const BookCard:React.FC<BookCatalogType> = (props) => {
             <ButtonComponent
             size="small"
             icon={heart}
-            disable={props.isFavorite}
+            disable={!props.isFavorite}
             />
           </div>
       </div>

@@ -3,6 +3,7 @@ import emptyCart from '../../../assets/images/empty-cart.png';
 
 export const EmptyCartContainer = styled.div`
   display: flex;
+  padding: 0px 0px 200px 0px;
   .cart_book-img {
     width: 433px;
     height: 261px;

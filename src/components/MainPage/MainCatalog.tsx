@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BookCard from './elements/BookCard';
 import { BookContainer } from './MainCatalogBar.styles';
-import { useAppSelector } from '../../store';
+import { useAppSelector, useAppDispatch } from '../../store';
+import { userActions } from '../../store/user/reduser';
+import { getMe } from '../../api/authentication';
 
 const Catalog:React.FC = () => {
+  const dispatch = useAppDispatch();
   const booksInStore = useAppSelector((store) => store.bookState.books);
   const user = useAppSelector((store) => store.userState.user);
   const inFavorite = user?.favorite.map((favorite) => (
-    favorite.id
+    favorite.bookId
   ));
-  const inCart = user?.favorite.map((cart) => (
-    cart.id
+  const inCart = user?.cart.map((cart) => (
+    cart.bookId
   ));
+  const updateUser = async () => {
+    try {
+      const authResponse = await getMe();
+      dispatch(userActions.addUser(authResponse.data.user));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    updateUser();
+  }, []);
   return (
     <BookContainer>
         {!!booksInStore.length &&
@@ -24,8 +38,8 @@ const Catalog:React.FC = () => {
               price={book.price}
               author={book.author.name}
               bookId={book.id}
-              isFavorite={inFavorite?.indexOf(+book.id) === -1 }
-              isCart={inCart?.indexOf(+book.id) === -1 }
+              isFavorite={inFavorite?.indexOf(+book.id) !== -1 }
+              isCart={inCart?.indexOf(+book.id) !== -1 }
             />
           ))
         }

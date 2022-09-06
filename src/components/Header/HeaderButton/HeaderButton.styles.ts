@@ -8,6 +8,20 @@ export const StyledButtonBar = styled.div`
   justify-content: space-between;
   width: 200px;
   margin: auto 0px;
+  .header_butoon-container {
+    position: relative;
+  }
+  .header_butoon-container_counter {
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    left: 33px;
+    top: -6px;
+    background-color: ${(props) => props.theme.palette.green};
+    color: ${(props) => props.theme.palette.darkBlack};
+    border-radius: 50%;
+    text-align: center;
+  }
   .headers_button {
     width: 48px;
     height: 48px;

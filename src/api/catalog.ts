@@ -46,6 +46,10 @@ type AddToCartResponseType = {
   user: UserType;
 };
 
+type DeleteFromFavoriteResponseType = {
+  id: string;
+};
+
 export const getGenres = (): Promise<AxiosResponse<GenresResponseType>> => {
   return customAxios.get(
     '/catalog/getGenres',
@@ -92,6 +96,22 @@ export const addToFavorite =
 (options: AddToFavoriteType): Promise<AxiosResponse<AddToCartResponseType>> => {
   return customAxios.post(
     '/catalog/favorite',
+    options,
+  );
+};
+
+export const deleteFromFavorite =
+(options: DeleteFromFavoriteResponseType): Promise<AxiosResponse<AddToCartResponseType>> => {
+  return customAxios.post(
+    '/catalog/delete-favorite',
+    options,
+  );
+};
+
+export const deleteFromCart =
+(options: DeleteFromFavoriteResponseType): Promise<AxiosResponse<AddToCartResponseType>> => {
+  return customAxios.post(
+    '/catalog/delete-cart',
     options,
   );
 };

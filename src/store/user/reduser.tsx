@@ -5,11 +5,13 @@ import { createSlice } from '@reduxjs/toolkit';
 type CartType = {
   booksQuantity: number;
   id: number;
+  bookId: number;
 };
 
 type FavoriteType = {
   booksQuantity: number;
   id: number;
+  bookId: number;
 };
 
 export type UserType = {

@@ -39,6 +39,7 @@ export type FilterType = {
   selectGenres: number[];
   priceFrom: number;
   priceTo: number;
+  page: number;
   sortBy: 'price' | 'author' | 'middleRating' | 'releasedAt' | 'name';
 };
 
@@ -46,6 +47,7 @@ export type FilterToUpdateType = {
   selectGenres?: number[];
   priceFrom?: number;
   priceTo?: number;
+  page?: number;
   sortBy?: 'price' | 'author' | 'middleRating' | 'releasedAt' | 'name';
 };
 
@@ -62,6 +64,7 @@ const initialState: BookStateType = {
     priceFrom: 0,
     priceTo: 10000,
     sortBy: 'middleRating',
+    page: 1,
   },
   genres: [],
 };
@@ -94,6 +97,9 @@ const bookReduser = createSlice({
       }
       if (action.payload.sortBy) {
         state.filter.sortBy = action.payload.sortBy;
+      }
+      if (action.payload.page) {
+        state.filter.page = action.payload.page;
       }
     },
   },

@@ -9,6 +9,7 @@ import CatalogBanner from '../BottomBanner/CatalogBanner';
 import { useAppDispatch } from '../../store';
 import { getGenres } from '../../api/catalog';
 import { booksActions } from '../../store/book/reduser';
+import PaginationPanel from './elements/PaginationPanel';
 // import toastsWriter from '../utils/Toasts';
 
 const Main:React.FC = () => {
@@ -22,12 +23,13 @@ const Main:React.FC = () => {
     }
   })();
   return (
-    <div className="main_container">
+    <div>
       <ScrollToTop />
       <Header />
       <Banner />
       <CatalogBar />
       <Catalog />
+      <PaginationPanel />
       <CatalogBanner />
       <Footer />
     </div>

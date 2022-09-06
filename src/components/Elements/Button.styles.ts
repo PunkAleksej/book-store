@@ -31,15 +31,15 @@ export const StyledTestButton = styled.button<ButtonPropsType>`
   ${({ disable, secondaryStyle }) => {
     if (disable && secondaryStyle) {
       return css`
-      border: 1px solid ${(props) => props.theme.palette.ligthGrey};
+      border: 1px solid ${(props) => props.theme.palette.darkBlue};
       color: ${(props) => props.theme.palette.ligthGrey};
       `;
     }
     if (disable && !secondaryStyle) {
       return css`
-      border: 1px solid ${(props) => props.theme.palette.ligthGrey};
-      color: ${(props) => props.theme.palette.lightGreen};
       /* background-color: ${(props) => props.theme.palette.ligthGrey}; */
+      border: 1px solid ${(props) => props.theme.palette.darkBlue};
+      color: ${(props) => props.theme.palette.lightGreen};
       opacity: 0.5;
       `;
     }

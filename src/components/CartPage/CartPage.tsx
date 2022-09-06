@@ -7,18 +7,20 @@ import EmptyCart from './elements/EmptyCart';
 import TotalPrice from './elements/TotalPrice';
 import { getBooksById } from '../../api/catalog';
 import type { BookType } from '../../store/book/reduser';
+import Footer from '../Footer/Footer';
 
 const CartPage:React.FC = () => {
   const cartState = useAppSelector((store) => store.userState.user);
   const [bookArr, setBookArr] = useState([] as BookType[]);
+  const booksId = cartState?.cart.map((cart) => (cart.bookId));
+  const user = useAppSelector((store) => store.userState.user);
   useEffect(() => {
     getBooksArray();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bookArr]);
+  }, [user]);
   const getBooksArray = async () => {
     try {
-      if (cartState) {
-        const booksId = cartState?.cart.map((book) => (book.id));
+      if (booksId) {
         const response = await getBooksById({ bookId: booksId.toString() });
         const booksResponse = response.data;
         setBookArr(booksResponse);
@@ -40,6 +42,7 @@ const CartPage:React.FC = () => {
         bookArr.map((targetBook) => (
         <div key={targetBook.id}>
           <BookInCart
+            bookId={targetBook.id}
             cover={targetBook.cover}
             author={targetBook.author.name}
             title={targetBook.name}
@@ -53,6 +56,7 @@ const CartPage:React.FC = () => {
           ? <EmptyCart />
           : <TotalPrice totalPrice={totalPrice} />}
       </CartContainer>
+      <Footer />
     </div>
   );
 };
