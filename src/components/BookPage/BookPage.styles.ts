@@ -9,7 +9,7 @@ type BookCoverType = {
 
 export const BookPageContainer = styled.div<BookCoverType>`
     width: 1280px;
-    padding: 60px 80px;
+    padding: 60px 0px;
     margin: 0px auto;
     display: flex;
     justify-content: space-between;

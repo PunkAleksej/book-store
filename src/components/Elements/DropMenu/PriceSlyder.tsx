@@ -56,8 +56,8 @@ const PriceSlider:React.FC<DropMenuPropsType> = (props) => {
         />
       </div>
     <div className="slider_range-text">
-      <p>$ {priceChoice[0]}</p>
-      <p>$ {priceChoice[1]}</p>
+      <p>$ {priceChoice[0] / 100}</p>
+      <p>$ {priceChoice[1] / 100}</p>
     </div>
     </SlyderContainer>
   );

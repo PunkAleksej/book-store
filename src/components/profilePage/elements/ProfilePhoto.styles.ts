@@ -13,10 +13,17 @@ export const ProfileImg = styled.div<ProfilePhotoType>`
   width: 305px;
   height: 305px;
   margin: 0px 128px 0px 0px;
+  @media only screen and (max-device-width: 1280px){
+    width: 255px;
+    height: 255px;
+    margin: 0px 20px 0px 0px;
+  }
 `;
+
 export const PhotoInput = styled.input`
   display: none;
 `;
+
 export const InputButton = styled.button`
   width: 48px;
   height: 48px;
@@ -29,6 +36,9 @@ export const InputButton = styled.button`
   background-repeat: no-repeat;
   background-size: 26px 26px;
   background-position: center;
+  @media only screen and (max-device-width: 1280px){
+    margin: 200px 0px 0px 200px;
+  }
 `;
 
 export const ErrorLabel = styled.label`

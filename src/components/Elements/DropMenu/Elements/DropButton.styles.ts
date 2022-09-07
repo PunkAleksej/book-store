@@ -4,7 +4,7 @@ export const StyledDropButtonContainer = styled.div`
   position: relative;
   .drop_menu__button {
     position: relative;
-    margin: auto 10px;
+    margin: auto 0px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -17,5 +17,10 @@ export const StyledDropButtonContainer = styled.div`
     font-weight: 500;
     color: ${({ theme }) => theme.palette.darkBlue};
     border-radius: 16px;
+  }
+  @media only screen and (max-device-width: 1280px){
+  .drop_menu__button {
+    width: 230px;
+  }
   }
 `;

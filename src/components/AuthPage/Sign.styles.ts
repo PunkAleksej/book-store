@@ -10,11 +10,15 @@ export const HeightContainer = styled.div`
 export const AuthContainer = styled.div`
   width: 100%;
   max-width: 1280px;
-  padding: 0px 80px 80px 80px;
+  padding: 0px 0px 80px 0px;
   display: flex;
   margin: 0px auto;
   justify-content: space-between;
   flex-grow: 1;
+  @media only screen and (max-device-width: 1280px){
+    max-width: 804px;
+    padding: 95px 15px 80px 15px;
+  }
 `;
 
 export const AuthMenu = styled.form`
@@ -44,6 +48,23 @@ export const AuthMenu = styled.form`
       margin-top: 30px;
     }
   }
+  @media only screen and (max-device-width: 1280px){
+    .auth-menu {
+    &_title {
+      padding-bottom: 50px;
+    }
+
+    &_text {
+      font-size: 13px;
+      line-height: 24px;
+      padding: 9px 0px 15px 0px;
+    }
+
+    &_button {
+      margin-top: 45px;
+    }
+  }
+  }
 `;
 
 export const AuthImg = styled.div`
@@ -52,4 +73,8 @@ export const AuthImg = styled.div`
   background-repeat: no-repeat;
   width: 612px;
   height: 522px;
+  @media only screen and (max-device-width: 1280px){
+    width: 390px;
+    height: 333px;
+  }
 `;

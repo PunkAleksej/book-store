@@ -16,6 +16,16 @@ const GlobalStyle = createGlobalStyle`
     margin-block-end: 0em;
   }
   h2 {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 60px;
+    font-family: 'Poppins';
+    font-style: normal;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+
+  }
+  h3 {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;

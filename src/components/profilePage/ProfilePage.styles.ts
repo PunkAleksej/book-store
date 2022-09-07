@@ -9,7 +9,7 @@ export const PageContainer = styled.div`
 export const ProfileContainer = styled.div`
   width: 100%;
   max-width: 1280px;
-  padding: 0px 80px 80px 80px;
+  padding: 0px 0px 80px 0px;
   display: flex;
   margin: 0px auto;
   justify-content: start;
@@ -29,6 +29,13 @@ export const ProfileContainer = styled.div`
     line-height: 21px;
     margin: 5px 0px;
     user-select: none;
+  }
+  @media only screen and (max-device-width: 1280px){
+    max-width: 804px;
+    padding: 0px 15px 80px 15px;
+  }
+  .profile_info_title {
+    margin: 0px 0px 20px 0px;
   }
 `;
 
@@ -78,11 +85,16 @@ export const AuthMenuButton = styled.div`
   margin-top: 30px;
 `;
 
-export const ProfileImg = styled.div`
-  background-image: url(${profilePhoto});
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 305px;
-  height: 305px;
-  margin: 0px 128px 0px 0px;
-`;
+// export const ProfileImg = styled.div`
+//   background-image: url(${profilePhoto});
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   width: 305px;
+//   height: 305px;
+//   margin: 0px 128px 0px 0px;
+//   @media only screen and (max-device-width: 1280px){
+//     width: 255px;
+//     height: 255px;
+//     margin: 0px 20px 0px 0px;
+//   }
+// `;

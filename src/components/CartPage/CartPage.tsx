@@ -54,7 +54,7 @@ const CartPage:React.FC = () => {
       }
         {!bookArr.length
           ? <EmptyCart />
-          : <TotalPrice totalPrice={totalPrice} />}
+          : <TotalPrice totalPrice={totalPrice / 100} />}
       </CartContainer>
       <Footer />
     </div>

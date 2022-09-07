@@ -25,14 +25,14 @@ const ProfilePage:React.FC = () => {
         <ProfilePhoto />
         <div>
           <div className="profile_info">
-            <h2 className="profile_info_title">Personal information</h2>
+            <h3 className="profile_info_title">Personal information</h3>
             <p className="profile_info_text" onClick={changeUserInfoState}>Change information</p>
           </div>
           <UserInfoForm
           isUserInfoChange={isUserInfoChange}
            />
           <div className="profile_info">
-            <h2 className="profile_info_title">Password</h2>
+            <h3 className="profile_info_title">Password</h3>
             <p className="profile_info_text" onClick={changePassState}>Change password</p>
           </div>
           <PasswordForm

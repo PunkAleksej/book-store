@@ -4,17 +4,16 @@ import BannerImg from '../../assets/images/banner1.png';
 export const BannerContainer = styled.div`
   display: flex;
   width: 1280px;
-  padding: 0px 80px;
   margin: 0px auto;
-
+  position: relative;
   .banner_info {
-    padding: 80px 0px 0px 108px;
+    padding: 80px 146px 0px 108px;
   }
   .banner_img {
     width: 406px;
     height: 400px;
     background-image: url(${BannerImg});
-    padding-right: 96px;
+    margin: 0px 96px 0px 0px;
     background-repeat: no-repeat;
   }
   .banner_info_title {
@@ -35,16 +34,29 @@ export const BannerContainer = styled.div`
     margin: 10px 0px 50px 0px
   }
   .banner_info_button {
-    background: #344966;
-    border-radius: 16px;
-    color: ${(props) => props.theme.palette.lightGreen};
-    align-items: center;
-    text-align: center;
-    letter-spacing: 0.75px;
-    padding: 10px 50px;
-    max-height: 44px;
-    margin: auto 0px;
-    font-size: 16px;
-    line-height: 24px;
+
   }
+  @media only screen and (max-device-width: 1280px){
+  width: 804px;
+  padding: 0px 15px;
+  .banner_info {
+    padding: 0px 14px 0px 40px;
+  }
+  .banner_info_title {
+    font-size: 32px;
+    line-height: 48px;
+  }
+  .banner_img {
+    width: 328px;
+    height: 364px;
+    position: absolute;
+    margin: 0px;
+    background-size: cover;
+    right: 14px;
+    bottom: 0px;
+  }
+  .banner_info_button {
+    margin: 0px 0px 50px 0px;
+  }
+}
 `;

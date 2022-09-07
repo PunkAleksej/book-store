@@ -6,7 +6,7 @@ export const HeaderContainer = styled.div`
   width: 100%;
   max-width: 1280px;
   margin: 0px auto;
-  padding: 24px 80px 90px 80px;
+  padding: 24px 0px 90px 0px;
   display: flex;
   justify-content: space-between;
 
@@ -32,6 +32,17 @@ export const HeaderContainer = styled.div`
   .header_button {
     margin: auto 0px auto 94px;
   }
+  @media only screen and (max-device-width: 1280px){
+    max-width: 804px;
+    padding: 20px 15px 45px 15px;
+    .header_text {
+      padding: 0px 73px 0px 50px;
+    }
+
+    .header_button {
+      margin: auto 0px auto 50px;
+    }
+    }
 `;
 
 export const HeaderInput = styled.input`
@@ -42,9 +53,12 @@ export const HeaderInput = styled.input`
   padding: 18px 0px 18px 64px;
   letter-spacing: 0.75px;
   font-size: 16px;
-  line-height: 28px;
+  line-height: 24px;
   font-family: 'Poppins';
   font-style: normal;
+  @media only screen and (max-device-width: 1280px){
+    width: 183px;
+  }
 `;
 export const InputIconStyle = styled.div`
   width: 24px;
@@ -55,4 +69,8 @@ export const InputIconStyle = styled.div`
   background-size: cover;
   position: absolute;
   margin: 20px 16px 20px 24px;
+  @media only screen and (max-device-width: 1280px){
+    width: 18px;
+    height:18px;
+  }
 `;

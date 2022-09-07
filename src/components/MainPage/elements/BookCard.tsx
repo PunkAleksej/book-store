@@ -7,7 +7,6 @@ import BookRatingStars from '../../BookPage/elements/BookRatingStars';
 import { addToCart, addToFavorite, deleteFromFavorite } from '../../../api/catalog';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { userActions } from '../../../store/user/reduser';
-import FavoriteBook from '../../FavoritePage/Elements/FavoriteBook';
 
 type BookCatalogType = {
   bookName: string;
@@ -20,9 +19,9 @@ type BookCatalogType = {
   isCart: boolean;
 };
 
-const BookCard:React.FC<BookCatalogType> = (props) => {
+const BookCard: React.FC<BookCatalogType> = (props) => {
   const dispatch = useAppDispatch();
-  const bookPrice = props.isCart ? 'Added to cart' : `$ ${props.price} USD`;
+  const bookPrice = props.isCart ? 'Added to cart' : `$ ${+props.price / 100} USD`;
   const middleRatingStarColor = Math.round(+props.middleRating);
   const bookLink = `book/${props.bookId}`;
   const user = useAppSelector((store) => store.userState.user);
@@ -34,6 +33,7 @@ const BookCard:React.FC<BookCatalogType> = (props) => {
       console.log(err);
     }
   };
+  const linkInCart = props.isCart ? '/cart' : '/';
   const addFavorite = async () => {
     if (!user) return;
     const findFavoriteId = () => {
@@ -58,14 +58,14 @@ const BookCard:React.FC<BookCatalogType> = (props) => {
   return (
     <CardContainer cover={props.cover}>
       <div className="card_img">
-          <Link to={bookLink}><div className="card_img_background" /></Link>
-          <div onClick={addFavorite} className="card_img_bacground_button-container">
-            <ButtonComponent
+        <Link to={bookLink}><div className="card_img_background" /></Link>
+        <div onClick={addFavorite} className="card_img_bacground_button-container">
+          <ButtonComponent
             size="small"
             icon={heart}
             disable={!props.isFavorite}
-            />
-          </div>
+          />
+        </div>
       </div>
       <div className="card_info">
         <Link to={bookLink}><h2 className="card_info_book-name">{props.bookName}</h2></Link>
@@ -86,14 +86,15 @@ const BookCard:React.FC<BookCatalogType> = (props) => {
           <p className="card_info_book-ratting_number">{middleRatingStarColor}.0</p>
         </div>
       </div>
-      <div onClick={handleClick} className="card_button-container">
-        <ButtonComponent
-        text={bookPrice}
-        size="large"
-        secondaryStyle={props.isCart}
-        />
-      </div>
-
+      <Link to={linkInCart}>
+        <div onClick={handleClick} className="card_button-container">
+          <ButtonComponent
+            text={bookPrice}
+            size="large"
+            secondaryStyle={props.isCart}
+          />
+        </div>
+      </Link>
     </CardContainer>
   );
 };

@@ -30,11 +30,9 @@ export const InputContainer = styled.div<InputStyleType>`
     border-radius: 16px;
     border: 2px solid ${(props) => props.theme.palette.lightGreen};
     border-color: ${(p) => (p.err ? (props) => props.theme.palette.error : '')};
-    width: 413px;
+    width: ${(p) => (p.authInput ? '349px' : '458px')};
     padding: ${(p) => (p.authInput ? '18px 0px 18px 64px' : '30px 0px 6px 64px')};
-    //padding: 18px 0px 18px 64px;
     outline: none;
-    //padding: 30px 0px 6px 64px;
     color:#344966;
     &:disabled {
       opacity: 0.5;
@@ -64,6 +62,11 @@ export const InputContainer = styled.div<InputStyleType>`
       line-height: 24px;
       color: ${(props) => props.theme.palette.darkBlue};
       padding: 9px 0px 30px 0px;
+    }
+    @media only screen and (max-device-width: 1280px){
+    .input {
+      width: ${(p) => (p.authInput ? '328px' : '465px')};
+    }
     }
 `;
 

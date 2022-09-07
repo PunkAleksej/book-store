@@ -9,7 +9,7 @@ type TotalPriceType = {
 const TotalPrice:React.FC<TotalPriceType> = (props) => {
   return (
     <div>
-      <h1 className="cart_total-price">Total:  {props.totalPrice}</h1>
+      <h2 className="cart_total-price">Total:  {props.totalPrice}</h2>
       <div className="cart_buttons">
         <Link to="/">
           <ButtonComponent

@@ -7,7 +7,6 @@ type BookCoverType = {
 };
 
 export const CardContainer = styled.div<BookCoverType>`
-  padding: 0px 10px;
   width: 305px;
   .card_img_background {
     width: 100%;
@@ -71,6 +70,38 @@ export const CardContainer = styled.div<BookCoverType>`
     width: 100%;
     margin: 30px 0px 60px 0px;
   }
+  @media only screen and (max-device-width: 1280px){
+  width: 254px;
+  .card_img_bacground_button-container {
+    padding: 16px;
+  }
+  .card_button-container {
+    padding: 30px 0px 30px 0px;
+  }
+  .card_img {
+    width: 254px;
+    height: 372px;
+  }
+  .card_info {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .card_info_book-name {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .card_info_book-author {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .card_info_book-ratting_star {
+    width: 18px;
+    height: 18px;
+  }
+  .card_button {
+    margin: 30px 0px 60px 0px;
+  }
+}
 `;
 
 type RatingStarType = {

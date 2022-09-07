@@ -10,7 +10,7 @@ const CatalogBanner:React.FC = () => {
       <div className="banner_background" />
       <div className="banner_fairy-img" />
       <div className="banner_text-block">
-        <h1>Authorize now</h1>
+        <h2>Authorize now</h2>
         <p className="banner_text-block__text">Authorize now and discover the fabulous world of books</p>
         <Link to="/login"><ButtonComponent text="Log In/ Sing Up" /></Link>
       </div>

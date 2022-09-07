@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { BookInCartStyle } from './BookInCart.styles';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { deleteFromCart } from '../../../api/catalog';
@@ -14,7 +15,8 @@ type BookInCartType = {
 
 const BookInCart:React.FC<BookInCartType> = (props) => {
   const dispatch = useAppDispatch();
-  const BookPrice = `$ ${props.price} USD`;
+  const BookPrice = `$ ${+props.price / 100} USD`;
+  const bookLink = `/book/${props.bookId}`;
   const user = useAppSelector((store) => store.userState.user);
   const deleteBook = async () => {
     if (!user) return;
@@ -31,10 +33,14 @@ const BookInCart:React.FC<BookInCartType> = (props) => {
   };
   return (
     <BookInCartStyle cover={props.cover}>
-      <div className="book_cover" />
+      <Link to={bookLink}>
+        <div className="book_cover" />
+      </Link>
       <div>
-        <h1 className="book_title">{props.title}</h1>
-        <h2 className="book_author">{props.author}</h2>
+        <Link to={bookLink}>
+          <h2 className="book_title">{props.title}</h2>
+        </Link>
+        <h3 className="book_author">{props.author}</h3>
         <div className="book_buttons-block">
           <div className="book_buttons-block_increment">-</div>
           <div className="book_buttons-block_counter">1</div>
@@ -44,7 +50,7 @@ const BookInCart:React.FC<BookInCartType> = (props) => {
           onClick={deleteBook}
           />
         </div>
-        <h1 className="book_price">{BookPrice}</h1>
+        <h3 className="book_price">{BookPrice}</h3>
       </div>
     </BookInCartStyle>
   );

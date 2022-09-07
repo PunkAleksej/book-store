@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const CartContainer = styled.div`
   margin: 0px auto;
-  padding: 0px 80px;
   width: 100%;
   max-width: 1280px;
   .cart_separator_line {
@@ -18,5 +17,9 @@ export const CartContainer = styled.div`
   }
   .cart_buttons_second-button {
     margin: 0px 20px;
+  }
+  @media only screen and (max-device-width: 1280px){
+    padding: 0px 15px;
+    max-width: 804px;
   }
 `;

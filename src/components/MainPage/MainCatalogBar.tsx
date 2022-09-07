@@ -24,9 +24,9 @@ const CatalogBar:React.FC = () => {
 
   return (
     <MainPageContainer>
-        <h1 className="catalog-bar_title">
+        <h2 className="catalog-bar_title">
           Catalog
-        </h1>
+        </h2>
 
         <div className="catalog-bar_selectors">
           <DropMenuButton

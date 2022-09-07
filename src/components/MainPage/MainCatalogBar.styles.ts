@@ -5,7 +5,7 @@ export const MainPageContainer = styled.div`
   justify-content: space-between;
   width: 1280px;
   margin: 0px auto;
-  padding: 110px 80px 50px 80px;
+  padding: 110px 0px 50px 0px;
   .catalog-bar_title {
     font-weight: 700;
     font-size: 40px;
@@ -35,6 +35,7 @@ export const MainPageContainer = styled.div`
 
   .catalog-bar_selectors {
     display: flex;
+    column-gap: 20px;
     position: relative;
   }
 
@@ -46,12 +47,24 @@ export const MainPageContainer = styled.div`
     justify-content: space-between;
     width: 1280px;
   }
+  @media only screen and (max-device-width: 1280px){
+    width: 804px;
+    padding: 54px 15px;
+    display: block;
+    .catalog-bar_title {
+      margin: 0px 0px 20px 0px;
+    }
+  }
 `;
 export const BookContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 0px 70px;
   margin: 0px auto;
   justify-content: flex-start;
-  width: 1300px;
+  column-gap: 20px;
+  width: 1280px;
+  @media only screen and (max-device-width: 1280px){
+    width: 804px;
+    padding: 0px 15px;
+  }
 `;

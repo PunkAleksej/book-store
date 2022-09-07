@@ -41,7 +41,7 @@ const BookPage:React.FC = () => {
           </div>
         </div>
         <BookPageInfo>
-            <h1>{targetBook.name}</h1>
+            <h2>{targetBook.name}</h2>
             {/* <h2 className="card_info_author">{targetBook.author.name}</h2> */}
               <div className="card_info_book-raiting">
                 <RatingStar isActive={!!middleRatingStarColor} />
@@ -53,7 +53,7 @@ const BookPage:React.FC = () => {
                 <div className="card_info_book-ratting_arrow" />
                 <p className="card_info_book-ratting_number">Rate this book</p>
               </div>
-              <h2 className="card_info_description">Description</h2>
+              <h3 className="card_info_description">Description</h3>
               <p>{targetBook.description}</p>
               <div className="card_info_button-block">
                 <div>
