@@ -34,24 +34,27 @@ const BookPage:React.FC = () => {
     <div>
       <ScrollToTop />
       <Header />
-      <BookPageContainer cover={targetBook.cover}>
-        <div className="book_cover">
+      <BookPageContainer>
+        <div className="book_cover_container">
+          <img className="book_cover_img" src={targetBook.cover}/>
           <div className="book_cover_like-button">
             <ButtonComponent size="small" icon={heart} />
           </div>
         </div>
         <BookPageInfo>
             <h2>{targetBook.name}</h2>
-            {/* <h2 className="card_info_author">{targetBook.author.name}</h2> */}
+            <h3 className="card_info_author">{targetBook.author.name}</h3>
               <div className="card_info_book-raiting">
                 <RatingStar isActive={!!middleRatingStarColor} />
                 <p className="card_info_book-ratting_number">{middleRatingStarColor}.0</p>
-                <BookRatingStars
-                  targetBookId={targetBook.id}
-                  middleRating={middleRatingStarColor}
-                />
-                <div className="card_info_book-ratting_arrow" />
-                <p className="card_info_book-ratting_number">Rate this book</p>
+                <div className="cart_info_book-rating_block">
+                    <BookRatingStars
+                    targetBookId={targetBook.id}
+                    middleRating={middleRatingStarColor}
+                    />
+                    <div className="card_info_book-ratting_arrow" />
+                    <p className="card_info_book-ratting_number">Rate this book</p>
+                </div>
               </div>
               <h3 className="card_info_description">Description</h3>
               <p>{targetBook.description}</p>
