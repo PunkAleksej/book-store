@@ -3,16 +3,16 @@ import profilePhoto from '../../assets/images/profilePhoto.png';
 
 export const PageContainer = styled.div`
   min-height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
 `;
 export const ProfileContainer = styled.div`
   width: 100%;
   max-width: 1280px;
   padding: 0px 0px 80px 0px;
   display: flex;
+  flex-wrap: wrap;
   margin: 0px auto;
   justify-content: start;
+  box-sizing: border-box;
   .profile_info {
     display:  flex;
     justify-content:  space-between;
@@ -31,11 +31,13 @@ export const ProfileContainer = styled.div`
     user-select: none;
   }
   @media only screen and (max-device-width: 1280px){
-    max-width: 804px;
     padding: 0px 15px 80px 15px;
   }
   .profile_info_title {
     margin: 0px 0px 20px 0px;
+  }
+  @media only screen and (max-device-width: 804px){
+    justify-content: center;
   }
 `;
 

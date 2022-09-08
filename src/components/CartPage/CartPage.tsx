@@ -8,6 +8,7 @@ import TotalPrice from './elements/TotalPrice';
 import { getBooksById } from '../../api/catalog';
 import type { BookType } from '../../store/book/reduser';
 import Footer from '../Footer/Footer';
+import { FlexContainer } from '../BookPage/BookPage.styles';
 
 const CartPage:React.FC = () => {
   const cartState = useAppSelector((store) => store.userState.user);
@@ -35,7 +36,7 @@ const CartPage:React.FC = () => {
     +book.price
   )).reduce((acc, number) => acc + number, 0);
   return (
-    <div>
+    <FlexContainer>
       <Header />
       <CartContainer>
         {bookArr &&
@@ -57,7 +58,7 @@ const CartPage:React.FC = () => {
           : <TotalPrice totalPrice={totalPrice / 100} />}
       </CartContainer>
       <Footer />
-    </div>
+    </FlexContainer>
   );
 };
 

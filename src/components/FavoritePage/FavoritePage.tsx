@@ -7,6 +7,7 @@ import EmptyFavorite from './Elements/EmptyFavorite';
 import { getBooksById } from '../../api/catalog';
 import type { BookType } from '../../store/book/reduser';
 import Footer from '../Footer/Footer';
+import { FlexContainer } from '../BookPage/BookPage.styles';
 
 const FavoritePage:React.FC = () => {
   const favoriteState = useAppSelector((store) => store.userState.user);
@@ -30,7 +31,7 @@ const FavoritePage:React.FC = () => {
   };
 
   return (
-    <div>
+    <FlexContainer>
       <Header />
       <FavoriteContainer>
         {bookArr &&
@@ -50,7 +51,7 @@ const FavoritePage:React.FC = () => {
         {!bookArr.length && <EmptyFavorite /> }
       </FavoriteContainer>
       <Footer />
-    </div>
+    </FlexContainer>
   );
 };
 

@@ -25,8 +25,8 @@ const StyledFilterOption = styled.li<StyledPropsType>`
   }
 
   .option_checkbox {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     border: 1px ${({ theme }) => theme.palette.darkBlue} solid;
     background: ${({ theme, isChecked }) => (isChecked ? theme.palette.darkBlue : theme.palette.white)};
     border-radius: 50%;

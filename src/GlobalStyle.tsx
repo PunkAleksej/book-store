@@ -1,6 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  * {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  nav, footer, header, aside {
+    display: block;
+  }
   body {
     margin: 0;
     padding: 0;
@@ -90,6 +99,46 @@ const GlobalStyle = createGlobalStyle`
     text-decoration-thickness: '';
     text-decoration-style: none;
     text-decoration-color: '';
+}
+@media only screen and (max-device-width: 804px){
+  h1  {
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 60px;
+    font-family: 'Poppins';
+    font-style: normal;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
+  h2 {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+
+  }
+  h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
+  p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    letter-spacing: 0.75px;
+    font-size: 12px;
+    line-height: 18px;
+  }
 }
 `;
 

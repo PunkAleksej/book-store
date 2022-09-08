@@ -18,6 +18,9 @@ export const StyledSortPriorityMenu = styled.div<DropMenuPropsType>`
   border-radius: 16px;
   justify-content: flex-start;
   z-index: 100;
+  @media only screen and (max-device-width: 1280px){
+    width: 255px;
+  }
 `;
 
 export const StyledSortPriorityTarget = styled.div<SortPtiorityPropsType>`

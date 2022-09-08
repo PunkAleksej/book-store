@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export type ButtonPropsType = {
   secondaryStyle?: boolean;
   disable?: boolean;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'very_small' |'small' | 'medium' | 'large';
   icon?: string;
   loading?: boolean;
 };
@@ -61,6 +61,18 @@ export const StyledTestButton = styled.button<ButtonPropsType>`
         height: 48px;
         border-radius: 50%;
         background-size: 26px 26px;
+        background-repeat: no-repeat;
+        background-position:  center;
+        background-image: url(${loading ? '' : icon});
+        padding: 0px;
+        `;
+        break;
+      case 'very_small':
+        return css`
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-size: 17px;
         background-repeat: no-repeat;
         background-position:  center;
         background-image: url(${loading ? '' : icon});

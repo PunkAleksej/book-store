@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   FooterContainer,
-  Footerf,
   FooterInfoLogo,
   FooterText,
   FooterMenu,
@@ -12,8 +11,8 @@ import {
 function Footer() {
   return (
     <FooterContainer>
-      <Footerf>
-        <div>
+      <div className="footer__wrapper">
+        <div className="flex_container">
           <FooterInfoLogo />
           <FooterText>tranthuy.nute@gmail.com</FooterText>
           <FooterText>(480) 555-0103</FooterText>
@@ -28,7 +27,7 @@ function Footer() {
           <FooterText>6391 Elgin St. Celina, Delaware 10299</FooterText>
           <FooterMapImg />
         </div>
-      </Footerf>
+      </div>
     </FooterContainer>
   );
 }

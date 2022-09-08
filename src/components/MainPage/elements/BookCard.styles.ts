@@ -7,25 +7,24 @@ type BookCoverType = {
 };
 
 export const CardContainer = styled.div<BookCoverType>`
-  width: 305px;
-  .card_img_background {
-    width: 100%;
-    height: 100%;
+  flex: 0 1 23%;
+  .card_img_background_button-container {
     position: absolute;
-    border-radius: 16px;
-    background-image: url(${(props) => props.cover});
-  }
-  .card_img_bacground_button-container {
-    padding: 20px;
-    position: absolute;
+    top: 20px;
+    left: 20px;
   }
   .card_button-container {
     padding: 30px 0px 60px 0px;
   }
+  .card_cover_img{
+    object-fit: contain;
+  }
+  .card_link {
+    width: 100%;
+  }
   .card_img {
     position: relative;
-    width: 305px;
-    height: 448px;
+    width: 100%;
     margin-bottom: 30px;
   }
   .card_info {
@@ -35,12 +34,11 @@ export const CardContainer = styled.div<BookCoverType>`
     color: ${(props) => props.theme.palette.ligthGrey};
   }
   .card_info_book-name {
-    margin-block-start: 0em;
-    margin-block-end: 0em;
     font-weight: 500;
     font-size: 20px;
     line-height: 30px;
     white-space: nowrap;
+    max-width: 305px;
     overflow: hidden;
     text-overflow: ellipsis;
     color: ${(props) => props.theme.palette.darkBlue};
@@ -70,38 +68,7 @@ export const CardContainer = styled.div<BookCoverType>`
     width: 100%;
     margin: 30px 0px 60px 0px;
   }
-  @media only screen and (max-device-width: 1280px){
-  width: 254px;
-  .card_img_bacground_button-container {
-    padding: 16px;
-  }
-  .card_button-container {
-    padding: 30px 0px 30px 0px;
-  }
-  .card_img {
-    width: 254px;
-    height: 372px;
-  }
-  .card_info {
-    font-size: 16px;
-    line-height: 24px;
-  }
-  .card_info_book-name {
-    font-size: 16px;
-    line-height: 24px;
-  }
-  .card_info_book-author {
-    font-size: 16px;
-    line-height: 24px;
-  }
-  .card_info_book-ratting_star {
-    width: 18px;
-    height: 18px;
-  }
-  .card_button {
-    margin: 30px 0px 60px 0px;
-  }
-}
+
 `;
 
 type RatingStarType = {

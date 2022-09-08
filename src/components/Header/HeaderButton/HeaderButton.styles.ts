@@ -6,12 +6,13 @@ import cart from '../../../assets/images/Cart.svg';
 export const StyledButtonBar = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 200px;
   margin: auto 0px;
-  .header_butoon-container {
+  gap: 30px;
+  justify-items: center;
+  .header_button-container {
     position: relative;
   }
-  .header_butoon-container_counter {
+  .header_button-container_counter {
     position: absolute;
     width: 23px;
     height: 23px;
@@ -30,12 +31,13 @@ export const StyledButtonBar = styled.div`
     line-height: 18px;
   }
   .headers_button {
+    padding: 0px;
     width: 48px;
     height: 48px;
     margin: auto 0px;
     border-radius: 50%;
     background-color: ${(props) => props.theme.palette.darkBlue};
-    background-size: 26px 26px;
+    background-size: 26px;
     background-repeat: no-repeat;
     background-position:  center;
   }
@@ -49,12 +51,31 @@ export const StyledButtonBar = styled.div`
     background-image: url(${cart});
   }
   @media only screen and (max-device-width: 1280px){
-    margin: 0px 0px 0px 80px;
+  }
+  @media only screen and (max-device-width: 804px){
+    gap: 15px;
+    .headers_button {
+      width: 32px;
+      height: 32px;
+      background-size: 17px;
+    }
+    .header_button-container_counter {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      left: 23px;
+      top: -3px;
+      font-size: 10px;
+      line-height: 11px;
+  }
   }
 `;
 export const ButtonContainer = styled.div`
   margin: 8px 0px auto 91px;
   @media only screen and (max-device-width: 1280px){
     margin: auto 0px auto 47px;
+  }
+  @media only screen and (max-device-width: 804px){
+    margin: auto 0px;
   }
 `;

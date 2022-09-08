@@ -20,6 +20,5 @@ export const CartContainer = styled.div`
   }
   @media only screen and (max-device-width: 1280px){
     padding: 0px 15px;
-    max-width: 804px;
   }
 `;

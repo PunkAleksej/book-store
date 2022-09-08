@@ -7,9 +7,10 @@ type ButtonPropsType = {
   disable?: boolean;
   loading?: boolean;
   type?: 'button' | 'submit' | 'reset';
-  size?: 'small' | 'medium' | 'large';
+  size?: 'very_small' | 'small' | 'medium' | 'large';
   icon?: string;
   onClick?: () => Promise<void>;
+  className?: string;
 };
 
 const ButtonComponent: React.FC<ButtonPropsType> = (props) => {

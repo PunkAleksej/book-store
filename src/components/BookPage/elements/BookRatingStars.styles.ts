@@ -23,4 +23,8 @@ export const RatingStar = styled.div<RatingStarType>`
     box-shadow: 0px 0px 0px 2px ${(props) => props.theme.palette.green};
     border-radius: 50%;
   }
+  @media only screen and (max-device-width: 1280px){
+      width: 23px;
+      height: 23px;
+  }
 `;

@@ -12,8 +12,8 @@ export const SlyderContainer = styled.div<DropMenuPropsType>`
   background-color: #F0F4EF;
   padding: 25px;
   position: absolute;
-  width: 380px;
-  height: 151px;
+  width: 363px;
+  height: 101px;
   left: 0px;
   top: 74px;
   border-radius: 16px;
@@ -68,20 +68,31 @@ export const SlyderContainer = styled.div<DropMenuPropsType>`
   }
 
   .slider_range-width {
-    width: 380px;
+    width: 360px;
     height: 12px;
     border-radius: 40px;
-    margin: 50px 0px 0px 0px;
+    margin: 25px 0px 0px 0px;
   }
 
   .slider_range-alignment {
  
   }
-
-  .slider_range-text {
+  .slider_info_text {
+    font-size: 18px;
+    line-height: 32px;
+  }
+  .slider_info {
     display: flex;
     padding: 15px 0px 0px 0px;
     justify-content: space-between;
     color: #344966 !important;
+  }
+  @media only screen and (max-device-width: 1280px){
+    width: 240px;
+    height: 100px;
+    .slider_range-width {
+      width: 240px;
+      margin: 20px 0px 0px 0px;
+    }
   }
 `;

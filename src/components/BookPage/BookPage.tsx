@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ButtonComponent from '../Elements/Button';
-import { BookPageContainer, BookPageInfo, RatingStar } from './BookPage.styles';
+import { BookPageContainer, BookPageInfo, RatingStar, FlexContainer } from './BookPage.styles';
 import { useAppDispatch, useAppSelector } from '../../store';
 import heart from '../../assets/images/Heart.svg';
 import Header from '../Header/Header';
@@ -31,18 +31,18 @@ const BookPage:React.FC = () => {
   const bookPrice = `$ ${targetBook.price} USD`;
   const middleRatingStarColor = Math.round(+targetBook.middleRating);
   return (
-    <div>
+    <FlexContainer>
       <ScrollToTop />
       <Header />
       <BookPageContainer>
         <div className="book_cover_container">
-          <img className="book_cover_img" src={targetBook.cover}/>
+          <img className="book_cover_img" src={targetBook.cover} />
           <div className="book_cover_like-button">
             <ButtonComponent size="small" icon={heart} />
           </div>
         </div>
         <BookPageInfo>
-            <h2>{targetBook.name}</h2>
+            <h2 className="card_info_name">{targetBook.name}</h2>
             <h3 className="card_info_author">{targetBook.author.name}</h3>
               <div className="card_info_book-raiting">
                 <RatingStar isActive={!!middleRatingStarColor} />
@@ -52,8 +52,10 @@ const BookPage:React.FC = () => {
                     targetBookId={targetBook.id}
                     middleRating={middleRatingStarColor}
                     />
-                    <div className="card_info_book-ratting_arrow" />
-                    <p className="card_info_book-ratting_number">Rate this book</p>
+                    <div className="card_info_book_flex-container">
+                      <div className="card_info_book-ratting_arrow" />
+                      <p className="card_info_book-ratting_number">Rate this book</p>
+                    </div>
                 </div>
               </div>
               <h3 className="card_info_description">Description</h3>
@@ -61,19 +63,20 @@ const BookPage:React.FC = () => {
               <div className="card_info_button-block">
                 <div>
                   <p className="card_info_button-block_text">Paperback</p>
-                    <ButtonComponent text="Not available" />
+                    {/* <ButtonComponent text="Not available" /> */}
+                    <button className="card_info_button-block_button">Not available</button>
                 </div>
                   <div>
                     <p className="card_info_button-block_text">Hardcover</p>
-                      <ButtonComponent text={bookPrice} />
+                    <button className="card_info_button-block_button">{bookPrice}</button>
+                      {/* <ButtonComponent text={bookPrice} /> */}
                   </div>
               </div>
         </BookPageInfo>
       </BookPageContainer>
       <CatalogBanner />
       <Footer />
-    </div>
-
+    </FlexContainer>
   );
 };
 

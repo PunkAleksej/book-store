@@ -10,6 +10,7 @@ import {
   AuthImg,
   HeightContainer,
 } from './Sign.styles';
+import manImg from '../../assets/images/man.png';
 import Mail from '../../assets/images/Mail.svg';
 import Hide from '../../assets/images/Hide.svg';
 import Footer from '../Footer/Footer';
@@ -108,7 +109,9 @@ const SignUp: React.FC = () => {
             type="submit"
           />
         </AuthMenu>
-        <AuthImg />
+        <AuthImg>
+          <img className="auth_img" src={manImg} />
+        </AuthImg>
       </AuthContainer>
       <Footer />
     </HeightContainer>

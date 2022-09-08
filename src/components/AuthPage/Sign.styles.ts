@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import manImg from '../../assets/images/man.png';
 
 export const HeightContainer = styled.div`
-  min-height: 100vh;
+  flex: 1 0 auto; 
   display: flex;
   flex-direction: column;
 `;
 
 export const AuthContainer = styled.div`
+  box-sizing: border-box;
   width: 100%;
   max-width: 1280px;
   padding: 0px 0px 80px 0px;
@@ -16,8 +16,11 @@ export const AuthContainer = styled.div`
   justify-content: space-between;
   flex-grow: 1;
   @media only screen and (max-device-width: 1280px){
-    max-width: 804px;
     padding: 95px 15px 80px 15px;
+    flex-wrap: wrap;
+  }
+  @media only screen and (max-device-width: 804px){
+    justify-content: center;
   }
 `;
 
@@ -25,8 +28,6 @@ export const AuthMenu = styled.form`
   display: flex;
   flex-direction: column;
   margin: 0px;
-  align-items: center;
-  justify-content: center;
   justify-content: start;
   align-items: flex-start;
 
@@ -49,6 +50,7 @@ export const AuthMenu = styled.form`
     }
   }
   @media only screen and (max-device-width: 1280px){
+
     .auth-menu {
     &_title {
       padding-bottom: 50px;
@@ -68,13 +70,13 @@ export const AuthMenu = styled.form`
 `;
 
 export const AuthImg = styled.div`
-  background-image: url(${manImg});
   background-size: cover;
   background-repeat: no-repeat;
   width: 612px;
   height: 522px;
-  @media only screen and (max-device-width: 1280px){
-    width: 390px;
-    height: 333px;
+  .auth_img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 `;

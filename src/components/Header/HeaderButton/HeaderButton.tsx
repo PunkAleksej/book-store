@@ -26,20 +26,25 @@ const HeaderButton:React.FC = () => {
   return (
     <StyledButtonBar>
       <Link to="/cart">
-        <div className="header_butoon-container">
+        <div className="header_button-container">
           { cartCounter !== 0 &&
-          <div className="header_butoon-container_counter">{cartCounter}</div>}
-          <ButtonComponent size="small" icon={cart} />
+          <div className="header_button-container_counter">{cartCounter}</div>}
+          <button className="headers_button cart" />
+          {/* <ButtonComponent size="small" icon={cart} /> */}
         </div>
       </Link>
       <Link to="/favorite">
-        <div className="header_butoon-container">
+        <div className="header_button-container">
           { favoriteCounter !== 0 &&
-          <div className="header_butoon-container_counter">{favoriteCounter}</div>}
-          <ButtonComponent size="small" icon={heart} />
+          <div className="header_button-container_counter">{favoriteCounter}</div>}
+          <button className="headers_button heart" />
+          {/* <ButtonComponent size="small" icon={heart} /> */}
         </div>
       </Link>
-      <Link to="/profile"><ButtonComponent size="small" icon={profile} /></Link>
+      <Link to="/profile">
+        <button className="headers_button profile" />
+        {/* <ButtonComponent size="small" icon={profile} /> */}
+      </Link>
     </StyledButtonBar>
   );
 };

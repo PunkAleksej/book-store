@@ -58,8 +58,10 @@ const BookCard: React.FC<BookCatalogType> = (props) => {
   return (
     <CardContainer cover={props.cover}>
       <div className="card_img">
-        <Link to={bookLink}><div className="card_img_background" /></Link>
-        <div onClick={addFavorite} className="card_img_bacground_button-container">
+        <Link to={bookLink} className="card_link">
+            <img className="card_cover_img" src={props.cover} />
+        </Link>
+        <div onClick={addFavorite} className="card_img_background_button-container">
           <ButtonComponent
             size="small"
             icon={heart}
@@ -70,13 +72,6 @@ const BookCard: React.FC<BookCatalogType> = (props) => {
       <div className="card_info">
         <Link to={bookLink}><h2 className="card_info_book-name">{props.bookName}</h2></Link>
         <h2 className="card_info_book-author">{props.author}</h2>
-        {/* <div className="card_info_book-raiting">
-          <BookRatingStars
-            middleRating={middleRatingStarColor}
-            targetBookId={props.bookId}
-          />
-          <p className="card_info_book-ratting_number">{middleRatingStarColor}.0</p>
-        </div> */}
         <div className="card_info_book-raiting">
           <RatingStar isActive={middleRatingStarColor >= 1} />
           <RatingStar isActive={middleRatingStarColor >= 2} />

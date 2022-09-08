@@ -7,7 +7,21 @@ type BookInCartType = {
 
 export const BookInCartStyle = styled.div<BookInCartType>`
   display: flex;
-  padding: 0px 0px 40px 0px;
+  padding: 40px 0px 40px 0px;
+  justify-content: left;
+  width: 100%;
+  .book_cover {
+    margin: 0px 20px 0px 0px;
+    flex: 0 0 25%;
+  }
+  .book_cover_img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .book__info {
+    flex: 0 0 80%;
+  }
   .book_author {
     padding: 0px 0px 50px 0px;
     font-weight: 500;
@@ -18,14 +32,6 @@ export const BookInCartStyle = styled.div<BookInCartType>`
     font-weight: 500;
     font-size: 36px;
     line-height: 54px;
-  }
-  .book_cover {
-    background-image: url(${(props) => (props.cover)});
-    width: 197px;
-    height: 289px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: 0px 20px 0px 0px;
   }
   .book_buttons-block {
     display: flex;

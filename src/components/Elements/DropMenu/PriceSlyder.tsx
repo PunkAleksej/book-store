@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Range from 'rc-slider';
 import toastsWriter from '../../utils/Toasts';
 import { SlyderContainer } from './PriceSlyder.styles';
@@ -14,6 +15,7 @@ type DropMenuPropsType = {
 
 const PriceSlider:React.FC<DropMenuPropsType> = (props) => {
   const filterState = useAppSelector((store) => store.bookState.filter);
+  const [ searchParams, setSerchParams ] = useSearchParams();
   const sliderValues = [filterState.priceFrom, filterState.priceTo];
   const dispatch = useAppDispatch();
   const [priceChoice, setPriceChoice] = useState(sliderValues);
@@ -40,6 +42,8 @@ const PriceSlider:React.FC<DropMenuPropsType> = (props) => {
   [debouncedSearchTerm]);
 
   const handleChange = (sliderValues: number | number[]): void => {
+    const priceFrom = Number(searchParams.get('minPrice')) || 0;
+    const priceTo = Number(searchParams.get('maxPrice')) || 10000;
     if (!Array.isArray(sliderValues)) return;
     setPriceChoice(sliderValues);
   };
@@ -55,9 +59,9 @@ const PriceSlider:React.FC<DropMenuPropsType> = (props) => {
           max={10000}
         />
       </div>
-    <div className="slider_range-text">
-      <p>$ {priceChoice[0] / 100}</p>
-      <p>$ {priceChoice[1] / 100}</p>
+    <div className="slider_info">
+      <p className="slider_info_text">$ {priceChoice[0] / 100}</p>
+      <p className="slider_info_text">$ {priceChoice[1] / 100}</p>
     </div>
     </SlyderContainer>
   );

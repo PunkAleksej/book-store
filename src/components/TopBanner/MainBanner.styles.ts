@@ -2,18 +2,31 @@ import styled from 'styled-components';
 import BannerImg from '../../assets/images/banner1.png';
 
 export const BannerContainer = styled.div`
-  display: flex;
-  width: 1280px;
+  max-width: 1280px;
   margin: 0px auto;
-  position: relative;
+  padding: 0px 15px;
+  box-sizing: border-box;
+  .banner_book {
+    width: 542px;
+    height: 250px;
+    position: absolute;
+    bottom: 0px;
+  }
+  .banner_book_img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.5;
+    z-index: 1;
+  }
   .banner_info {
-    padding: 80px 146px 0px 108px;
+    padding: 80px 0px 0px 108px;
+    z-index: 2;
   }
   .banner_img {
     width: 406px;
     height: 400px;
     background-image: url(${BannerImg});
-    margin: 0px 96px 0px 0px;
     background-repeat: no-repeat;
   }
   .banner_info_title {
@@ -36,11 +49,19 @@ export const BannerContainer = styled.div`
   .banner_info_button {
 
   }
+  .banner_background {
+    max-width: calc(100% - 30px);
+    position: relative;
+    border-radius: 16px;
+    background-color: ${(props) => props.theme.palette.lightGreen};
+    display: flex;
+    gap: 100px;
+    min-width: 100%;
+  }
   @media only screen and (max-device-width: 1280px){
-  width: 804px;
-  padding: 0px 15px;
+  
   .banner_info {
-    padding: 0px 14px 0px 40px;
+    padding: 45px 0px 0px 40px;
   }
   .banner_info_title {
     font-size: 32px;
@@ -49,14 +70,50 @@ export const BannerContainer = styled.div`
   .banner_img {
     width: 328px;
     height: 364px;
-    position: absolute;
     margin: 0px;
     background-size: cover;
-    right: 14px;
-    bottom: 0px;
   }
   .banner_info_button {
     margin: 0px 0px 50px 0px;
   }
+  .banner_book {
+    width: 361px;
+    height: 220px;
+    position: absolute;
+    bottom: 0px;
+  }
+  @media only screen and (max-device-width: 804px){
+    width: 100%;
+    display: flex;
+    .banner_background {
+      display: flex;
+      min-width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .banner_book {
+      width: 300px;
+      height: 220px;
+      top: 30px;
+      margin: 0px auto;
+    }
+    .banner_img {
+      width: 250px;
+      height: 280px;
+      margin: 0px;
+      background-size: cover;
+      right: 14px;
+    }
+  }
 }
+`;
+
+export const ImgContainer = styled.div`
+  width: 406px;
+  height: 400px;
+  .top-banner_img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;

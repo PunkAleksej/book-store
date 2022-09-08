@@ -45,4 +45,9 @@ export const StyledFilterByGenre = styled.div<DropMenuPropsType>`
       z-index: 10;
     }
   }
+  @media only screen and (max-device-width: 1280px){
+    .filter_options {
+      width: 260px;
+    }
+    }
 `;

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import toastsWriter from '../../utils/Toasts';
 import { StyledSortPriorityMenu, StyledSortPriorityTarget } from './SortPriorityMenu.styles';
 import { booksActions } from '../../../store/book/reduser';
@@ -15,6 +16,8 @@ type SortPriorityType = {
 };
 
 const SortPriorityMenu: React.FC<DropMenuPropsType> = (props) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const filterState = useAppSelector((store) => store.bookState.filter);
   const sortPriorityState = useAppSelector((store) => store.bookState.filter.sortBy);
   const dispatch = useAppDispatch();
@@ -33,6 +36,28 @@ const SortPriorityMenu: React.FC<DropMenuPropsType> = (props) => {
     }
   };
 
+  useEffect(() => {
+    const sortBy = searchParams.get('sortBy') as 'price' | 'author' | 'middleRating' | 'releasedAt' | 'name';
+    dispatch(booksActions.changeFilter({ sortBy }));
+  }, [dispatch, searchParams]);
+
+  const handleClick = (ev: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (ev.currentTarget.textContent) {
+      let touchedColumn = ev.currentTarget.textContent.toLowerCase();
+      if (touchedColumn === searchParams.get('sortBy')) {
+        return;
+      }
+      if (touchedColumn === 'date of issue') {
+        touchedColumn = 'releasedAt';
+      }
+      if (touchedColumn === 'rating') {
+        touchedColumn = 'middleRating';
+      }
+      searchParams.set('sortBy', touchedColumn);
+      setSearchParams(searchParams);
+    }
+  };
+
   const sortPriorityArray: SortPriorityType[] = [
     { title: 'Price', type: 'price' },
     { title: 'Name', type: 'name' },
@@ -46,7 +71,7 @@ const SortPriorityMenu: React.FC<DropMenuPropsType> = (props) => {
           sortPriorityArray.map((sortPriority) => (
             <StyledSortPriorityTarget
               key={sortPriority.title}
-              onClick={() => dispatch(booksActions.changeFilter({ sortBy: sortPriority.type }))}
+              onClick={handleClick}
               isActive={sortPriorityState === sortPriority.type }
             >{sortPriority.title}
             </StyledSortPriorityTarget>

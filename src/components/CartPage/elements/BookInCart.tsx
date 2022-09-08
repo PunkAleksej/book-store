@@ -33,10 +33,10 @@ const BookInCart:React.FC<BookInCartType> = (props) => {
   };
   return (
     <BookInCartStyle cover={props.cover}>
-      <Link to={bookLink}>
-        <div className="book_cover" />
+      <Link to={bookLink} className="book_cover">
+        <img className="book_cover_img" src={props.cover} />
       </Link>
-      <div>
+      <div className="book__info">
         <Link to={bookLink}>
           <h2 className="book_title">{props.title}</h2>
         </Link>

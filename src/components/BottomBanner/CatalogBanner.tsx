@@ -10,13 +10,13 @@ const CatalogBanner:React.FC = () => {
     <BannerContainer>
       <div className="banner_background">
         <div className="banner_custle_container">
-          <img className="banner_custle_img" src={custle}/>
+          <img className="banner_custle_img" src={custle} />
         </div>
         <div className="banner_fairy_container">
-          <img className="banner_fairy_img" src={fairy}/>
+          <img className="banner_fairy_img" src={fairy} />
         </div>
         <div className="banner_text-block">
-          <h2 className='banner_text-block_title'>Authorize now</h2>
+          <h2 className="banner_text-block_title">Authorize now</h2>
           <p className="banner_text-block__text">Authorize now and discover the fabulous world of books</p>
           <Link to="/login"><ButtonComponent text="Log In/ Sing Up" /></Link>
         </div>

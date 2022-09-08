@@ -10,13 +10,17 @@ import {
 const Header:React.FC = () => {
   return (
     <HeaderContainer>
-        <Link to="/"><div className="header_logo" /></Link>
-        <p className="header_text">Catalog</p>
-        <div>
+        <div className="header_container">
+          <Link to="/"><div className="header_logo" /></Link>
+          <p className="header_text">Catalog</p>
+        </div>
+        <div className="header_input">
           <InputIconStyle />
           <HeaderInput placeholder="Search" />
         </div>
-        <HeaderButton />
+        <div className="header_buttons">
+          <HeaderButton />
+        </div>
     </HeaderContainer>
 
   );

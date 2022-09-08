@@ -63,11 +63,17 @@ export const InputContainer = styled.div<InputStyleType>`
       color: ${(props) => props.theme.palette.darkBlue};
       padding: 9px 0px 30px 0px;
     }
-    @media only screen and (max-device-width: 1280px){
-    .input {
-      width: ${(p) => (p.authInput ? '328px' : '465px')};
-    }
-    }
+  @media only screen and (max-device-width: 1280px){
+  .input {
+    width: ${(p) => (p.authInput ? '328px' : '465px')};
+  }
+  @media only screen and (max-device-width: 804px){
+  .input {
+    width: calc(100% - 64px);
+  }
+  }
+  }
+
 `;
 
 export const InputIconStyle = styled.div<ImgPropsType>`

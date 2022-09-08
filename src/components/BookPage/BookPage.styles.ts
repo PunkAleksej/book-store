@@ -3,15 +3,18 @@ import YellowStar from '../../assets/images/Star_yellow.png';
 import WhiteStar from '../../assets/images/Star_white.png';
 import BackArrow from '../../assets/images/BackArrow.png';
 
-
-
 export const BookPageContainer = styled.div`
     max-width: 1280px;
     width: 100%;
     padding: 60px 0px;
     margin: 0px auto;
     display: flex;
+    box-sizing: border-box;
     justify-content: space-between;
+    gap: 20px;
+    .book_Info_name {
+    
+    }
     .book_cover_container {
         width: 522px;
         height: 779px;
@@ -21,6 +24,7 @@ export const BookPageContainer = styled.div`
     .book_cover_img {
         width: 100%;
         height: 100%;
+        object-fit: contain;
     }
     .book_cover_like-button {
         position: absolute;
@@ -28,8 +32,7 @@ export const BookPageContainer = styled.div`
         left: 433px;
     }
     @media only screen and (max-device-width: 1280px){
-    max-width: 804px;
-    padding: 55px 0px;
+    padding: 55px 15px;
     .book_cover_container {
         width: 391px;
         height: 584px;
@@ -46,6 +49,13 @@ export const BookPageContainer = styled.div`
 
 export const BookPageInfo = styled.div`
     max-width: 630px;
+    .card_info_book_flex-container {
+        display: flex;
+    }
+    .card_info_name {
+        font-size: 32px;
+        line-height: 48px;
+    }
     .card_info_author {
         padding: 0px 0px 30px 0px;
     }
@@ -75,6 +85,7 @@ export const BookPageInfo = styled.div`
     }
     .cart_info_book-rating_block {
         display: flex;
+        flex-wrap: wrap;
     }
     .card_info_description {
         padding: 30px 0px 10px 0px;
@@ -85,7 +96,8 @@ export const BookPageInfo = styled.div`
         padding: 0px 0px 0px 0px;
     }
     .card_info_book-raiting {
-        display: block;
+        display: flex;
+        flex-wrap: wrap;
     }
     .card_info_book-ratting_arrow{
         background-image: url(${BackArrow});
@@ -110,13 +122,25 @@ export const BookPageInfo = styled.div`
     }
     .card_info_description {
         padding: 30px 0px 10px 0px;
-    }  
+    }
+    .card_info_button-block_button {
+        padding: 10px 22px;
+    }
+    }
+    @media only screen and (max-device-width: 804px){
+    .cart_info_book-rating_block {
+        display: flex;
+        flex-wrap: wrap;
+    }
     }
 `;
 
 type RatingStarType = {
     isActive: boolean;
 };
+export const FlexContainer = styled.div`
+    flex: 1 0 auto;
+`;
 
 export const RatingStar = styled.div<RatingStarType>`
     background-image: url(${(props) => (props.isActive ? YellowStar : WhiteStar)});
@@ -129,5 +153,6 @@ export const RatingStar = styled.div<RatingStarType>`
     @media only screen and (max-device-width: 1280px){
         width: 23px;
         height: 23px;
+        margin: 17px 0px;
     }
 `;
