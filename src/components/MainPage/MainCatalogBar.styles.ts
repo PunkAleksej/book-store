@@ -67,6 +67,8 @@ export const MainPageContainer = styled.div`
 `;
 
 export const BookContainer = styled.div`
+    max-width: 1280px;
+    margin: 0px auto;
     width: 100%;
     display: flex;
     flex-direction: row;

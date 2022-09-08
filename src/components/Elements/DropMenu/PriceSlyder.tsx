@@ -17,8 +17,13 @@ const PriceSlider:React.FC<DropMenuPropsType> = (props) => {
   const filterState = useAppSelector((store) => store.bookState.filter);
   const [ searchParams, setSerchParams ] = useSearchParams();
   const sliderValues = [filterState.priceFrom, filterState.priceTo];
+
   const dispatch = useAppDispatch();
-  const [priceChoice, setPriceChoice] = useState(sliderValues);
+  
+  const paramsPriceTo = Number(searchParams.get('priceTo')) || 10000;
+  const paramsPriceFrom = Number(searchParams.get('priceFrom')) || 0;
+  const paramsValues = [paramsPriceFrom,paramsPriceTo]
+  const [priceChoice, setPriceChoice] = useState(paramsValues);
   const debouncedSearchTerm = useDebounce(priceChoice, 500);
 
   dispatch(booksActions.changeFilter({
@@ -27,6 +32,9 @@ const PriceSlider:React.FC<DropMenuPropsType> = (props) => {
   }));
 
   useEffect(() => {
+    dispatch(booksActions.changeFilter({
+      priceFrom: paramsPriceFrom,
+      priceTo: paramsPriceTo}))
     if (debouncedSearchTerm) {
       (async () => {
         try {
@@ -42,9 +50,11 @@ const PriceSlider:React.FC<DropMenuPropsType> = (props) => {
   [debouncedSearchTerm]);
 
   const handleChange = (sliderValues: number | number[]): void => {
-    const priceFrom = Number(searchParams.get('minPrice')) || 0;
-    const priceTo = Number(searchParams.get('maxPrice')) || 10000;
     if (!Array.isArray(sliderValues)) return;
+    searchParams.set('priceFrom', sliderValues[0].toString());
+    setSerchParams(searchParams)
+    searchParams.set('priceTo', sliderValues[1].toString());
+    setSerchParams(searchParams)
     setPriceChoice(sliderValues);
   };
 
