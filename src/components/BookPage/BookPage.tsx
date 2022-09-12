@@ -43,7 +43,7 @@ const BookPage:React.FC = () => {
         </div>
         <BookPageInfo>
             <h2 className="card_info_name">{targetBook.name}</h2>
-            <h3 className="card_info_author">{targetBook.author.name}</h3>
+            <h3 className="card_info_author">{targetBook.author}</h3>
               <div className="card_info_book-raiting">
                 <RatingStar isActive={!!middleRatingStarColor} />
                 <p className="card_info_book-ratting_number">{middleRatingStarColor}.0</p>

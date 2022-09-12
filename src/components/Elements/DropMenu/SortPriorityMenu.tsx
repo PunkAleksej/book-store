@@ -19,7 +19,6 @@ const SortPriorityMenu: React.FC<DropMenuPropsType> = (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const filterState = useAppSelector((store) => store.bookState.filter);
-  const sortPriorityState = useAppSelector((store) => store.bookState.filter.sortBy);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -36,10 +35,10 @@ const SortPriorityMenu: React.FC<DropMenuPropsType> = (props) => {
     }
   };
 
-  useEffect(() => {
-    const sortBy = searchParams.get('sortBy') as 'price' | 'author' | 'middleRating' | 'releasedAt' | 'name';
-    dispatch(booksActions.changeFilter({ sortBy }));
-  }, [dispatch, searchParams]);
+  // useEffect(() => {
+  //   const sortBy = searchParams.get('sortBy') as 'price' | 'author' | 'middleRating' | 'releasedAt' | 'name';
+  //   dispatch(booksActions.changeFilter({ sortBy }));
+  // }, [dispatch, searchParams]);
 
   const handleClick = (ev: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (ev.currentTarget.textContent) {
@@ -72,7 +71,7 @@ const SortPriorityMenu: React.FC<DropMenuPropsType> = (props) => {
             <StyledSortPriorityTarget
               key={sortPriority.title}
               onClick={handleClick}
-              isActive={sortPriorityState === sortPriority.type }
+              isActive={filterState.sortBy === sortPriority.type }
             >{sortPriority.title}
             </StyledSortPriorityTarget>
           ))

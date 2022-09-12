@@ -25,7 +25,7 @@ export type BookType = {
     paperPrice: string;
     cover: string;
     genres: GenreType[];
-    author: AuthorType;
+    author: string;
     rating: RatingType[];
     middleRating: string;
 };

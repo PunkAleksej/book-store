@@ -45,7 +45,7 @@ const CartPage:React.FC = () => {
           <BookInCart
             bookId={targetBook.id}
             cover={targetBook.cover}
-            author={targetBook.author.name}
+            author={targetBook.author}
             title={targetBook.name}
             price={targetBook.price}
            />

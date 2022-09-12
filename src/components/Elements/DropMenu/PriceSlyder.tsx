@@ -20,21 +20,21 @@ const PriceSlider:React.FC<DropMenuPropsType> = (props) => {
 
   const dispatch = useAppDispatch();
   
-  const paramsPriceTo = Number(searchParams.get('priceTo')) || 10000;
-  const paramsPriceFrom = Number(searchParams.get('priceFrom')) || 0;
-  const paramsValues = [paramsPriceFrom,paramsPriceTo]
-  const [priceChoice, setPriceChoice] = useState(paramsValues);
+  // const paramsPriceTo = Number(searchParams.get('priceTo')) || 10000;
+  // const paramsPriceFrom = Number(searchParams.get('priceFrom')) || 0;
+  // const paramsValues = [paramsPriceFrom, paramsPriceTo];
+  const [priceChoice, setPriceChoice] = useState(sliderValues);
   const debouncedSearchTerm = useDebounce(priceChoice, 500);
 
-  dispatch(booksActions.changeFilter({
-    priceFrom: priceChoice[0],
-    priceTo: priceChoice[1],
-  }));
+  // dispatch(booksActions.changeFilter({
+  //   priceFrom: priceChoice[0],
+  //   priceTo: priceChoice[1],
+  // }));
 
   useEffect(() => {
-    dispatch(booksActions.changeFilter({
-      priceFrom: paramsPriceFrom,
-      priceTo: paramsPriceTo}))
+    // dispatch(booksActions.changeFilter({
+    //   priceFrom: paramsPriceFrom,
+    //   priceTo: paramsPriceTo}))
     if (debouncedSearchTerm) {
       (async () => {
         try {

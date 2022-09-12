@@ -39,7 +39,7 @@ const FavoritePage:React.FC = () => {
         <div key={targetBook.id}>
           <FavoriteBook
             cover={targetBook.cover}
-            author={targetBook.author.name}
+            author={targetBook.author}
             title={targetBook.name}
             price={targetBook.price}
             bookId={targetBook.id}

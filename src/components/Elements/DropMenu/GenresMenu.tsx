@@ -14,15 +14,15 @@ type DropMenuPropsType = {
 const FilterByGenre: React.FC<DropMenuPropsType> = (props) => {
   const dispatch = useAppDispatch();
   const genres = useAppSelector((store) => store.bookState.genres);
-  const [searchParams, setSearchParams] = useSearchParams();
   const filterState = useAppSelector((store) => store.bookState.filter);
-  const value = searchParams.get('selectGenres')?.split(',');
-  let numberList: number[] = [];
-  if (value) {
-    numberList  = value.map((elem) => +elem)
-  }
-  // const initialGenres = filterState.selectGenres.length ? filterState.selectGenres.slice() : [];
-  const initialGenres = numberList.length ? numberList : [];
+  const [searchParams, setSearchParams] = useSearchParams();
+  // const paramsValue = searchParams.get('selectGenres')?.split(',');
+  // let numberList: number[] = [];
+  // if (value) {
+  //   numberList  = value.map((elem) => +elem)
+  // }
+  const initialGenres = filterState.selectGenres.length ? filterState.selectGenres.slice() : [];
+  // const initialGenres = numberList.length ? numberList : [];
   const [selectedGenres, setSelectedGenres] = useState<number[]>(initialGenres);
   const handleClick = (id: string) => {
     const numberId = +id;
@@ -37,12 +37,12 @@ const FilterByGenre: React.FC<DropMenuPropsType> = (props) => {
   };
   useEffect(() => {
     //
-    if (value) {
-      const numberList = value.map((elem) => +elem)
-      dispatch(booksActions.changeFilter({ selectGenres: numberList }));
-    } else {
-      dispatch(booksActions.changeFilter({ selectGenres: [] }));
-    }
+    // if (paramsValue) {
+    //   const numberList = paramsValue.map((elem) => +elem)
+    //   dispatch(booksActions.changeFilter({ selectGenres: numberList }));
+    // } else {
+    //   dispatch(booksActions.changeFilter({ selectGenres: [] }));
+    // }
     //
     const filterResponse = async () => {
       try {

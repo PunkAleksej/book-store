@@ -36,7 +36,7 @@ const Catalog:React.FC = () => {
               bookName={book.name}
               cover={book.cover}
               price={book.price}
-              author={book.author.name}
+              author={book.author}
               bookId={book.id}
               isFavorite={inFavorite?.indexOf(+book.id) !== -1 }
               isCart={inCart?.indexOf(+book.id) !== -1 }

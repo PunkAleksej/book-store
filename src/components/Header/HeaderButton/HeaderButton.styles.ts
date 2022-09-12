@@ -71,7 +71,7 @@ export const StyledButtonBar = styled.div`
   }
 `;
 export const ButtonContainer = styled.div`
-  margin: 8px 0px auto 91px;
+  margin: 8px 0px auto 0px;
   @media only screen and (max-device-width: 1280px){
     margin: auto 0px auto 47px;
   }

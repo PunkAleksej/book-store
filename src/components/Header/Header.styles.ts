@@ -30,6 +30,7 @@ export const HeaderContainer = styled.div`
   }
   .header_buttons {
     order: 3;
+    width: 50%;
   }
 
   .header_input {
