@@ -32,7 +32,6 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
     margin-block-start: 0em;
     margin-block-end: 0em;
-
   }
   h3 {
     font-family: 'Poppins';

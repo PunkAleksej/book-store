@@ -13,7 +13,7 @@ const EmptyCart:React.FC = () => {
       <div className="cart_info">
         <h1 className="cart_info_title">Your cart is empty</h1>
         <p className="cart_info_text">
-          Add items to cart to make a purchase.<br />Go to the catalogue no.
+          Add items to cart to make a purchase.<br />Go to the catalogue now.
         </p>
         <Link to="/">
           <ButtonComponent text="Go to catalog" />

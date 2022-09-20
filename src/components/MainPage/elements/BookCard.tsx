@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import ButtonComponent from '../../Elements/Button';
 import { CardContainer, RatingStar } from './BookCard.styles';
 import heart from '../../../assets/images/Heart.svg';
-import BookRatingStars from '../../BookPage/elements/BookRatingStars';
 import { addToCart, addToFavorite, deleteFromFavorite } from '../../../api/catalog';
 import { useAppDispatch, useAppSelector } from '../../../store';
 import { userActions } from '../../../store/user/reduser';
@@ -21,11 +20,12 @@ type BookCatalogType = {
 
 const BookCard: React.FC<BookCatalogType> = (props) => {
   const dispatch = useAppDispatch();
-  const bookPrice = props.isCart ? 'Added to cart' : `$ ${+props.price / 100} USD`;
+  const user = useAppSelector((store) => store.userState.user);
+  const bookPrice = props.isCart && user ? 'Added to cart' : `$ ${+props.price / 100} USD`;
   const middleRatingStarColor = Math.round(+props.middleRating);
   const bookLink = `book/${props.bookId}`;
-  const user = useAppSelector((store) => store.userState.user);
   const handleClick = async () => {
+    if (!user) return;
     try {
       const addToCartResponse = await addToCart({ bookId: props.bookId.toString(), booksQuantity: '1' });
       dispatch(userActions.addUser(addToCartResponse.data.user));
@@ -65,12 +65,14 @@ const BookCard: React.FC<BookCatalogType> = (props) => {
           <ButtonComponent
             size="small"
             icon={heart}
-            disable={!props.isFavorite}
+            disable={!user || !props.isFavorite}
           />
         </div>
       </div>
       <div className="card_info">
-        <Link to={bookLink}><h2 className="card_info_book-name">{props.bookName}</h2></Link>
+        <Link to={bookLink} className="card_link">
+          <h2 className="card_info_book-name">{props.bookName}</h2>
+        </Link>
         <h2 className="card_info_book-author">{props.author}</h2>
         <div className="card_info_book-raiting">
           <RatingStar isActive={middleRatingStarColor >= 1} />
@@ -86,7 +88,7 @@ const BookCard: React.FC<BookCatalogType> = (props) => {
           <ButtonComponent
             text={bookPrice}
             size="large"
-            secondaryStyle={props.isCart}
+            secondaryStyle={!!user && props.isCart}
           />
         </div>
       </Link>

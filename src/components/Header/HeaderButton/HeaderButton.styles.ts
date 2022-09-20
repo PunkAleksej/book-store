@@ -53,7 +53,7 @@ export const StyledButtonBar = styled.div`
   @media only screen and (max-device-width: 1280px){
   }
   @media only screen and (max-device-width: 804px){
-    gap: 15px;
+    gap: 0px;
     .headers_button {
       width: 32px;
       height: 32px;

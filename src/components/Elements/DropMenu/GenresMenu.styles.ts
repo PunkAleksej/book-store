@@ -49,5 +49,8 @@ export const StyledFilterByGenre = styled.div<DropMenuPropsType>`
     .filter_options {
       width: 260px;
     }
+  @media only screen and (max-device-width: 804px){
+    top: 170px;
+  }
     }
 `;

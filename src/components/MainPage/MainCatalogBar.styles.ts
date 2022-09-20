@@ -40,14 +40,14 @@ export const MainPageContainer = styled.div`
     position: relative;
   }
 
-  .book_container {
+  /* .book_container {
     display: flex;
     flex-wrap: wrap;
     padding: 0px 80px;
     margin: 0px auto;
     justify-content: space-between;
     width: 1280px;
-  }
+  } */
   @media only screen and (max-device-width: 1280px){
     padding: 54px 15px;
     display: block;
@@ -73,8 +73,11 @@ export const BookContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 20px;
+    justify-content: space-between;
+    /* gap: 20px; */
+    @media only screen and (max-device-width: 1280px){
+      justify-content: space-around;
+    }
 `;
 
 // import styled from 'styled-components';

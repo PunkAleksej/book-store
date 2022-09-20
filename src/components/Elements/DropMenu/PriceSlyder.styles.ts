@@ -94,5 +94,8 @@ export const SlyderContainer = styled.div<DropMenuPropsType>`
       width: 240px;
       margin: 20px 0px 0px 0px;
     }
+  @media only screen and (max-device-width: 804px){
+    top: 125px;
+  }
   }
 `;

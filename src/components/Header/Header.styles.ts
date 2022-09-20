@@ -51,6 +51,7 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
   .header_buttons {
     order: 2;
+    max-width: 150px;
   }
   .header_input {
     order: 3;

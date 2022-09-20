@@ -14,12 +14,16 @@ export const StyledSortPriorityMenu = styled.div<DropMenuPropsType>`
   background-color: ${({ theme }) => theme.palette.lightGreen};
   position: absolute;
   top: 75px;
-  right: 5px;
+  left: 0px;
   border-radius: 16px;
   justify-content: flex-start;
   z-index: 100;
   @media only screen and (max-device-width: 1280px){
     width: 255px;
+  }
+  @media only screen and (max-device-width: 804px){
+    top: 60px;
+
   }
 `;
 

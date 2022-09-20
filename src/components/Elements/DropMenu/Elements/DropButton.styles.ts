@@ -22,5 +22,10 @@ export const StyledDropButtonContainer = styled.div`
   .drop_menu__button {
     width: 230px;
   }
+  @media only screen and (max-device-width: 804px){
+    .drop_menu__button {
+    width: 75%;
+  }
+  }
   }
 `;
