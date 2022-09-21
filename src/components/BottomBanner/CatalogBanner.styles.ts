@@ -4,7 +4,7 @@ import fairy from '../../assets/images/catalogBanner2.png';
 
 export const BannerContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   max-width: 1280px;
   width: 100%;
   padding: 0px 0px 150px 0px;
@@ -12,38 +12,35 @@ export const BannerContainer = styled.div`
   .banner_background {
     position: relative;
     width: 100%;
-    height: 400px;
+    min-height: 400px;
     border-radius: 16px;
     background: ${(props) => (props.theme.palette.lightGreen)};
     display: flex;
     margin-top: 62px;
   }
   .banner_custle_container {
-    width: 521px;
-    height: 462px;
-    position: absolute;
-    bottom: 0px;
-    left: 108px;
+    height: 80%;
+    margin: auto 0px 0px 0px;
   }
   .banner_custle_img {
+    object-fit: contain;
     width: 100%;
     height: 100%;
   }
   .banner_fairy_container {
-    width: 478px;;
-    height: 400px;
+    width: 40%;
+    height: 100%;
     position: absolute;
     right: 0px;
   }
   .banner_fairy_img{
+    object-fit: contain;
     width: 100%;
     height: 100%;
   }
   .banner_text-block {
-    position: absolute;
-    width: 100%;
-    max-width: 415px;
-    left: 757px;
+    width: 50%;
+    margin: 50px 0px 0px 0px;
   }
   .banner_text-block__text {
     padding: 10px 0px 50px 0px;
@@ -51,30 +48,27 @@ export const BannerContainer = styled.div`
     line-height: 30px;
   }
   @media only screen and (max-device-width: 1280px){
-  max-width: 804px;
-  padding: 0px 15px 150px 15px;
-  .banner_background {
-    margin-top: 0px;
   }
-  .banner_custle_container {
-    width: 389px;
-    height: 345px;
-    left: 0px;
+  @media only screen and (max-device-width: 804px) {
+    .banner_background {
+      flex-direction: column;
+    }
+    .banner_text-block {
+      order: 1;
+      margin: 0px auto 30px auto;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .banner_custle_container{
+      order: 2;
+      width: 80%;
+      margin: 0px auto;
+    }
+    .banner_fairy_container {
+      display: none;
+    }
   }
-
-  .banner_text-block {
-    max-width: 236px;
-    left: 411px;
-    padding: 80px 0px 0px 0px;
-  }
-  .banner_text-block__text {
-    padding: 22px 0px 40px 0px;
-    font-size: 16px;
-    line-height: 24px;
-  }
-  .banner_text-block_title {
-    font-size: 32px;
-    line-height: 48px;
-  }
-}
 `;
