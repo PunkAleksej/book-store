@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { ProfileContainer, PageContainer } from './ProfilePage.styles';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
+import { ProfileContainer } from './ProfilePage.styles';
 import PasswordForm from './elements/PasswordForm';
 import UserInfoForm from './elements/UserInfoForm';
 import ProfilePhoto from './elements/ProfilePhoto';
@@ -19,8 +17,6 @@ const ProfilePage:React.FC = () => {
   };
 
   return (
-    <PageContainer>
-      <Header />
       <ProfileContainer>
         <ProfilePhoto />
         <div>
@@ -40,8 +36,6 @@ const ProfilePage:React.FC = () => {
            />
         </div>
       </ProfileContainer>
-      <Footer />
-    </PageContainer>
   );
 };
 

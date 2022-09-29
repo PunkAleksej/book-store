@@ -8,18 +8,15 @@ import {
   AuthContainer,
   AuthMenu,
   AuthImg,
-  HeightContainer,
 } from './Sign.styles';
 import manImg from '../../assets/images/man.png';
 import Mail from '../../assets/images/Mail.svg';
 import Hide from '../../assets/images/Hide.svg';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
 import Input from '../profilePage/elements/Input';
 import { signUp } from '../../api/authentication';
 import signUpSchema from '../schemas/SignUpSchema';
 import toastsWriter from '../utils/Toasts';
-import ButtonComponent from '../Elements/Button';
+import ButtonComponent from '../elements/Button';
 
 type ErrorPayloadType = {
   message: string;
@@ -67,8 +64,6 @@ const SignUp: React.FC = () => {
   const repeatPasswordLabelText = formik.errors.repeatPassword ? formik.errors.repeatPassword : 'Repeat your password';
 
   return (
-    <HeightContainer>
-      <Header />
       <AuthContainer>
         <AuthMenu onSubmit={formik.handleSubmit}>
           <h1 className="auth-menu_title">Sign Up</h1>
@@ -113,8 +108,6 @@ const SignUp: React.FC = () => {
           <img className="auth_img" src={manImg} />
         </AuthImg>
       </AuthContainer>
-      <Footer />
-    </HeightContainer>
   );
 };
 

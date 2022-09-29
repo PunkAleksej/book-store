@@ -29,7 +29,7 @@ export const PaginationContainer = styled.div`
   }
   @media only screen and (max-device-width: 1280px){
     max-width: 804px;
-    padding: 20px 15px 90px 15px;
+    padding: 20px 0px 90px 0px;
   }
 `;
 

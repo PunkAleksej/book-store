@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const FavoriteContainer = styled.div`
+  flex: 1 1 auto;
   margin: 0px auto;
   width: 100%;
   max-width: 1280px;

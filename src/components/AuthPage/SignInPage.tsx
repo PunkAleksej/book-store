@@ -8,18 +8,15 @@ import {
   AuthContainer,
   AuthMenu,
   AuthImg,
-  HeightContainer,
 } from './Sign.styles';
 import manImg from '../../assets/images/man.png';
 import Mail from '../../assets/images/Mail.svg';
 import Hide from '../../assets/images/Hide.svg';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
 import Input from '../profilePage/elements/Input';
 import { signIn } from '../../api/authentication';
 import signInSchema from '../schemas/SignInPageShema';
 import toastsWriter from '../utils/Toasts';
-import ButtonComponent from '../Elements/Button';
+import ButtonComponent from '../elements/Button';
 
 type ErrorPayloadType = {
   message: string;
@@ -73,10 +70,6 @@ const SignIn: React.FC = () => {
     : undefined;
 
   return (
-    <HeightContainer>
-
-      <Header />
-
       <AuthContainer>
         <AuthMenu onSubmit={formik.handleSubmit}>
           <h1 className="auth-menu_title">Log In</h1>
@@ -111,10 +104,6 @@ const SignIn: React.FC = () => {
           <img className="auth_img" src={manImg} />
         </AuthImg>
       </AuthContainer>
-
-      <Footer />
-
-    </HeightContainer>
   );
 };
 

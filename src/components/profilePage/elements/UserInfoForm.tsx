@@ -9,7 +9,7 @@ import profile from '../../../assets/images/User_profile_gray.svg';
 import Mail from '../../../assets/images/Mail.svg';
 import userInfoSchema from '../../schemas/UserInfoSchema';
 import toastsWriter from '../../utils/Toasts';
-import ButtonComponent from '../../Elements/Button';
+import ButtonComponent from '../../elements/Button';
 import { ButtonContainer } from './ProfilePhoto.styles';
 
 type PropsUserInfoType = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonComponent from '../Elements/Button';
+import ButtonComponent from '../elements/Button';
 import { BannerContainer, ImgContainer } from './MainBanner.styles';
 import book from '../../assets/images/empty-cart.png';
 import BannerImg from '../../assets/images/banner1.png';

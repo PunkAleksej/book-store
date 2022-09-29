@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Loading from './components/LoadingPage/LoadingPage';
+import Loading from './components/loadingPage/LoadingPage';
 import RequireAuth from './RequireAuth';
-import SignIn from './components/AuthPage/SignInPage';
-import Main from './components/MainPage/MainPage';
+import SignIn from './components/authPage/SignInPage';
+import Main from './components/mainPage/MainPage';
 import ProfilePage from './components/profilePage/ProfilePage';
-import SignUp from './components/AuthPage/SignUpPage';
+import SignUp from './components/authPage/SignUpPage';
 import { useAppDispatch } from './store';
 import { userActions } from './store/user/reduser';
 import { getMe } from './api/authentication';
-import BookPage from './components/BookPage/BookPage';
-import CartPage from './components/CartPage/CartPage';
-import FavoritePage from './components/FavoritePage/FavoritePage';
+import BookPage from './components/bookPage/BookPage';
+import CartPage from './components/cartPage/CartPage';
+import FavoritePage from './components/favoritePage/FavoritePage';
 import StyledApp from './App.styles';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 
 const App:React.FC = () => {
   const dispatch = useAppDispatch();
@@ -40,26 +42,28 @@ const App:React.FC = () => {
 
   return (
       <StyledApp>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/login" element={<SignIn />} />
-          <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/loading" element={<Loading />} />
-          <Route path="/book/:id" element={<BookPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/favorite" element={<FavoritePage />} />
-          <Route
-              path="/profile"
-              element={
-                (<RequireAuth>
-                  <ProfilePage />
-                 </RequireAuth>)
-              }
-            />
-        </Routes>
-        <ToastContainer />
-      </BrowserRouter>
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/login" element={<SignIn />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/loading" element={<Loading />} />
+            <Route path="/book/:id" element={<BookPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/favorite" element={<FavoritePage />} />
+            <Route
+                path="/profile"
+                element={
+                  (<RequireAuth>
+                    <ProfilePage />
+                  </RequireAuth>)
+                }
+              />
+          </Routes>
+          <Footer />
+          <ToastContainer />
+        </BrowserRouter>
       </StyledApp>
   );
 };

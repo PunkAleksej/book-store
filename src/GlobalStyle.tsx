@@ -10,7 +10,9 @@ const GlobalStyle = createGlobalStyle`
   nav, footer, header, aside {
     display: block;
   }
+  html,
   body {
+    height: 100%;
     margin: 0;
     padding: 0;
     font-family: Poppins;

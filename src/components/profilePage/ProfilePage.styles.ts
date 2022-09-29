@@ -1,10 +1,7 @@
 import styled from 'styled-components';
-import profilePhoto from '../../assets/images/profilePhoto.png';
 
-export const PageContainer = styled.div`
-  min-height: 100vh;
-`;
 export const ProfileContainer = styled.div`
+  flex: 1 1 auto;
   width: 100%;
   max-width: 1280px;
   padding: 0px 0px 80px 0px;

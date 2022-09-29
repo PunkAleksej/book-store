@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ButtonComponent from '../Elements/Button';
+import ButtonComponent from '../elements/Button';
 import { BannerContainer } from './CatalogBanner.styles';
 import custle from '../../assets/images/catalogBanner1.png';
 import fairy from '../../assets/images/catalogBanner2.png';

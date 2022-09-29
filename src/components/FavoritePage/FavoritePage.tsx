@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../Header/Header';
 import { FavoriteContainer } from './FavoritePage.styles';
 import { useAppSelector } from '../../store';
 import FavoriteBook from './Elements/FavoriteBook';
 import EmptyFavorite from './Elements/EmptyFavorite';
 import { getBooksById } from '../../api/catalog';
 import type { BookType } from '../../store/book/reduser';
-import Footer from '../Footer/Footer';
-import { FlexContainer } from '../BookPage/BookPage.styles';
+
 
 const FavoritePage:React.FC = () => {
   const favoriteState = useAppSelector((store) => store.userState.user);
@@ -31,27 +29,23 @@ const FavoritePage:React.FC = () => {
   };
 
   return (
-    <FlexContainer>
-      <Header />
-      <FavoriteContainer>
-        {bookArr &&
-        bookArr.map((targetBook) => (
-        <div key={targetBook.id}>
-          <FavoriteBook
-            cover={targetBook.cover}
-            author={targetBook.author}
-            title={targetBook.name}
-            price={targetBook.price}
-            bookId={targetBook.id}
-           />
-           <div className="cart_separator_line" />
-        </div>
-        ))
-      }
-        {!bookArr.length && <EmptyFavorite /> }
-      </FavoriteContainer>
-      <Footer />
-    </FlexContainer>
+    <FavoriteContainer>
+      {bookArr &&
+      bookArr.map((targetBook) => (
+      <div key={targetBook.id}>
+        <FavoriteBook
+          cover={targetBook.cover}
+          author={targetBook.author}
+          title={targetBook.name}
+          price={targetBook.price}
+          bookId={targetBook.id}
+          />
+          <div className="cart_separator_line" />
+      </div>
+      ))
+    }
+      {!bookArr.length && <EmptyFavorite /> }
+    </FavoriteContainer>
   );
 };
 

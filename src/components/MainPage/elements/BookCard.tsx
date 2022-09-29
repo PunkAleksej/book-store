@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ButtonComponent from '../../Elements/Button';
+import ButtonComponent from '../../elements/Button';
 import { CardContainer, RatingStar } from './BookCard.styles';
 import heart from '../../../assets/images/Heart.svg';
 import { addToCart, addToFavorite, deleteFromFavorite } from '../../../api/catalog';

@@ -1,16 +1,14 @@
 import React from 'react';
 import ScrollToTop from '../utils/ScrollToTop';
-import Header from '../Header/Header';
 import Catalog from './MainCatalog';
-import Banner from '../TopBanner/MainBanner';
+import Banner from '../topBanner/MainBanner';
 import CatalogBar from './MainCatalogBar';
-import Footer from '../Footer/Footer';
-import CatalogBanner from '../BottomBanner/CatalogBanner';
+import CatalogBanner from '../bottomBanner/CatalogBanner';
 import { useAppDispatch } from '../../store';
 import { getGenres } from '../../api/catalog';
 import { booksActions } from '../../store/book/reduser';
 import PaginationPanel from './elements/PaginationPanel';
-// import toastsWriter from '../utils/Toasts';
+
 
 const Main:React.FC = () => {
   const dispatch = useAppDispatch();
@@ -25,13 +23,11 @@ const Main:React.FC = () => {
   return (
     <div>
       <ScrollToTop />
-      <Header />
       <Banner />
       <CatalogBar />
       <Catalog />
       <PaginationPanel />
       <CatalogBanner />
-      <Footer />
     </div>
   );
 };

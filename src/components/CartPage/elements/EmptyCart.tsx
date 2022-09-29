@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ButtonComponent from '../../Elements/Button';
+import ButtonComponent from '../../elements/Button';
 import { EmptyCartContainer } from './EmptyCart.styles';
 import emptyCart from '../../../assets/images/empty-cart.png';
 

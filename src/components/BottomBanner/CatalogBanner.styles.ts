@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import custle from '../../assets/images/catalogBanner1.png';
-import fairy from '../../assets/images/catalogBanner2.png';
 
 export const BannerContainer = styled.div`
   display: flex;

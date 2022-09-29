@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { MainPageContainer } from './MainCatalogBar.styles';
-import DropMenuButton from '../Elements/DropMenu/Elements/DropButton';
+import DropMenuButton from '../elements/dropMenu/Elements/DropButton';
 import { useAppDispatch } from '../../store';
 import { booksActions } from '../../store/book/reduser';
 

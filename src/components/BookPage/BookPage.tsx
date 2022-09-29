@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ButtonComponent from '../Elements/Button';
+import ButtonComponent from '../elements/Button';
 import { BookPageContainer, BookPageInfo, RatingStar, FlexContainer } from './BookPage.styles';
 import { useAppDispatch, useAppSelector } from '../../store';
 import heart from '../../assets/images/Heart.svg';
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-import CatalogBanner from '../BottomBanner/CatalogBanner';
+import CatalogBanner from '../bottomBanner/CatalogBanner';
 import { getBook } from '../../api/catalog';
 import BookRatingStars from './elements/BookRatingStars';
 import { booksActions } from '../../store/book/reduser';
-import Loading from '../LoadingPage/LoadingPage';
-import ScrollToTop from '../../components/utils/ScrollToTop';
+import Loading from '../loadingPage/LoadingPage';
+import ScrollToTop from '../utils/ScrollToTop';
 
 const BookPage:React.FC = () => {
   const params = useParams();
@@ -33,7 +31,6 @@ const BookPage:React.FC = () => {
   return (
     <FlexContainer>
       <ScrollToTop />
-      <Header />
       <BookPageContainer>
         <div className="book_cover_container">
           <img className="book_cover_img" src={targetBook.cover} />
@@ -75,7 +72,6 @@ const BookPage:React.FC = () => {
         </BookPageInfo>
       </BookPageContainer>
       <CatalogBanner />
-      <Footer />
     </FlexContainer>
   );
 };

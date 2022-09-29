@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../Header/Header';
 import { CartContainer } from './CartPage.styles';
 import { useAppSelector } from '../../store';
 import BookInCart from './elements/BookInCart';
@@ -7,8 +6,7 @@ import EmptyCart from './elements/EmptyCart';
 import TotalPrice from './elements/TotalPrice';
 import { getBooksById } from '../../api/catalog';
 import type { BookType } from '../../store/book/reduser';
-import Footer from '../Footer/Footer';
-import { FlexContainer } from '../BookPage/BookPage.styles';
+
 
 const CartPage:React.FC = () => {
   const cartState = useAppSelector((store) => store.userState.user);
@@ -36,8 +34,6 @@ const CartPage:React.FC = () => {
     +book.price
   )).reduce((acc, number) => acc + number, 0);
   return (
-    <FlexContainer>
-      <Header />
       <CartContainer>
         {bookArr &&
         bookArr.map((targetBook) => (
@@ -57,9 +53,8 @@ const CartPage:React.FC = () => {
           ? <EmptyCart />
           : <TotalPrice totalPrice={totalPrice / 100} />}
       </CartContainer>
-      <Footer />
-    </FlexContainer>
   );
 };
 
 export default CartPage;
+

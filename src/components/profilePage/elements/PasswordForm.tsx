@@ -7,7 +7,7 @@ import { userActions } from '../../../store/user/reduser';
 import { changePass } from '../../../api/authentication';
 import changePassSchema from '../../schemas/ChangePassSchema';
 import toastsWriter from '../../utils/Toasts';
-import ButtonComponent from '../../Elements/Button';
+import ButtonComponent from '../../elements/Button';
 
 type PropsPassType = {
   isPasswordChange: boolean;

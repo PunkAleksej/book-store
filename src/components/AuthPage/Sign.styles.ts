@@ -1,12 +1,7 @@
 import styled from 'styled-components';
 
-export const HeightContainer = styled.div`
-  flex: 1 0 auto; 
-  display: flex;
-  flex-direction: column;
-`;
-
 export const AuthContainer = styled.div`
+    flex: 1 1 auto;
   box-sizing: border-box;
   width: 100%;
   max-width: 1280px;
